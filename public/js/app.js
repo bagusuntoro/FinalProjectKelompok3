@@ -5410,13 +5410,20 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("nav", {
-    staticClass: "navbar navbar-light bg-light"
+  return _c("div", [_c("link", {
+    attrs: {
+      href: "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
+      rel: "stylesheet",
+      integrity: "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3",
+      crossorigin: "anonymous"
+    }
+  }), _vm._v(" "), _c("nav", {
+    staticClass: "navbar navbar-dark bg-dark"
   }, [_c("div", {
-    staticClass: "container-fluid"
+    staticClass: "container"
   }, [_c("span", {
     staticClass: "navbar-brand mb-0 h1"
-  }, [_vm._v("Navbar")])])]);
+  }, [_vm._v("tubestream'")])])])]);
 }];
 render._withStripped = true;
 
