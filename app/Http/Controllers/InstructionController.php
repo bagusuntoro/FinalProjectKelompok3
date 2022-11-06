@@ -7,6 +7,7 @@ use App\Models\Instruction;
 use Illuminate\Http\Request;
 use App\Models\NotesByInternals;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class InstructionController extends Controller
 {
@@ -28,22 +29,16 @@ class InstructionController extends Controller
             'attention_of' => 'required',
             'quotation_no' => 'required',
             'customer_po' => 'required',
-            'attachment' => 'required',
             'note' => 'required',
             'link_to' => 'required',
         ]);
-
+        $validateFile = Validator::make($request->all(),['attachment'=> 'required|mimes:pdf,zip']);
+        if($validateFile->fails())
+        {
+            return response()->json($validateFile->errors(),400);
+        }
+        //mapping detail cost
         $detail_cost = $this->insertMultipleCostDetail($request);
-        // $detail_cost = [
-        //     'description' => $request['description'],
-        //     'qty' => $request['qty'],
-        //     'uom' => $request['uom'],
-        //     'unit_price' => $request['unit_price'],
-        //     'gst_vat' => $request['gst_vat'],
-        //     'currency' => $request['currency'],
-        //     'total' => $request['total'],
-        //     'charge_to' => $request['charge_to'],
-        // ];
 
         $data = [
             'instruction_id' => $request['instruction_id'],
@@ -55,29 +50,39 @@ class InstructionController extends Controller
             'customer_po' => $request['customer_po'],
             'status' => 'On Progress',
             'cost_detail' => $detail_cost,
-            'attachment' => $request['attachment'],
+            'attachment' => null,
             'note' => $request['note'],
             'link_to' => $request['link_to'],
             'vendor_invoice' => [],
         ];
-
         $user = auth()->user()->name;
-
+        if($request->has('attachment')){
+            $attachment = "atch-".time().'.'.$request['attachment']->extension(); 
+            $request['attachment']->move(public_path('attachment'), $attachment);
+            $data["attachment"] = $attachment;   
+        }
         $history = [
-            'instruction_id' => $request['instruction_id'],
-            'history_data' => [
-                'action' => 'Created',
-                'by_user' => $user,
-                'notes' => '',
-                'attachment' => '',
-            ]
-        ];
+                'instruction_id' => $request['instruction_id'],
+                'history_data' => [
+                    'action' => 'Created',
+                    'by_user' => $user,
+                    'notes' => '',
+                    'attachment' => '',
+                ]
+            ];        
 
         // $this->instService->addData($data);
         // $this->notesService->addData($history);
+ 
         
         Instruction::create($data);
         NotesByInternals::create($history);
+
+        return response()->json([
+            "statusCode" => 200,
+            "message" => "Berhasil menambah instruksi",
+            "data" => $data,
+        ],200);
     }
 
     
