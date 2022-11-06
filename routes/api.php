@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InstructionController;
+use App\Models\Instruction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

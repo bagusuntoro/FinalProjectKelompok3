@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Instruction;
-use App\Models\NotesByInternals;
 use App\Models\User;
+use App\Models\Instruction;
 use Illuminate\Http\Request;
+use App\Models\NotesByInternals;
+use App\Http\Controllers\Controller;
 
 class InstructionController extends Controller
 {
@@ -33,16 +33,17 @@ class InstructionController extends Controller
             'link_to' => 'required',
         ]);
 
-        $detail_cost = [
-            'description' => $request['description'],
-            'qty' => $request['qty'],
-            'uom' => $request['uom'],
-            'unit_price' => $request['unit_price'],
-            'gst_vat' => $request['gst_vat'],
-            'currency' => $request['currency'],
-            'total' => $request['total'],
-            'charge_to' => $request['charge_to'],
-        ];
+        $detail_cost = $this->insertMultipleCostDetail($request);
+        // $detail_cost = [
+        //     'description' => $request['description'],
+        //     'qty' => $request['qty'],
+        //     'uom' => $request['uom'],
+        //     'unit_price' => $request['unit_price'],
+        //     'gst_vat' => $request['gst_vat'],
+        //     'currency' => $request['currency'],
+        //     'total' => $request['total'],
+        //     'charge_to' => $request['charge_to'],
+        // ];
 
         $data = [
             'instruction_id' => $request['instruction_id'],
@@ -77,5 +78,25 @@ class InstructionController extends Controller
         
         Instruction::create($data);
         NotesByInternals::create($history);
+    }
+
+    
+    protected function insertMultipleCostDetail(Request $request)
+    {
+        $data = [];
+        $detail = [];
+        for ($i=1 ; $i <= count($request["cost_detail"]) ; $i++) { 
+            $data["_id"] = $i;
+            $data["description"] = $request["cost_detail.detail$i.description"];
+            $data["qty"] = $request["cost_detail.detail$i.qty"];
+            $data["uom"] = $request["cost_detail.detail$i.uom"];
+            $data["unit_price"] = $request["cost_detail.detail$i.unit_price"];
+            $data["gst_vat"] = $request["cost_detail.detail$i.gst_vat"];
+            $data["currency"] = $request["cost_detail.detail$i.currency"];
+            $data["total"] = $request["cost_detail.detail$i.total"];
+            $data["charge_to"] = $request["cost_detail.detail$i.charge_to"];
+            array_push($detail, $data);
+        }       
+        return $detail;
     }
 }
