@@ -8,16 +8,61 @@ use Illuminate\Http\Request;
 use App\Models\NotesByInternals;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Services\InstructionService;
 
 class InstructionController extends Controller
 {
-    public function showAll()
-    {
-        $instructionsModel = new Instruction();
-        $instructions = $instructionsModel->get();
+    // service repository pattern
+    private InstructionService $instructionService;
 
-        return response()->json($instructions);
+    public function __construct()
+    {
+        $this->instructionService = new InstructionService();
     }
+
+    public function showInstructions()
+    {
+        $instructions = $this->instructionService->getInstructions();
+        return $this->responseMessage(true, 'Instructions', $instructions, 201);
+    }
+
+    public function deleteInstruction(Request $request)
+    {
+        // men-validasi data
+        $validator = Validator::make($request->all(), [
+            'instruction_id' => 'required'
+        ]);
+
+        // pesan error jika data yang dikirim gagal di validasi
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // mencari data instruction sesuai id
+        $instructionId = $request->input('instruction_id');
+        $instruction = $this->instructionService->getById($instructionId);
+
+        // pesan jika data instruction tidak dapat ditemukan
+        if (!$instruction) {
+            return $this->responseMessage(false, 'Instruction not found', null, 201);
+        }
+
+        // jika data instruction dapat ditemukan, maka akan dihapus
+        $this->instructionService->delete($instructionId);
+
+        // pesan setelah data instruction berhasil dihapus
+        return $this->responseMessage(true, 'Instruction deleted', null, 201);
+    }
+
+    public function responseMessage($status, $message, $data, $statusCode)
+    {
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'data' => $data,
+        ], $statusCode);
+    }
+    // end service repository pattern
 
     public function storeData(Request $request)
     {
@@ -32,10 +77,9 @@ class InstructionController extends Controller
             'note' => 'required',
             'link_to' => 'required',
         ]);
-        $validateFile = Validator::make($request->all(),['attachment'=> 'required|mimes:pdf,zip']);
-        if($validateFile->fails())
-        {
-            return response()->json($validateFile->errors(),400);
+        $validateFile = Validator::make($request->all(), ['attachment' => 'required|mimes:pdf,zip']);
+        if ($validateFile->fails()) {
+            return response()->json($validateFile->errors(), 400);
         }
         //mapping detail cost
         $detail_cost = $this->insertMultipleCostDetail($request);
@@ -56,25 +100,25 @@ class InstructionController extends Controller
             'vendor_invoice' => [],
         ];
         $user = auth()->user()->name;
-        if($request->has('attachment')){
-            $attachment = "atch-".time().'.'.$request['attachment']->extension(); 
+        if ($request->has('attachment')) {
+            $attachment = "atch-" . time() . '.' . $request['attachment']->extension();
             $request['attachment']->move(public_path('attachment'), $attachment);
-            $data["attachment"] = $attachment;   
+            $data["attachment"] = $attachment;
         }
         $history = [
-                'instruction_id' => $request['instruction_id'],
-                'history_data' => [
-                    'action' => 'Created',
-                    'by_user' => $user,
-                    'notes' => '',
-                    'attachment' => '',
-                ]
-            ];        
+            'instruction_id' => $request['instruction_id'],
+            'history_data' => [
+                'action' => 'Created',
+                'by_user' => $user,
+                'notes' => '',
+                'attachment' => '',
+            ]
+        ];
 
         // $this->instService->addData($data);
         // $this->notesService->addData($history);
- 
-        
+
+
         Instruction::create($data);
         NotesByInternals::create($history);
 
@@ -82,15 +126,15 @@ class InstructionController extends Controller
             "statusCode" => 200,
             "message" => "Berhasil menambah instruksi",
             "data" => $data,
-        ],200);
+        ], 200);
     }
 
-    
+
     protected function insertMultipleCostDetail(Request $request)
     {
         $data = [];
         $detail = [];
-        for ($i=1 ; $i <= count($request["cost_detail"]) ; $i++) { 
+        for ($i = 1; $i <= count($request["cost_detail"]); $i++) {
             $data["_id"] = $i;
             $data["description"] = $request["cost_detail.detail$i.description"];
             $data["qty"] = $request["cost_detail.detail$i.qty"];
@@ -101,7 +145,7 @@ class InstructionController extends Controller
             $data["total"] = $request["cost_detail.detail$i.total"];
             $data["charge_to"] = $request["cost_detail.detail$i.charge_to"];
             array_push($detail, $data);
-        }       
+        }
         return $detail;
     }
 }

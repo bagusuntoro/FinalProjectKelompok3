@@ -22,22 +22,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([
     'prefix' => 'auth'
-], function(){
+], function () {
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::group([
         'middleware' => 'auth:api'
-    ], function(){
-        Route::post('logout', 'App\Http\Controllers\AuthController@logout');  
+    ], function () {
+        Route::post('logout', 'App\Http\Controllers\AuthController@logout');
     });
 });
 
 Route::group([
     'prefix' => 'instruction',
-], function(){
+], function () {
     Route::group([
-        'middleware' => 'auth:api'
-    ], function(){
-        Route::get('/','App\Http\Controllers\InstructionController@showAll');
-        Route::post('/add','App\Http\Controllers\InstructionController@storeData');
-    }); 
+        // karena auth nya belum jalan, jadi aku comment dulu middleware nya
+        // 'middleware' => 'auth:api'
+    ], function () {
+        Route::post('/', 'App\Http\Controllers\InstructionController@showInstructions');
+        Route::post('/add', 'App\Http\Controllers\InstructionController@storeData');
+        Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
+    });
 });
