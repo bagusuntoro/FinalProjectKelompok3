@@ -3,6 +3,12 @@
 
 // Variables
 @import 'variables';
+$fa-font-path:"../webfonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import '~admin-lte/dist/css/adminlte.css';
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
