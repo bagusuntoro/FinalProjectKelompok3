@@ -5,7 +5,6 @@ namespace App\Http\Services;
 use App\Http\Repositories\InstructionRepository;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class InstructionService
 {
@@ -57,8 +56,10 @@ class InstructionService
         // //jika validasi berhasil 
         $detail_cost = $this->insertMultipleCostDetail($request);
         $user = auth()->user()->name;
+
         $request['detail_cost'] = $detail_cost;
         $request['user'] = $user;
+        
         $instruction= $this->instructionRepository->create($request);
         $data = $this->instructionRepository->getById($instruction);
 		return $data;
@@ -68,7 +69,7 @@ class InstructionService
         $data = [];
         $detail = [];
         for ($i = 1; $i <= count($request["cost_detail"]); $i++) {
-            $data["_id"] = $i;
+            $data["_id"] = (string) new \MongoDB\BSON\ObjectId();
             $data["description"] = $request['cost_detail']["detail$i"]["description"];
             $data["qty"] = $request['cost_detail']["detail$i"]["qty"];
             $data["uom"] = $request['cost_detail']["detail$i"]["uom"];
