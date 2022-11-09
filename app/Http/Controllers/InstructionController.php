@@ -23,7 +23,13 @@ class InstructionController extends Controller
     public function showInstructions()
     {
         $instructions = $this->instructionService->getInstructions();
-        return $this->responseMessage(true, 'Instructions', $instructions, 201);
+        return $this->responseMessage(true, 'Instructions', $instructions, 200);
+    }
+
+    public function detailInstruction(String $id)
+    {
+        $instruction = $this->instructionService->getById($id);
+        return $this->responseMessage(true, 'Detail Instruction', $instruction, 200);
     }
 
     public function deleteInstruction(Request $request)

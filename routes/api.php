@@ -35,10 +35,11 @@ Route::group([
     'prefix' => 'instruction',
 ], function () {
     Route::group([
-        // karena auth nya belum jalan, jadi aku comment dulu middleware nya
+        // aku comment dulu middleware nya, biar ga perlu login saat nyoba API nya
         // 'middleware' => 'auth:api'
     ], function () {
-        Route::post('/', 'App\Http\Controllers\InstructionController@showInstructions');
+        Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction
+        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
         Route::post('/add', 'App\Http\Controllers\InstructionController@storeData');
         Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
     });
