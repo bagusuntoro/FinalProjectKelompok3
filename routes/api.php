@@ -40,7 +40,7 @@ Route::group([
     ], function () {
         Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction
         Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
-        Route::post('/add', 'App\Http\Controllers\InstructionController@storeData');
+        Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
         Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
     });
 });
