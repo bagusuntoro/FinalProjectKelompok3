@@ -241,13 +241,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper" id="app">
 
 
-    <!-- Main content -->
-    {{-- <div class="content">
-      <div class="container-fluid mt-3">
-        <example-component></example-component>
-      </div><!-- /.container-fluid -->
-    </div> --}}
-
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -261,6 +255,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid mt-3">
+        <parent-component></parent-component>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
