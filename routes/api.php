@@ -33,9 +33,26 @@ Route::group([
     'prefix' => 'instruction',
 ], function(){
     Route::group([
+<<<<<<< Updated upstream
         'middleware' => 'auth:api'
     ], function(){
         Route::get('/','App\Http\Controllers\InstructionController@showAll');
         Route::post('/add','App\Http\Controllers\InstructionController@storeData');
     }); 
 });
+=======
+        // aku comment dulu middleware nya, biar ga perlu login saat nyoba API nya
+        // 'middleware' => 'auth:api'
+    ], function () {
+        Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction
+        Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft');
+        Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress');
+        Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted');
+        Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated');
+        Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');
+        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+        Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
+        Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
+    });
+});
+>>>>>>> Stashed changes

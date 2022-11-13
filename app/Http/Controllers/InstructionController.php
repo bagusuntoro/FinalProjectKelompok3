@@ -78,4 +78,39 @@ class InstructionController extends Controller
         Instruction::create($data);
         NotesByInternals::create($history);
     }
+
+    public function getDraft()
+    {
+        $key = "Draft";
+        $instruction = $this->instructionService->getByStatus($key);
+        return $this->responseMessage(true, 'Instructions on Draft', $instruction, 200);
+    }
+
+    public function getOnProgress()
+    {
+        $key = "On Progress";
+        $instruction = $this->instructionService->getByStatus($key);
+        return $this->responseMessage(true, 'Instructions On Progress', $instruction, 200);
+    }
+
+    public function getCompleted()
+    {
+        $key = "Completed";
+        $instruction = $this->instructionService->getByStatus($key);
+        return $this->responseMessage(true, 'Completed Instructions', $instruction, 200);
+    }
+
+    public function getTerminated()
+    {
+        $key = "Terminated";
+        $instruction = $this->instructionService->getByStatus($key);
+        return $this->responseMessage(true, 'Terminated Instructions', $instruction, 200);
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request['key'];
+        $instruction = $this->instructionService->search($key);
+        return $this->responseMessage(true, 'Search Result', $instruction, 200);
+    }
 }
