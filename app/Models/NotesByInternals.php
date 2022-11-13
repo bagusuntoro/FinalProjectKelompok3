@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class NotesByInternals extends Model
+class NotesByInternals extends Eloquent
 {
     use HasFactory;
 
