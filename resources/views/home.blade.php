@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>tubeStream</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -198,30 +198,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                 <a href="#" class="nav-link">
+                   <i class="nav-icon fas fa-th"></i>
+                   <p>
+                     Dashboard
+                     <span class="right badge badge-danger">update</span>
+                   </p>
+                 </a>
+               </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Starter Pages
+                Master Data
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Data 1</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Data 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data 3</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -229,7 +244,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -241,13 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper" id="app">
 
 
-    <!-- Main content -->
-    {{-- <div class="content">
-      <div class="container-fluid mt-3">
-        <example-component></example-component>
-      </div><!-- /.container-fluid -->
-    </div> --}}
-
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -261,6 +270,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid mt-3">
+        <parent-component></parent-component>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
