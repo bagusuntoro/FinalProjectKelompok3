@@ -150,4 +150,43 @@ class InstructionController extends Controller
         $instruction = $this->instructionService->search($key);
         return $this->responseMessage(true, 'Search Result', $instruction, 200);
     }
+
+    /*
+    * Menambah vendor invoice
+    */
+    public function addVendorInvoice(Request $request)
+    {
+        $req = (array) $request->all();
+         try {
+            $kondisi = true;
+            $statusCode = 200;
+            $message = "Berhasil menambah vendor invoice";
+            $data = $this->instructionService->addVendorInvoice($req);
+        } catch (Exception $e) {
+            $kondisi = false;
+            $statusCode = 400;
+            $message = "Gagal menambah vendor invoice";
+            $data = json_decode($e->getMessage());
+        }
+        return $this->responseMessage($kondisi, $message, $data, $statusCode);
+    }
+
+    /*
+    * menerima vendor invoice
+    */
+    public function receiveVendorInvoice(string $idInstruction)
+    {
+         try {
+            $kondisi = true;
+            $statusCode = 200;
+            $message = "Berhasil menerima semua vendor invoice";
+            $data = $this->instructionService->receiveVendorInvoice($idInstruction);
+        } catch (Exception $e) {
+            $kondisi = false;
+            $statusCode = 400;
+            $message = "Gagal menerima semua vendor invoice";
+            $data = $e->getMessage();
+        }
+        return $this->responseMessage($kondisi, $message, $data, $statusCode);
+    }
 }

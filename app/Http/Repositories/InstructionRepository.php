@@ -6,6 +6,8 @@ use App\Helpers\MongoModel;
 use App\Models\Instruction;
 use App\Models\NotesByInternals;
 
+use function PHPUnit\Framework\isEmpty;
+
 class InstructionRepository
 {
     private MongoModel $instructions;
@@ -13,6 +15,7 @@ class InstructionRepository
     public function __construct()
     {
         $this->instructionModel = new MongoModel('instruction');
+        $this->vendorInvoiceModel = new MongoModel('vendor_invoice');
     }
 
     /*
@@ -61,7 +64,7 @@ class InstructionRepository
             'note' => $data['note'],
             'vendor_invoice' => [],
         ];
-        
+
         if ($data['attachment'] !== null) {
             $attachment = "atch-" . time() . '.' . $data['attachment']->extension();
             $data['attachment']->move(public_path('attachment'), $attachment);
@@ -107,5 +110,51 @@ class InstructionRepository
                 ->orWhere('customer_po', 'LIKE','%'.$key.'%')
                 ->get();
         return $instruction;
+    }
+    /*
+    * Fitur tambah invoice
+    */
+    public function addVendorInvoice($data)
+    {
+        $vendorInvoice = [
+            'invoice_no' => $data['invoice_no'],
+            'instruction_id' => $data['instruction_id'],
+        ];
+        if ($data['invoice_attachment'] !== null) {
+            $file = $data['invoice_attachment']->getClientOriginalName();
+            $filename = pathinfo($file, PATHINFO_FILENAME);
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+            $invoice_attachment = $filename ."-" . time() . '.' . $extension;
+            $data['invoice_attachment']->move(public_path('invoice_attachment'), $invoice_attachment);
+            $vendorInvoice["invoice_attachment"] = $invoice_attachment;            
+        }
+        
+        $isExistSupport_doc = in_array('supporting_document', $data);
+        if ($isExistSupport_doc) {
+            $file = $data['supporting_document']->getClientOriginalName();
+            $filename = pathinfo($file, PATHINFO_FILENAME);
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+            $supporting_document = $filename ."-" . time() . '.' . $extension;
+            $data['supporting_document']->move(public_path('invoice_attachment'), $supporting_document);
+            $vendorInvoice["supporting_document"] = $supporting_document;                     
+        }
+        else{
+            $vendorInvoice["supporting_document"] = null;                     
+        }
+
+		$id = $this->vendorInvoiceModel->save($vendorInvoice);
+        $data = $this->vendorInvoiceModel->get(['_id' => $id]);
+        return $data;
+    }
+    /*
+    * Fitur accept all invoice
+    */
+    public function receiveVendorInvoice(string $id)
+    {
+        $arr =  $this->getById($id);
+        $data = $arr[0];
+        $data["status"] = "Completed";
+		$id = $this->instructionModel->save($data);
+        return $data;
     }
 }
