@@ -48,7 +48,6 @@ class InstructionRepository
             'cost_detail' => $data['detail_cost'],
             'attachment' => null,
             'note' => $data['note'],
-            'link_to' => $data['link_to'],
             'vendor_invoice' => [],
         ];
 
