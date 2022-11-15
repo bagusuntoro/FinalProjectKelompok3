@@ -24,10 +24,13 @@ Route::group([
     'prefix' => 'auth'
 ], function(){
     Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('signup', 'App\Http\Controllers\AuthController@signup');
     Route::group([
         'middleware' => 'auth:api'
     ], function(){
-        Route::post('logout', 'App\Http\Controllers\AuthController@logout');  
+        Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+        Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+        Route::get('data', 'App\Http\Controllers\AuthController@data');
     });
 });
 
@@ -46,6 +49,6 @@ Route::group([
         Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed
         Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
         Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
-        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction    #masih nggak jalan di komputerku
+        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
     }); 
 });
