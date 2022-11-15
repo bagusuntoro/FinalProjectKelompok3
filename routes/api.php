@@ -22,25 +22,33 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([
     'prefix' => 'auth'
-], function () {
+], function(){
     Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('signup', 'App\Http\Controllers\AuthController@signup');
     Route::group([
         'middleware' => 'auth:api'
-    ], function () {
+    ], function(){
         Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+        Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+        Route::get('data', 'App\Http\Controllers\AuthController@data');
     });
 });
 
 Route::group([
     'prefix' => 'instruction',
-], function () {
+], function(){
     Route::group([
-        // aku comment dulu middleware nya, biar ga perlu login saat nyoba API nya
-        // 'middleware' => 'auth:api'
-    ], function () {
-        Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction
-        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+        // Harap login dulu
+        'middleware' => 'auth:api'
+    ], function(){
+        Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction        
         Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
         Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
-    });
+        Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
+        Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress'); //menampilkan data instruction yang memiliki status on progress
+        Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed
+        Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
+        Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
+        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+    }); 
 });

@@ -15,25 +15,36 @@ class InstructionRepository
         $this->instructionModel = new MongoModel('instruction');
     }
 
+    /*
+    * Menampilkan semua instruction
+    */
     public function getAll()
     {
         $instructions = $this->instructionModel->get([]);
         return $instructions;
     }
 
-    public function getById(String $id)
+    /*
+    * Menampilkan instruction berdasarkan id
+    */
+    public function getById($id)
     {
         $instruction = $this->instructionModel->get(['_id' => $id]);
         return $instruction;
     }
 
+    /*
+    * Menghapus instruction
+    */
     public function delete(String $id)
     {
         $instruction = $this->instructionModel->deleteQuery(['_id' => $id]);
         return $instruction;
     }
 
-    //untuk menyimpan data Instruction
+    /*
+    * Menyimpan data Instruction
+    */
     public function create($data)
     {
         $newData = [
@@ -48,16 +59,15 @@ class InstructionRepository
             'cost_detail' => $data['detail_cost'],
             'attachment' => null,
             'note' => $data['note'],
-            'link_to' => $data['link_to'],
             'vendor_invoice' => [],
         ];
-
+        
         if ($data['attachment'] !== null) {
             $attachment = "atch-" . time() . '.' . $data['attachment']->extension();
             $data['attachment']->move(public_path('attachment'), $attachment);
-            $newData["attachment"] = $attachment;
+            $newData["attachment"] = $attachment;            
         }
-
+        
         $history = [
             'instruction_id' => $data['instruction_id'],
             'history_data' => [
@@ -71,5 +81,31 @@ class InstructionRepository
 		$id = $this->instructionModel->save($newData);
         NotesByInternals::create($history);
         return $id;
+    }
+
+    /*
+    * Menampilkan data instruction sesuai status yang diterima
+    */
+    public function getByStatus(string $key)
+    {
+        $instruction = $this->instructionModel->get(['status' => $key]);
+        return $instruction;
+    }
+
+    /*
+    * Fitur pencarian
+    */
+    public function search(string $key)
+    {
+        $instruction = Instruction::query()
+                ->where('instruction_id', 'LIKE','%'.$key.'%')
+                ->orWhere('link_to', 'LIKE','%'.$key.'%')
+                ->orWhere('instruction_type', 'LIKE','%'.$key.'%')
+                ->orWhere('assigned_vendor', 'LIKE','%'.$key.'%')
+                ->orWhere('attention_of', 'LIKE','%'.$key.'%')
+                ->orWhere('quotation_no', 'LIKE','%'.$key.'%')
+                ->orWhere('customer_po', 'LIKE','%'.$key.'%')
+                ->get();
+        return $instruction;
     }
 }

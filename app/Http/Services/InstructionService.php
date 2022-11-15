@@ -15,17 +15,26 @@ class InstructionService
         $this->instructionRepository = new InstructionRepository();
     }
 
+    /*
+    * Menampilkan semua instruction
+    */
     public function getInstructions()
     {
         return $this->instructionRepository->getAll();
     }
 
-    public function getById(String $id)
+    /*
+    * Menampilkan instruction berdasarkan id
+    */
+    public function getById($id)
     {
         $instruction = $this->instructionRepository->getById($id);
         return $instruction;
     }
 
+    /*
+    * Menghapus instruction
+    */
     public function delete(String $id)
     {
         $instruction = $this->instructionRepository->delete($id);
@@ -33,9 +42,12 @@ class InstructionService
 
     }
 
+    /*
+    * Menambah instruction
+    */
     public function create($request)
     {
-         $validator = Validator::make($request, [
+        $validator = Validator::make($request, [
             'instruction_id' => 'required',
             'link_to' => 'required',
             'instruction_type' => 'required',
@@ -55,15 +67,19 @@ class InstructionService
 
         // //jika validasi berhasil 
         $detail_cost = $this->insertMultipleCostDetail($request);
+        
         $user = auth()->user()->name;
 
         $request['detail_cost'] = $detail_cost;
         $request['user'] = $user;
         
         $instruction= $this->instructionRepository->create($request);
+        
         $data = $this->instructionRepository->getById($instruction);
+        
 		return $data;
     }
+    // Fungsi menambahkan cost detail, karena bagian ini dapat dimasukkan lebih dari satu
     protected function insertMultipleCostDetail($request)
     {
         $data = [];
@@ -81,6 +97,24 @@ class InstructionService
             array_push($detail, $data);
         }
         return $detail;
+    }
+
+    /*
+    * Menampilkan instruction berdasarkan status yang dimasukkan
+    */
+    public function getByStatus(string $key)
+    {
+        $instruction = $this->instructionRepository->getByStatus($key);
+        return $instruction;
+    }
+
+    /*
+    * Menampilkan hasil pencarian instruction
+    */
+    public function search(string $key)
+    {
+        $instruction = $this->instructionRepository->search($key);
+        return $instruction;
     }
 
 }
