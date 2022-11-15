@@ -15,25 +15,36 @@ class InstructionRepository
         $this->instructionModel = new MongoModel('instruction');
     }
 
+    /*
+    * Menampilkan semua instruction
+    */
     public function getAll()
     {
         $instructions = $this->instructionModel->get([]);
         return $instructions;
     }
 
-    public function getById(String $id)
+    /*
+    * Menampilkan instruction berdasarkan id
+    */
+    public function getById($id)
     {
         $instruction = $this->instructionModel->get(['_id' => $id]);
         return $instruction;
     }
 
+    /*
+    * Menghapus instruction
+    */
     public function delete(String $id)
     {
         $instruction = $this->instructionModel->deleteQuery(['_id' => $id]);
         return $instruction;
     }
 
-    //untuk menyimpan data Instruction
+    /*
+    * Menyimpan data Instruction
+    */
     public function create($data)
     {
         $newData = [
@@ -50,13 +61,13 @@ class InstructionRepository
             'note' => $data['note'],
             'vendor_invoice' => [],
         ];
-
+        
         if ($data['attachment'] !== null) {
             $attachment = "atch-" . time() . '.' . $data['attachment']->extension();
             $data['attachment']->move(public_path('attachment'), $attachment);
-            $newData["attachment"] = $attachment;
+            $newData["attachment"] = $attachment;            
         }
-
+        
         $history = [
             'instruction_id' => $data['instruction_id'],
             'history_data' => [
@@ -72,12 +83,18 @@ class InstructionRepository
         return $id;
     }
 
+    /*
+    * Menampilkan data instruction sesuai status yang diterima
+    */
     public function getByStatus(string $key)
     {
         $instruction = $this->instructionModel->get(['status' => $key]);
         return $instruction;
     }
 
+    /*
+    * Fitur pencarian
+    */
     public function search(string $key)
     {
         $instruction = Instruction::query()
