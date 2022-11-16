@@ -191,5 +191,36 @@ class InstructionService
         }
         return $code;
     }
-
+    /*
+    * Menambah vendor invoice
+    */
+    public function addVendorInvoice(array $request)
+    {
+        $validator = Validator::make($request, [
+            'invoice_no' => 'required',
+            'invoice_attachment' => 'required|mimes:pdf,zip',
+            'supporting_document' => 'mimes:pdf,zip',
+            'instruction_id' => 'required'
+        ]);
+          //jika validasi gagal
+        if($validator->fails())
+        {
+            throw new InvalidArgumentException($validator->errors());
+        }
+        $data = $this->instructionRepository->addVendorInvoice($request);
+		return $data;
+    }
+    /*
+    * menerima semua vendor invoice
+    */
+    public function receiveVendorInvoice(String $id)
+    {
+        $isExist =  $this->instructionRepository->getById($id);
+        if($isExist == null)
+        {      
+            throw new InvalidArgumentException('Data tidak ditemukan');     
+        }
+        $data = $this->instructionRepository->receiveVendorInvoice($id);
+        return $data;
+    }
 }

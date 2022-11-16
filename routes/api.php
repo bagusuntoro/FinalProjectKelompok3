@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\InstructionController;
 use App\Models\Instruction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +55,8 @@ Route::group([
         Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
         Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
         Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+        Route::post("/addVendorInvoice", 'App\Http\Controllers\InstructionController@addVendorInvoice')->name('addVendorInvoice'); //menambah vendor invoice
+        Route::post("/receiveVendorInvoice/{id}", 'App\Http\Controllers\InstructionController@receiveVendorInvoice')->name('receiveVendorInvoice'); //menambah vendor invoice
         
     }); 
 });
