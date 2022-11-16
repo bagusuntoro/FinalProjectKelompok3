@@ -134,7 +134,7 @@ class InstructionRepository
                 ->first();
         return $instruction;
     }
-    
+
     /*
     * Fitur tambah invoice
     */
@@ -170,6 +170,7 @@ class InstructionRepository
         $data = $this->vendorInvoiceModel->get(['_id' => $id]);
         return $data;
     }
+    
     /*
     * Fitur accept all invoice
     */

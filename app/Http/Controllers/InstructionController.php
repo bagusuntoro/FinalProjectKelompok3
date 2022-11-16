@@ -252,11 +252,15 @@ class InstructionController extends Controller
     public function addVendorInvoice(Request $request)
     {
         $req = (array) $request->all();
-         try {
+        $status = 'Added invoice';
+        $id = $request['instruction_id'];
+
+        try {
             $kondisi = true;
             $statusCode = 200;
             $message = "Berhasil menambah vendor invoice";
             $data = $this->instructionService->addVendorInvoice($req);
+            $this->historyService->updateHistory($id, $status);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
@@ -271,11 +275,14 @@ class InstructionController extends Controller
     */
     public function receiveVendorInvoice(string $idInstruction)
     {
-         try {
+        $status = 'Invoice Accepted. Instruction completed';
+        $id = $idInstruction;
+        try {
             $kondisi = true;
             $statusCode = 200;
             $message = "Berhasil menerima semua vendor invoice";
             $data = $this->instructionService->receiveVendorInvoice($idInstruction);
+            $this->historyService->updateHistory($id, $status);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
