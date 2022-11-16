@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Http\Repositories\HistoryRepository;
 use App\Http\Repositories\InstructionRepository;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
@@ -9,10 +10,12 @@ use InvalidArgumentException;
 class InstructionService
 {
     private InstructionRepository $instructionRepository;
+    private HistoryRepository $historyRepo;
 
     public function __construct()
     {
         $this->instructionRepository = new InstructionRepository();
+        $this->historyRepo = new HistoryRepository;
     }
 
     /*
@@ -39,22 +42,23 @@ class InstructionService
     {
         $instruction = $this->instructionRepository->delete($id);
         return $instruction;
-
     }
 
     /*
     * Menambah instruction
     */
-    public function create($request)
+    public function create($request, $stat)
     {
         $validator = Validator::make($request, [
-            'instruction_id' => 'required',
             'link_to' => 'required',
             'instruction_type' => 'required',
             'assigned_vendor' => 'required',
+            'vendor_address' => 'required',
             'attention_of' => 'required',
             'quotation_no' => 'required',
+            'invoice_to' => 'required',
             'customer_po' => 'required',
+            'customer_contract' => 'required',
             'note' => 'required',
             'link_to' => 'required',
             'attachment' => 'mimes:pdf,zip',
@@ -67,11 +71,22 @@ class InstructionService
 
         // //jika validasi berhasil 
         $detail_cost = $this->insertMultipleCostDetail($request);
+
+        if ($request['instruction_type'] == 'Logistic Instruction')
+        {
+            $key = 'LI';
+        } else if ($request['instruction_type'] == 'Service Instruction')
+        {
+            $key = 'SI';
+        }
+        $code = $this->getInstructionNo($key);
         
         $user = auth()->user()->name;
 
         $request['detail_cost'] = $detail_cost;
         $request['user'] = $user;
+        $request['status'] = $stat;
+        $request['instruction_id'] = $code;
         
         $instruction= $this->instructionRepository->create($request);
         
@@ -90,6 +105,7 @@ class InstructionService
             $data["qty"] = $request['cost_detail']["detail$i"]["qty"];
             $data["uom"] = $request['cost_detail']["detail$i"]["uom"];
             $data["unit_price"] = $request['cost_detail']["detail$i"]["unit_price"];
+            $data["discount"] = $request['cost_detail']["detail$i"]["discount"];
             $data["gst_vat"] = $request['cost_detail']["detail$i"]["gst_vat"];
             $data["currency"] = $request['cost_detail']["detail$i"]["currency"];
             $data["total"] = $request['cost_detail']["detail$i"]["total"];
@@ -97,6 +113,32 @@ class InstructionService
             array_push($detail, $data);
         }
         return $detail;
+    }
+
+    /*
+    * Mengubah status instruksi menjadi terminated
+    */
+    public function setTerminated(string $id)
+    {
+        $editedData = [
+            '_id' => $id,
+            'status' => 'Terminated'
+        ];
+        $id = $this->instructionRepository->setTerminated($editedData);
+        return $id;
+    }
+
+    /*
+    * Mengubah status instruksi menjadi on progress
+    */
+    public function setOnProgress(string $id)
+    {
+        $editedData = [
+            '_id' => $id,
+            'status' => 'On Progress'
+        ];
+        $id = $this->instructionRepository->setOnProgress($editedData);
+        return $id;
     }
 
     /*
@@ -115,6 +157,39 @@ class InstructionService
     {
         $instruction = $this->instructionRepository->search($key);
         return $instruction;
+    }
+
+    /*
+    * Generate Nomor instruction dengan cara mendapatkan data instruction secara descending
+    */
+    public function getInstructionNo($key)
+    {
+        // Cari instruksi service/logistik terakhir
+        $instruction = $this->instructionRepository->getInstructionNo($key);
+        // Jika tidak ditemukan
+        if ($instruction == null){
+            $code = $key.'-'.'0001';
+        }
+        // Jika ditemukan maka generate kode baru
+        else {
+            $prevCode = strval($instruction['instruction_id']);
+            $splitCode = explode('-',$prevCode);
+            $currentCode = $splitCode[1] + 1;
+            if (strlen((string)$currentCode) < 2)
+            {
+                $code = $key.'-'."000".(string)$currentCode;
+            } else if (strlen((string)$currentCode) < 3)
+            {
+                $code = $key.'-'."00".(string)$currentCode;
+            } else if (strlen((string)$currentCode) < 4)
+            {
+                $code = $key.'-'."0".(string)$currentCode;
+            } else if (strlen((string)$currentCode) < 5)
+            {
+                $code = $key.'-'.(string)$currentCode;
+            }
+        }
+        return $code;
     }
 
 }

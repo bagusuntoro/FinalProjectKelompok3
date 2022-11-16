@@ -52,10 +52,13 @@ class InstructionRepository
             'link_to' => $data['link_to'],
             'instruction_type' => $data['instruction_type'],
             'assigned_vendor' => $data['assigned_vendor'],
+            'vendor_address' => $data['vendor_address'],
             'attention_of' => $data['attention_of'],
             'quotation_no' => $data['quotation_no'],
+            'invoice_to' => $data['invoice_to'],
             'customer_po' => $data['customer_po'],
-            'status' => 'On Progress',
+            'customer_contract' => $data['customer_contract'],
+            'status' => $data['status'],
             'cost_detail' => $data['detail_cost'],
             'attachment' => null,
             'note' => $data['note'],
@@ -67,19 +70,27 @@ class InstructionRepository
             $data['attachment']->move(public_path('attachment'), $attachment);
             $newData["attachment"] = $attachment;            
         }
-        
-        $history = [
-            'instruction_id' => $data['instruction_id'],
-            'history_data' => [
-                'action' => 'Created',
-                'by_user' => $data['user'],
-                'notes' => '',
-                'attachment' => '',
-            ]
-        ];
 
 		$id = $this->instructionModel->save($newData);
-        NotesByInternals::create($history);
+
+        return $id;
+    }
+
+    /*
+    * Mengubah status instruction ke terminated
+    */
+    public function setTerminated(array $data)
+    {
+        $id = $this->instructionModel->save($data);
+        return $id;
+    }
+
+    /*
+    * Mengubah status instruction ke on progress
+    */
+    public function setOnProgress(array $data)
+    {
+        $id = $this->instructionModel->save($data);
         return $id;
     }
 
@@ -106,6 +117,18 @@ class InstructionRepository
                 ->orWhere('quotation_no', 'LIKE','%'.$key.'%')
                 ->orWhere('customer_po', 'LIKE','%'.$key.'%')
                 ->get();
+        return $instruction;
+    }
+
+    /*
+    * Mencari data instruksi secara descending
+    */
+    public function getInstructionNo(string $key)
+    {
+        $instruction = Instruction::query()
+                ->where('instruction_id','LIKE','%'.$key.'%')
+                ->orderBy('instruction_id','desc')                
+                ->first();
         return $instruction;
     }
 }

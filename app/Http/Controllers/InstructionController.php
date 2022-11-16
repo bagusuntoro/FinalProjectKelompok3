@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Instruction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HistoryController;
+use App\Http\Services\HistoryService;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Services\InstructionService;
 use Exception;
@@ -12,10 +14,12 @@ use Exception;
 class InstructionController extends Controller
 {
     private InstructionService $instructionService;
+    private HistoryService $historyService;
 
     public function __construct()
     {
         $this->instructionService = new InstructionService();
+        $this->historyService = new HistoryService();
     }
 
     /*
@@ -85,12 +89,39 @@ class InstructionController extends Controller
     public function storeData(Request $request)
     {
         $req = (array) $request->all();
+        $setStatus = 'On Progress';
         
         try {
             $kondisi = true;
             $statusCode = 200;
             $message = "Berhasil menambah instruksi";
-            $data = $this->instructionService->create($req);
+            $data = $this->instructionService->create($req, $setStatus);
+            $history = array_column($data,'_id');
+            $this->historyService->create($history, $setStatus);
+        } catch (Exception $e) {
+            $kondisi = false;
+            $statusCode = 400;
+            $message = "Gagal menambah instruksi";
+            $data = json_decode($e->getMessage());
+        }
+        return $this->responseMessage($kondisi, $message, $data, $statusCode);        
+    }
+
+    /*
+    * Menyimpan data instruction sebagai draft
+    */
+    public function draftData(Request $request)
+    {
+        $req = (array) $request->all();
+        $setStatus = 'Draft';
+        
+        try {
+            $kondisi = true;
+            $statusCode = 200;
+            $message = "Instruksi dimasukkan ke dalam Draft";
+            $data = $this->instructionService->create($req, $setStatus);
+            $history = array_column($data,'_id');
+            $this->historyService->create($history, $setStatus);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
@@ -98,6 +129,70 @@ class InstructionController extends Controller
             $data = json_decode($e->getMessage());
         }
         return $this->responseMessage($kondisi, $message, $data, $statusCode);
+    }
+
+    /*
+    * Mengubah status data menjadi terminated
+    */
+    public function setTerminated(Request $request)
+    {
+        // men-validasi data
+        $validator = Validator::make($request->all(), [
+            'instruction_id' => 'required'
+        ]);
+
+        // pesan error jika data yang dikirim gagal di validasi
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // mencari data instruction sesuai id
+        $instructionId = $request->input('instruction_id');
+        $instruction = $this->instructionService->getById($instructionId);
+
+        // pesan jika data instruction tidak dapat ditemukan
+        if (!$instruction) {
+            return $this->responseMessage(false, 'Instruction not found', null, 201);
+        }
+
+        $status = 'Set to terminated';
+        $this->instructionService->setTerminated($instructionId);
+        $this->historyService->updateHistory($instructionId, $status);
+
+        // pesan setelah status instruction berhasil diubah
+        return $this->responseMessage(true, 'Status changed to terminated', null, 201);
+    }
+
+    /*
+    * Mengubah status data menjadi on progress
+    */
+    public function setOnProgress(Request $request)
+    {
+        // men-validasi data
+        $validator = Validator::make($request->all(), [
+            'instruction_id' => 'required'
+        ]);
+
+        // pesan error jika data yang dikirim gagal di validasi
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // mencari data instruction sesuai id
+        $instructionId = $request->input('instruction_id');
+        $instruction = $this->instructionService->getById($instructionId);
+
+        // pesan jika data instruction tidak dapat ditemukan
+        if (!$instruction) {
+            return $this->responseMessage(false, 'Instruction not found', null, 201);
+        }
+
+        $status = 'Set to on progress';
+        $this->instructionService->setOnProgress($instructionId);
+        $this->historyService->updateHistory($instructionId, $status);
+
+        // pesan setelah status instruction berhasil diubah
+        return $this->responseMessage(true, 'Status changed to on progress', null, 201);
     }
     
     /*
