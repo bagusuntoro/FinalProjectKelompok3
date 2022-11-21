@@ -5685,7 +5685,19 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("option 3")])])]), _vm._v(" "), _c("td", [_c("div", {
     staticClass: "status"
-  }, [_vm._v("-")])])])])])])]);
+  }, [_vm._v("-")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_vm._v("\n      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, porro.\n    ")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "col-md-10"
+  }, [_c("table", {
+    staticClass: "table"
+  }, [_c("tr", [_c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")]), _vm._v(" "), _c("td", [_vm._v("tes")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2"
+  }, [_c("button", [_vm._v("+")])])])])]);
 }];
 render._withStripped = true;
 

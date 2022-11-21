@@ -131,6 +131,32 @@
         </tbody>
       </table>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, porro.
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-10">
+          <table class="table">
+            <tr>
+                <td>tes</td>
+                <td>tes</td>
+                <td>tes</td>
+                <td>tes</td>
+            </tr>
+            <tr>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-2">
+          <button>+</button>
+        </div>
+      </div>
+    </div>
 
 
 
