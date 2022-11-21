@@ -11,7 +11,7 @@
           <a href="#">Export</a>
         </div>
       </div>
-      <hr>
+      <hr />
     </div>
 
     <div class="row">
@@ -94,14 +94,14 @@ thead {
   background-color: antiquewhite;
 }
 
-hr{
+hr {
   width: 95%;
   border: 1px solid;
   margin: auto;
   margin-top: 15px;
 }
 
-.status{
+.status {
   width: 100px;
   height: auto;
   border-radius: 10px;
