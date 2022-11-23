@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 
-class VendorInvoice extends Eloquent
+class VendorInvoice extends Model
 {
-    use HasFactory;
-
-    protected $table = 'vendor_invoice';
+    protected $connection = 'mongodb';
+    protected $collection = 'vendor_invoice';
 
     protected $id = '_id';
 

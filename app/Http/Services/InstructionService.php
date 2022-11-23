@@ -61,7 +61,7 @@ class InstructionService
             'customer_contract' => 'required',
             'note' => 'required',
             'link_to' => 'required',
-            'attachment' => 'mimes:pdf,zip',
+            'attachment[]' => 'mimes:pdf,zip',
         ]);
          //jika validasi gagal
         if($validator->fails())
@@ -97,24 +97,25 @@ class InstructionService
     // Fungsi menambahkan cost detail, karena bagian ini dapat dimasukkan lebih dari satu
     protected function insertMultipleCostDetail($request)
     {
-        $data = [];
-        $detail = [];
-        for ($i = 1; $i <= count($request["cost_detail"]); $i++) {
-            $data["_id"] = (string) new \MongoDB\BSON\ObjectId();
-            $data["description"] = $request['cost_detail']["detail$i"]["description"];
-            $data["qty"] = $request['cost_detail']["detail$i"]["qty"];
-            $data["uom"] = $request['cost_detail']["detail$i"]["uom"];
-            $data["unit_price"] = $request['cost_detail']["detail$i"]["unit_price"];
-            $data["discount"] = $request['cost_detail']["detail$i"]["discount"];
-            $data["gst_vat"] = $request['cost_detail']["detail$i"]["gst_vat"];
-            $data["currency"] = $request['cost_detail']["detail$i"]["currency"];
-            $data["total"] = $request['cost_detail']["detail$i"]["total"];
-            $data["charge_to"] = $request['cost_detail']["detail$i"]["charge_to"];
-            array_push($detail, $data);
+        $details = [];
+        foreach($request['cost_detail'] as $detail) 
+        {
+            $data = [
+                "_id" => (string) new \MongoDB\BSON\ObjectId(),
+                "description" => $detail["description"],
+                "qty" => $detail["qty"],
+                "uom" => $detail["uom"],
+                "unit_price" => $detail["unit_price"],
+                "discount" => $detail["discount"],
+                "gst_vat" =>  $detail["gst_vat"],
+                "currency" => $detail["currency"],
+                "total" => $detail["total"],
+                "charge_to" => $detail["charge_to"]
+            ];
+            array_push($details, $data);
         }
-        return $detail;
+        return $details;
     }
-
     /*
     * Mengubah status instruksi menjadi terminated
     */
@@ -192,37 +193,10 @@ class InstructionService
         return $code;
     }
 
-    /*
-    * Menambah vendor invoice
-    */
-    public function addVendorInvoice(array $request)
+    public function save(array $editedData)
     {
-        $validator = Validator::make($request, [
-            'invoice_no' => 'required',
-            'invoice_attachment' => 'required|mimes:pdf,zip',
-            'supporting_document' => 'mimes:pdf,zip',
-            'instruction_id' => 'required'
-        ]);
-          //jika validasi gagal
-        if($validator->fails())
-        {
-            throw new InvalidArgumentException($validator->errors());
-        }
-        $data = $this->instructionRepository->addVendorInvoice($request);
-		return $data;
+        $id = $this->instructionRepository->save($editedData);
+        return $id;
     }
     
-    /*
-    * menerima semua vendor invoice
-    */
-    public function receiveVendorInvoice(String $id)
-    {
-        $isExist =  $this->instructionRepository->getById($id);
-        if($isExist == null)
-        {      
-            throw new InvalidArgumentException('Data tidak ditemukan');     
-        }
-        $data = $this->instructionRepository->receiveVendorInvoice($id);
-        return $data;
-    }
 }

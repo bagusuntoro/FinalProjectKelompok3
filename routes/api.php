@@ -46,9 +46,13 @@ Route::group([
         Route::post('/add_draft', 'App\Http\Controllers\InstructionController@draftData'); //menambah data instruction sebagai draft
         Route::post('/terminate', 'App\Http\Controllers\InstructionController@setTerminated'); //mengubah status menjadi terminated
         Route::post('/set_on_progress', 'App\Http\Controllers\InstructionController@setOnProgress'); //mengubah status menjadi on progress
-        Route::post("/addVendorInvoice", 'App\Http\Controllers\InstructionController@addVendorInvoice')->name('addVendorInvoice'); //menambah vendor invoice
-        Route::post("/receiveVendorInvoice/{id}", 'App\Http\Controllers\InstructionController@receiveVendorInvoice')->name('receiveVendorInvoice'); //menambah vendor invoice
+        Route::post("/addVendorInvoice", 'App\Http\Controllers\VendorInvoiceController@addVendorInvoice')->name('addVendorInvoice'); //menambah vendor invoice
+        Route::post("/receiveVendorInvoice/{id}", 'App\Http\Controllers\VendorInvoiceController@receiveVendorInvoice')->name('receiveVendorInvoice'); //menambah vendor invoice
         Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction');
+
+
+        // invoice of instruction
+        Route::get('/allInvoices/{id}', 'App\Http\Controllers\VendorInvoiceController@getAllInstructionInvoice')->name('allInvoices'); //menambah vendor invoice
 
         Route::get('/test', 'App\Http\Controllers\InstructionController@test');
         Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
@@ -57,5 +61,6 @@ Route::group([
         Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
         Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
         Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+    
     }); 
 });

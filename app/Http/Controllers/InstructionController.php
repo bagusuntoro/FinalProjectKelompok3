@@ -97,7 +97,7 @@ class InstructionController extends Controller
             $message = "Berhasil menambah instruksi";
             $data = $this->instructionService->create($req, $setStatus);
             $history = array_column($data,'_id');
-            $this->historyService->create($history, $setStatus);
+            // $this->historyService->create($history, $setStatus);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
@@ -246,49 +246,5 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Search Result', $instruction, 200);
     }
 
-    /*
-    * Menambah vendor invoice
-    */
-    public function addVendorInvoice(Request $request)
-    {
-        $req = (array) $request->all();
-        $status = 'Added invoice';
-        $id = $request['instruction_id'];
 
-        try {
-            $kondisi = true;
-            $statusCode = 200;
-            $message = "Berhasil menambah vendor invoice";
-            $data = $this->instructionService->addVendorInvoice($req);
-            $this->historyService->updateHistory($id, $status);
-        } catch (Exception $e) {
-            $kondisi = false;
-            $statusCode = 400;
-            $message = "Gagal menambah vendor invoice";
-            $data = json_decode($e->getMessage());
-        }
-        return $this->responseMessage($kondisi, $message, $data, $statusCode);
-    }
-
-    /*
-    * menerima vendor invoice
-    */
-    public function receiveVendorInvoice(string $idInstruction)
-    {
-        $status = 'Invoice Accepted. Instruction completed';
-        $id = $idInstruction;
-        try {
-            $kondisi = true;
-            $statusCode = 200;
-            $message = "Berhasil menerima semua vendor invoice";
-            $data = $this->instructionService->receiveVendorInvoice($idInstruction);
-            $this->historyService->updateHistory($id, $status);
-        } catch (Exception $e) {
-            $kondisi = false;
-            $statusCode = 400;
-            $message = "Gagal menerima semua vendor invoice";
-            $data = $e->getMessage();
-        }
-        return $this->responseMessage($kondisi, $message, $data, $statusCode);
-    }
 }
