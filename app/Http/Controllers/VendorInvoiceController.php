@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\HistoryService;
 use App\Http\Services\InstructionService;
 use App\Http\Services\VendorInvoiceService;
 use Exception;
@@ -14,11 +15,13 @@ class VendorInvoiceController extends Controller
 
     protected $invoiceService;
     protected $instructionService;
+    protected $historyService;
 
-    public function __construct(VendorInvoiceService $invoiceService, InstructionService $instructionService)
+    public function __construct(VendorInvoiceService $invoiceService, InstructionService $instructionService, HistoryService $historyService)
     {
         $this->invoiceService = $invoiceService;
         $this->instructionService = $instructionService;
+        $this->historyService = $historyService;
     }
 
 
@@ -57,7 +60,7 @@ class VendorInvoiceController extends Controller
             $statusCode = 200;
             $message = "Successfully added vendor invoice";
             $data = $this->invoiceService->addVendorInvoice($req);
-            // $this->historyService->updateHistory($id, $status);
+            $this->historyService->updateHistory($id, $status);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
@@ -83,7 +86,7 @@ class VendorInvoiceController extends Controller
             $statusCode = 200;
             $message = "Successfully received all vendor invoices";
             $data = $this->invoiceService->receiveVendorInvoice($idInstruction);
-            // $this->historyService->updateHistory($id, $status);
+            $this->historyService->updateHistory($id, $status);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
