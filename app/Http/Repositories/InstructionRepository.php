@@ -69,7 +69,6 @@ class InstructionRepository
             'cost_detail' => $data['detail_cost'],
             'attachment' => null,
             'note' => $data['note'],
-            'vendor_invoice' => [],
         ];
 
         if ($data['attachment'] !== null) {

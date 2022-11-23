@@ -169,22 +169,22 @@ class InstructionService
         $instruction = $this->instructionRepository->getInstructionNo($key);
         // Jika tidak ditemukan
         if ($instruction == null){
-            $code = $key.'-'.'0001';
+            $code = $key.'-'.date("Y")."-".'0001';
         }
         // Jika ditemukan maka generate kode baru
         else {
             $prevCode = strval($instruction['instruction_id']);
             $splitCode = explode('-',$prevCode);
-            $currentCode = $splitCode[1] + 1;
+            $currentCode = $splitCode[2] + 1;
             if (strlen((string)$currentCode) < 2)
             {
-                $code = $key.'-'."000".(string)$currentCode;
+                $code = $key.'-'.date("Y")."-"."000".(string)$currentCode;
             } else if (strlen((string)$currentCode) < 3)
             {
-                $code = $key.'-'."00".(string)$currentCode;
+                $code = $key.'-'.date("Y")."-"."00".(string)$currentCode;
             } else if (strlen((string)$currentCode) < 4)
             {
-                $code = $key.'-'."0".(string)$currentCode;
+                $code = $key.'-'.date("Y")."-"."0".(string)$currentCode;
             } else if (strlen((string)$currentCode) < 5)
             {
                 $code = $key.'-'.(string)$currentCode;

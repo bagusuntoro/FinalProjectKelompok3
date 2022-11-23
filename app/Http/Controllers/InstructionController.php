@@ -97,7 +97,7 @@ class InstructionController extends Controller
             $message = "Berhasil menambah instruksi";
             $data = $this->instructionService->create($req, $setStatus);
             $history = array_column($data,'_id');
-            // $this->historyService->create($history, $setStatus);
+            $this->historyService->create($history, $setStatus);
         } catch (Exception $e) {
             $kondisi = false;
             $statusCode = 400;
