@@ -7,6 +7,7 @@ use App\Http\Services\InstructionService;
 use App\Http\Services\VendorInvoiceService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VendorInvoiceController extends Controller
 {
@@ -114,4 +115,82 @@ class VendorInvoiceController extends Controller
             "data" => $invoice
         ],200);
     }
+
+
+    /*
+    * Untuk update invoice
+    */
+    public function updateInvoice($id, Request $request)
+    {
+        $invoice = $this->invoiceService->getById($id);
+        if($invoice == null)
+         return response()->json([
+            "statusCode" => 404,
+            "message" => "Data not found",
+        ],200);
+
+        $data = $request->all();
+        $updatedData = $this->invoiceService->updateInvoice($invoice, $data);
+        return response()->json([
+            "statusCode" => 200,
+            "message" => "Successfully updated vendor invoice",
+            "data" => $updatedData
+        ],200);
+    }
+
+
+
+
+
+
+    /*
+    * Untuk delete invoice_attachment
+    */
+    public function removeAttachment(string $idInvoice)
+    {
+        $data = $this->invoiceService->getById($idInvoice);
+        if($data == null)
+         return response()->json([
+            "statusCode" => 404,
+            "message" => "Invoice not found",
+        ],200);
+        $invoice = $this->invoiceService->removeAttachment($idInvoice);
+         return response()->json([
+            "statusCode" => 200,
+            "message" => "Successfully deleted invoice attachment",
+            "data" => $invoice
+        ],200);
+    }
+
+    /*
+    * Untuk delete supporting_doccument tertentu
+    */
+    public function removeSupportingDocument(Request $req)
+    {    
+        // validate request
+        $validator = Validator::make($req->all(), [
+            'invoice_id' => 'required',
+            "sup_docId" => "required"
+        ]);
+        if($validator->fails())
+        {
+            return response()->json([
+                "message" => "Bad request",
+                "error" =>$validator->errors()
+            ],400);
+        }
+        $data = $this->invoiceService->getById($req["invoice_id"]);
+        if($data == null)
+         return response()->json([
+            "statusCode" => 404,
+            "message" => "Invoice not found",
+        ],200);
+        $invoice = $this->invoiceService->removeSupportingDocument($data, $req["sup_docId"]);
+         return response()->json([
+            "statusCode" => 200,
+            "message" => "Successfully deleted supporting doccument",
+            "data" => $invoice
+        ],200);
+    }
+
 }

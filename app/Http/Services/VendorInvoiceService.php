@@ -74,4 +74,30 @@ class VendorInvoiceService
         $data =  $this->invoiceRepository->getAllInstructionInvoice($idInstruction);
         return $data;
     }
+
+    /*
+    * Untuk update invoice
+    */
+    public function updateInvoice(array $invoice, $form)
+    {
+        $data = $this->invoiceRepository->updateInvoice($invoice, $form);
+        return $data;
+    }
+
+    /*
+    * Untuk delete invoice_attachment
+    */
+    public function removeAttachment(string $idInvoice)
+    {
+        $data = $this->invoiceRepository->removeAttachment($idInvoice);
+        return $data;
+    }
+    /*
+    * Untuk delete supporting_doccument tertentu
+    */
+    public function removeSupportingDocument(array $invoice, string $sup_docId)
+    {
+        $data = $this->invoiceRepository->removeSupportingDocument($invoice, $sup_docId);
+        return $data;
+    }
 }

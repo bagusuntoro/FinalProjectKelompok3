@@ -5,7 +5,7 @@ namespace App\Http\Repositories;
 use App\Helpers\MongoModel;
 use App\Helpers\UploadHelper;
 use App\Http\Services\InstructionService;
-
+use Carbon\Carbon;
 
 class VendorInvoiceRepository
 {
@@ -44,17 +44,30 @@ class VendorInvoiceRepository
         ];
 
         if ($data['invoice_attachment'] !== null) {
+            $createTime = Carbon::now();           
             $filename = $this->uploadHelper->uploadFile($data['invoice_attachment']);    
-            $vendorInvoice["invoice_attachment"] = $filename;            
+            $vendor_attachment = [
+                "user" => auth()->user()->name,
+                "created_at" => $createTime->toDateTimeString(),
+                "file" => $filename
+            ];
+            $vendorInvoice["invoice_attachment"] = $vendor_attachment;            
         }
      
         $isExistSupport_doc = isset($data['supporting_document']);
         if ($isExistSupport_doc) {
             $supporting_document = [];
+            $createTime = Carbon::now();           
             foreach($data['supporting_document'] as $supDoc)
             {
                 $filename = $this->uploadHelper->uploadFile($supDoc);  
-                array_push($supporting_document, $filename);       
+                $data = [
+                    "_id" => (string) new \MongoDB\BSON\ObjectId(),
+                    "user" => auth()->user()->name,
+                    "created_at" => $createTime->toDateTimeString(),
+                    "file" => $filename
+                ];
+                array_push($supporting_document, $data);       
             }
             $vendorInvoice["supporting_document"] = $supporting_document;                             
         }
@@ -86,5 +99,119 @@ class VendorInvoiceRepository
     {
         $invoices = $this->invoice->get(['instruction_id'=>$idInstruction]);
         return $invoices;
+    }
+
+    /*
+    * Untuk update invoice attachment
+    */
+    public function updateInvoice(array $existInvoice, $newData)
+    {
+        $createTime = Carbon::now();           
+        $existInvoice["invoice_no"] = $newData["invoice_no"];       
+        $isExistInvoiceAttachment = isset($newData['invoice_attachment']);
+        if ($isExistInvoiceAttachment) {
+            if(isset($existInvoice["invoice_attachment"]["file"]))
+            {
+                //jika file yang diupload beda dengan sebelumnya
+                if($newData["invoice_attachment"]->getClientOriginalName() != $existInvoice["invoice_attachment"]["file"])
+                {
+                    //hapus file lama
+                    $this->uploadHelper->removeFile($existInvoice["invoice_attachment"]["file"]);
+                    $filename = $this->uploadHelper->uploadFile($newData['invoice_attachment']);    
+                    $vendor_attachment = [
+                        "user" => auth()->user()->name,
+                        "created_at" => $createTime->toDateTimeString(),
+                        "file" => $filename
+                    ];
+                    $existInvoice["invoice_attachment"] = $vendor_attachment;            
+                }
+            }
+            else
+            {        
+                $filename = $this->uploadHelper->uploadFile($newData['invoice_attachment']);    
+                $vendor_attachment = [
+                    "user" => auth()->user()->name,
+                    "created_at" => $createTime->toDateTimeString(),
+                    "file" => $filename
+                ];
+                $existInvoice["invoice_attachment"] = $vendor_attachment;            
+            }
+          
+        }    
+        $isExistSupport_doc = isset($newData['supporting_document']);
+        if ($isExistSupport_doc) 
+        {
+            // $supporting_document = [];      
+            foreach($newData['supporting_document'] as $supDoc)
+            {
+                $doc_Id = isset($supDoc["_id"]) ? $supDoc["_id"] : null ;
+                if($doc_Id == null)
+                {
+                    $filename = $this->uploadHelper->uploadFile($supDoc["file"]);  
+                    $data = [
+                        "_id" => (string) new \MongoDB\BSON\ObjectId(),
+                        "user" => auth()->user()->name,
+                        "created_at" => $createTime->toDateTimeString(),
+                        "file" => $filename
+                    ];
+                    array_push($existInvoice["supporting_document"], $data);
+                }
+            }
+        }
+        $id = $this->invoice->save($existInvoice);
+        $data = $this->getById($id);
+        return $data;
+    }
+
+
+    /*
+    * Untuk hapus attachment di vendor invoice
+    */
+    public function removeAttachment(string $idInvoice)
+    {
+        $invoice = $this->getById($idInvoice);
+        if($invoice["invoice_attachment"] != null)
+        {
+           $this->uploadHelper->removeFile($invoice["invoice_attachment"]["file"]);
+        }    
+        $invoice["invoice_attachment"] = null;
+        $id = $this->invoice->save($invoice);
+        $data = $this->getById($id);
+        return $data;
+    }
+
+    /*
+    * Untuk delete supporting_doccument tertentu
+    */
+    public function removeSupportingDocument(array $invoice, string $sup_docId)
+    {
+        $isExistSup_doc = isset($invoice['supporting_document']) ? $invoice['supporting_document'] : null;
+        //Pencarian dan penghapusan sup document
+        $sup_docs = array_filter($isExistSup_doc, function($sup_doc) use ($sup_docId) {
+            if($sup_doc['_id'] == $sup_docId) //jika ketemu maka keluar kan dari array dan hapus file
+			{
+                $this->uploadHelper->removeFile($sup_doc["file"]);
+				return false;
+			} else {
+				return true;
+			}
+        });
+        $sup_docs = array_values($sup_docs);
+        $invoice["supporting_document"] = $sup_docs;
+        $id = $this->invoice->save($invoice);
+        $data = $this->getById($id);
+        return $data;
+    }
+
+    public function searchSupDoc($data, $doc_id)
+    {
+        foreach($data as $doc)
+        {
+            if($doc["_id"] == $doc_id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
