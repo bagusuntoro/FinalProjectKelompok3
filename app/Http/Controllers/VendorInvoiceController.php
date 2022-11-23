@@ -140,9 +140,6 @@ class VendorInvoiceController extends Controller
 
 
 
-
-
-
     /*
     * Untuk delete invoice_attachment
     */
@@ -193,4 +190,18 @@ class VendorInvoiceController extends Controller
         ],200);
     }
 
+    public function destroy($id)
+    {
+        $data = $this->invoiceService->getById($id);
+        if($data == null)
+         return response()->json([
+            "statusCode" => 404,
+            "message" => "Invoice not found",
+        ],200);
+        $id = $this->invoiceService->deleteInvoice($data);
+         return response()->json([
+            "statusCode" => 200,
+            "message" => "Successfully deleted vendor invoice $id",
+        ],200);
+    }
 }

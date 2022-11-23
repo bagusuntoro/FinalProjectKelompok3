@@ -100,4 +100,13 @@ class VendorInvoiceService
         $data = $this->invoiceRepository->removeSupportingDocument($invoice, $sup_docId);
         return $data;
     }
+
+    /*
+    * Untuk delete vendor invoice
+    */
+    public function deleteInvoice(array $data)
+    {
+        $id = $this->invoiceRepository->deleteInvoice($data);
+		return $id;
+    }
 }

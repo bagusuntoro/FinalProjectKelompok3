@@ -56,6 +56,7 @@ Route::group([
         Route::delete('/deleteAttachment/{id}', 'App\Http\Controllers\VendorInvoiceController@removeAttachment')->name('deleteAttachment');
         Route::post('/deleteSupDocument', 'App\Http\Controllers\VendorInvoiceController@removeSupportingDocument')->name('deleteSupDocument');
         Route::put('/updateInvoice/{id}', 'App\Http\Controllers\VendorInvoiceController@updateInvoice')->name('updateInvoice');
+        Route::delete('/deleteInvoice/{id}', 'App\Http\Controllers\VendorInvoiceController@destroy')->name('deleteInvoice');
 
         Route::get('/test', 'App\Http\Controllers\InstructionController@test');
         Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
