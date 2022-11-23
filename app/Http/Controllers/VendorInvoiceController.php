@@ -138,8 +138,6 @@ class VendorInvoiceController extends Controller
         ],200);
     }
 
-
-
     /*
     * Untuk delete invoice_attachment
     */
@@ -190,6 +188,9 @@ class VendorInvoiceController extends Controller
         ],200);
     }
 
+    /*
+    * Untuk delete vendor invoice
+    */
     public function destroy($id)
     {
         $data = $this->invoiceService->getById($id);

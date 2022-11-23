@@ -200,7 +200,10 @@ class VendorInvoiceRepository
         $data = $this->getById($id);
         return $data;
     }
-
+    
+    /*
+    * Untuk delete vendor invoice
+    */
     public function deleteInvoice(array $data)
     {
         // hapus file attachment
