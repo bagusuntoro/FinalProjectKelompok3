@@ -134,6 +134,11 @@ class VendorInvoiceController extends Controller
 
         $data = $request->all();
         $updatedData = $this->invoiceService->updateInvoice($invoice, $data);
+
+        $invoice_no = $updatedData["invoice_no"];
+        $status = "Update invoice $invoice_no";
+
+        $this->historyService->updateHistory($updatedData["instruction_id"], $status);
         return response()->json([
             "statusCode" => 200,
             "message" => "Successfully updated vendor invoice",
@@ -152,7 +157,13 @@ class VendorInvoiceController extends Controller
             "statusCode" => 404,
             "message" => "Invoice not found",
         ],200);
+      
         $invoice = $this->invoiceService->removeAttachment($idInvoice);
+
+        $invoice_no = $data["invoice_no"];
+        $status = "Delete invoice attachment of invoice $invoice_no";
+        $this->historyService->updateHistory($data["instruction_id"], $status);
+
          return response()->json([
             "statusCode" => 200,
             "message" => "Successfully deleted invoice attachment",
@@ -183,6 +194,9 @@ class VendorInvoiceController extends Controller
             "statusCode" => 404,
             "message" => "Invoice not found",
         ],200);
+        $invoice_no = $data["invoice_no"];
+        $status = "Delete supporting document of invoice $invoice_no";
+        $this->historyService->updateHistory($data["instruction_id"], $status);
         $invoice = $this->invoiceService->removeSupportingDocument($data, $req["sup_docId"]);
          return response()->json([
             "statusCode" => 200,
@@ -202,6 +216,8 @@ class VendorInvoiceController extends Controller
             "statusCode" => 404,
             "message" => "Invoice not found",
         ],200);
+        $status = "Delete Invoice";
+        $this->historyService->updateHistory($data["instruction_id"], $status);
         $id = $this->invoiceService->deleteInvoice($data);
          return response()->json([
             "statusCode" => 200,

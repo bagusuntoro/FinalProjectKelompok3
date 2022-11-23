@@ -68,7 +68,6 @@ class InstructionService
         {
             throw new InvalidArgumentException($validator->errors());
         }
-
         // //jika validasi berhasil 
         $detail_cost = $this->insertMultipleCostDetail($request);
 
@@ -79,7 +78,9 @@ class InstructionService
         {
             $key = 'SI';
         }
+
         $code = $this->getInstructionNo($key);
+
         
         $user = auth()->user()->name;
 

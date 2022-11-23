@@ -29,7 +29,7 @@ class HistoryService
       $user = auth()->user()->name;
       $id_char = json_encode($id);
       $id = str_replace(array('[',']','"'), '',$id_char);
-
+      
       if ($status == 'On Progress')
       {
         $activity = "Create new instruction";
@@ -42,7 +42,6 @@ class HistoryService
       $newData['activity'] = $activity;      
       $newData['user'] = $user;
       $newData['timestamp'] = time();
-
       $this->historyRepository->create($newData);      
     }
 
