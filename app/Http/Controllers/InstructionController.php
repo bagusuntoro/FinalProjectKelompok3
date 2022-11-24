@@ -246,5 +246,49 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Search Result', $instruction, 200);
     }
 
+    public function editData(Request $request, $id)
+    {
+        $cost_detail = [
+            'description' => $request['description'],
+            'qty' => $request['qty'],
+            'uom' => $request['uom'],
+            'unit_price' => $request['unit_price'],
+            'discount' => $request['discount'],
+            'gst_vat' => $request['gst_vat'],
+            'currency' => $request['currency'],
+            'total' => $request['total'],
+            'charge_to' => $request['charge_to'],
+
+            // $this->insertMultipleCostDetail($request),
+        ];
+        
+        $data = Instruction::findOrFail($id);
+        $instruction_id = $request->instruction_id;
+
+        $instruction_id = explode(' ', $instruction_id);
+        
+        if (count($instruction_id) > 1){
+            preg_match_all('/\d+/', $instruction_id[1], $matches);
+            
+            $instruction_id = $instruction_id[0] . ' R' . ($matches[0][0] + 1);
+        } else{
+            $instruction_id = $instruction_id[0] . ' R1';
+        }
+        echo $instruction_id;   
+        // dd($instruction_id);
+        
+        $data -> cost_detail = $cost_detail;
+        $data -> attachment = $request->attachment;
+        $data -> note = $request->note;
+        $data -> link_to = $request->link_to;
+        $data -> save();
+            
+        return response()->json([
+            "statusCode" => 200,
+            "message" => "Berhasil Update instruksi",
+            "data" => $data,
+        ], 200);
+    }
+
 
 }
