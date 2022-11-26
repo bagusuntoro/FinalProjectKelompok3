@@ -110,6 +110,54 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Cost Detail deleted', $instruction, 200);
     }
 
+    // edit data instruction
+    public function editData(Request $request, $id)
+    {
+        // men-validasi data
+        $validator = Validator::make($request->all(), [
+            'instruction_id' => 'required',
+            'link_to' => 'required',
+            'instruction_type' => 'required',
+            'assigned_vendor' => 'required',
+            'vendor_address' => 'required',
+            'attention_of' => 'required',
+            'quotation_no' => 'required',
+            'invoice_to' => 'required',
+            'customer_po' => 'required',
+            'customer_contract' => 'required',
+            'note' => 'required',
+            'link_to' => 'required',
+            'attachment[]' => 'mimes:pdf,zip',
+        ]);
+
+
+        // pesan error jika data yang dikirim gagal di validasi
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // mencari data instruction sesuai id
+        $instructionId = $id;
+        $instruction = $this->instructionService->getById($instructionId);
+
+        // pesan jika data instruction tidak dapat ditemukan
+        if (!$instruction) {
+            return $this->responseMessage(false, 'Instruction not found', null, 200);
+        }
+        
+        // menampung data request kedalam $formData
+        $formData = $request->all();
+        $formData['id'] = $instructionId;
+        
+        $this->instructionService->editData($instruction, $formData);
+        
+        // mencari data instruction sesuai id
+        $instruction = $this->instructionService->getById($instructionId);
+
+        // pesan setelah data instruction berhasil dihapus
+        return $this->responseMessage(true, 'Instruction updated', $instruction, 200);
+    }
+
     /*
     * Fungsi untuk menampilkan pesan berbentuk json
     */

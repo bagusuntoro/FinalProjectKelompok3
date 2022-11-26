@@ -43,6 +43,7 @@ Route::group([
         Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction        
 
         Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
+        Route::post('/edit/{id}', 'App\Http\Controllers\InstructionController@editData'); //mengedit data instruction
         Route::post('/add_draft', 'App\Http\Controllers\InstructionController@draftData'); //menambah data instruction sebagai draft
         Route::post('/terminate', 'App\Http\Controllers\InstructionController@setTerminated'); //mengubah status menjadi terminated
         Route::post('/set_on_progress', 'App\Http\Controllers\InstructionController@setOnProgress'); //mengubah status menjadi on progress
