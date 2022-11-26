@@ -45,6 +45,20 @@ class InstructionService
     }
 
     /*
+    * menghapus cost detail
+    */
+    public function deleteCostDetail(array $instruction, array $formData)
+    {
+        if (isset($formData)) {
+            $instruction[0]['cost_detail'] = $formData;
+        }
+        // return $instruction[0];
+
+        $id = $this->instructionRepository->save($instruction[0]);
+        return $id;
+    }
+
+    /*
     * Menambah instruction
     */
     public function create($request, $stat)

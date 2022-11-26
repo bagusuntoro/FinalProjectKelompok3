@@ -72,6 +72,45 @@ class InstructionController extends Controller
     }
 
     /*
+    * Menghapus cost detail
+    */
+    public function deleteCostDetail(Request $request)
+    {
+        $request->validate([
+            'instruction_id' => 'required',
+            'cost_detail_id' => 'required'
+        ]);
+
+        $instructionId = $request->post('instruction_id');
+        $costDetailId = $request->post('cost_detail_id');
+
+        $instruction = $this->instructionService->getById($instructionId);
+
+        if (!$instruction) {
+            return $this->responseMessage(false, 'Instruction not found', null, 404);
+        }
+
+        $costDetails = isset($instruction[0]['cost_detail']) ? $instruction[0]['cost_detail'] : [];
+
+        // Pencarian dan penghapusan cost detail
+        $costDetails = array_filter($costDetails, function ($costDetail) use ($costDetailId) {
+            if ($costDetail['_id'] == $costDetailId) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        $formData = array_values($costDetails);
+
+        $this->instructionService->deleteCostDetail($instruction, $formData);
+
+        $instruction = $this->instructionService->getById($instructionId);
+
+        return $this->responseMessage(true, 'Cost Detail deleted', $instruction, 200);
+    }
+
+    /*
     * Fungsi untuk menampilkan pesan berbentuk json
     */
     public function responseMessage($status, $message, $data, $statusCode)
