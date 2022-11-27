@@ -71,17 +71,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
-<style scoped>
-#template {
-  width: 80%;
-  height: 500px;
-  background-color: #ffffff;
-  box-shadow: 5px 5px 8px #888888;
-  border-radius: 10px;
-}
+<style>
 
 table {
   /* position: relative; */
@@ -110,3 +105,4 @@ hr {
   font-size: 12px;
 }
 </style>
+
