@@ -5596,14 +5596,7 @@ var render = function render() {
     staticStyle: {
       margin: "-91px 554px"
     }
-  }, [_c("B", [_vm._v("Notes")])], 1)]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
-    attrs: {
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#exampleModal"
-    }
-  }, [_vm._v("\n        Launch demo modal\n        ")]), _vm._v(" "), _vm._m(12)])])]);
+  }, [_c("B", [_vm._v("Notes")])], 1)])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -5874,51 +5867,6 @@ var staticRenderFns = [function () {
       type: "button"
     }
   }, [_vm._v("All Received")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "modal fade",
-    attrs: {
-      id: "exampleModal",
-      tabindex: "-1",
-      "aria-labelledby": "exampleModalLabel",
-      "aria-hidden": "true"
-    }
-  }, [_c("div", {
-    staticClass: "modal-dialog"
-  }, [_c("div", {
-    staticClass: "modal-content"
-  }, [_c("div", {
-    staticClass: "modal-header"
-  }, [_c("h1", {
-    staticClass: "modal-title fs-5",
-    attrs: {
-      id: "exampleModalLabel"
-    }
-  }, [_vm._v("\n                Modal title\n                ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn-close",
-    attrs: {
-      type: "button",
-      "data-bs-dismiss": "modal",
-      "aria-label": "Close"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "modal-body"
-  }, [_vm._v("...")]), _vm._v(" "), _c("div", {
-    staticClass: "modal-footer"
-  }, [_c("button", {
-    staticClass: "btn btn-secondary",
-    attrs: {
-      type: "button",
-      "data-bs-dismiss": "modal"
-    }
-  }, [_vm._v("\n                Close\n                ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("\n                Save changes\n                ")])])])])]);
 }];
 render._withStripped = true;
 
