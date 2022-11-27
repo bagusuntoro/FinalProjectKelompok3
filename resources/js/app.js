@@ -4,9 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
+import router from "./router";
 
 // import adminLte from 'admin-lte'
 // import Vue from 'vue';
@@ -40,5 +41,6 @@ Vue.component('modify-component', require('./components/modify/DetailComponent.v
  */
 
 const app = new Vue({
-    el: '#app',
+  el: "#app",
+  router,
 });
