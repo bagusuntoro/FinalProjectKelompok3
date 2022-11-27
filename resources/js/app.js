@@ -26,9 +26,9 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('parent-component',require('./components/ParentComponent.vue').default);
-
-
+Vue.component('parent-component',require('./components/ParentdetailComponent.vue').default);
+Vue.component('terminate-component',require('./components/terminateComponent.vue').default);
+// Vue.component('add-component',require('./components/AddvendorinvoiceComponent.vue').default);
 // modify
 Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default)
 
