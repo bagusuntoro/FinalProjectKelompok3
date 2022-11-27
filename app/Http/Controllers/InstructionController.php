@@ -259,7 +259,7 @@ class InstructionController extends Controller
             'total' => $request['total'],
             'charge_to' => $request['charge_to'],
 
-            // $this->insertMultipleCostDetail($request),
+            $this->insertMultipleCostDetail($request),
         ];
         
         $data = Instruction::findOrFail($id);
@@ -289,6 +289,26 @@ class InstructionController extends Controller
             "data" => $data,
         ], 200);
     }
-
-
+    
+    protected function insertMultipleCostDetail($request)
+    {
+        $details = [];
+        foreach($request['cost_detail'] as $detail) 
+        {
+            $data = [
+                "_id" => (string) new \MongoDB\BSON\ObjectId(),
+                "description" => $detail["description"],
+                "qty" => $detail["qty"],
+                "uom" => $detail["uom"],
+                "unit_price" => $detail["unit_price"],
+                "discount" => $detail["discount"],
+                "gst_vat" =>  $detail["gst_vat"],
+                "currency" => $detail["currency"],
+                "total" => $detail["total"],
+                "charge_to" => $detail["charge_to"]
+            ];
+            array_push($details, $data);
+        }
+        return $details;
+    }
 }
