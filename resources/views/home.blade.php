@@ -223,19 +223,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="bi bi-bullseye"></i>
-                  <p>Data 1</p>
+                  <p> Data 1</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="bi bi-bullseye"></i>
-                  <p>Data 2</p>
+                  <p> Data 2</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="bi bi-bullseye"></i>
-                  <p>Data 3</p>
+                  <p> Data 3</p>
                 </a>
               </li>
             </ul>
