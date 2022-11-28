@@ -31,10 +31,11 @@ import router from "./router";
 Vue.component('parent-component',require('./components/ParentComponent.vue').default);
 
 Vue.component('detail-component', require('./components/detailberil.vue').default);
+Vue.component('table-component', require('./components/tabelberil.vue').default);
 
 // modify
 Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default);
-
+Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

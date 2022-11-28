@@ -1,8 +1,7 @@
 <template>
-  <hr class="my-8" style="border-top: 1px solid rgb(0 0 0)" />
-  <h4><B>Cost Detail</B></h4>
-
   <div class="row">
+    <hr class="my-8" style="border-top: 1px solid rgb(0 0 0)" />
+    <h4><B>Cost Detail</B></h4>
     <table class="table m-auto">
       <thead>
         <tr>
