@@ -28,6 +28,8 @@ window.Vue = require('vue').default;
 
 Vue.component('parent-component',require('./components/ParentComponent.vue').default);
 
+// view data
+Vue.component('view-component', require('./components/view/ViewComponent.vue').default)
 
 // modify
 Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default)
