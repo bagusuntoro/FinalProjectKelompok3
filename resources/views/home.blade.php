@@ -13,6 +13,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+
+  {{-- link icons --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
   {{-- custom css --}}
   <style>
     a{
@@ -20,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" class="antialiased">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -218,19 +222,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="bi bi-bullseye"></i>
                   <p>Data 1</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="bi bi-bullseye"></i>
                   <p>Data 2</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="bi bi-bullseye"></i>
                   <p>Data 3</p>
                 </a>
               </li>
@@ -274,8 +278,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid mt-3">
-        <parent-component></parent-component>
+      <div class="container-fluid mt-3" id="app">
+        <router-view></router-view>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

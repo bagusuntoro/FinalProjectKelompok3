@@ -7,6 +7,7 @@
 require("./bootstrap");
 
 window.Vue = require("vue").default;
+import Vue from "vue";
 import router from "./router";
 
 // import adminLte from 'admin-lte'
@@ -29,9 +30,10 @@ import router from "./router";
 
 Vue.component('parent-component',require('./components/ParentComponent.vue').default);
 
+Vue.component('detail-component', require('./components/detailberil.vue').default);
 
 // modify
-Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default)
+Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default);
 
 
 /**
