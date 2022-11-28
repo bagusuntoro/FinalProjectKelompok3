@@ -2,6 +2,7 @@ import Vue from "vue";
 import router from "vue-router";
 Vue.use(router);
 
+import instruction from "../components/InstructionComponent.vue";
 import detail from "../components/detailberil.vue";
 import table from "../components/tabelberil.vue";
 import vendor from "../components/VendorInvoice.vue";
@@ -9,6 +10,11 @@ import vendor from "../components/VendorInvoice.vue";
 const routes = [
   {
     path: "/",
+    component: instruction,
+    name: instruction,
+  },
+  {
+    path: "/detail",
     component: detail,
     name: detail,
   },
@@ -19,7 +25,7 @@ const routes = [
   },
   {
     path: "/vendor",
-    component:vendor,
+    component: vendor,
     name: vendor,
   }
 ];
