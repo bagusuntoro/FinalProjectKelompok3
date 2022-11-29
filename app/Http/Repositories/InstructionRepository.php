@@ -4,8 +4,6 @@ namespace App\Http\Repositories;
 
 use App\Helpers\MongoModel;
 use App\Helpers\UploadHelper;
-use App\Models\Instruction;
-use App\Models\NotesByInternals;
 use Carbon\Carbon;
 
 use function PHPUnit\Framework\isEmpty;
