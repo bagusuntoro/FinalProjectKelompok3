@@ -103,7 +103,9 @@ class InstructionController extends Controller
 
         $formData = array_values($costDetails);
 
+        $status = 'Delete cost detail';
         $this->instructionService->deleteCostDetail($instruction, $formData);
+        $this->historyService->updateHistory($instructionId, $status);
 
         $instruction = $this->instructionService->getById($instructionId);
 
@@ -149,7 +151,9 @@ class InstructionController extends Controller
         $formData = $request->all();
         $formData['id'] = $instructionId;
         
+        $status = 'Edit instruction';
         $this->instructionService->editData($instruction, $formData);
+        $this->historyService->updateHistory($instructionId, $status);
         
         // mencari data instruction sesuai id
         $instruction = $this->instructionService->getById($instructionId);
