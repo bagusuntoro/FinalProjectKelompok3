@@ -59,6 +59,16 @@ Route::group([
         Route::delete('/deleteAttachment/{id}', 'App\Http\Controllers\VendorInvoiceController@removeAttachment')->name('deleteAttachment');
         Route::delete('/deleteInvoice/{id}', 'App\Http\Controllers\VendorInvoiceController@destroy')->name('deleteInvoice');
 
+        // internal only section
+        Route::get('/internal/attachment/{id}', 'App\Http\Controllers\InternalFilesController@getAllInternalAttachment'); //mengambil semua internal attachment dari instruction id tertentu
+        Route::post("/internal/attachment/add", 'App\Http\Controllers\InternalFilesController@addAttachment'); //menambah internal attachment
+        Route::delete('/internal/attachment/delete/{id}','App\Http\Controllers\InternalFilesController@destroy'); //menghapus internal attachment
+
+        Route::post("/internal/note/edit/{id}", 'App\Http\Controllers\InternalNotesController@editNote'); //mengubah internal Note
+        Route::post("/internal/note/add", 'App\Http\Controllers\InternalNotesController@addNote'); //menambah internal Note
+        Route::get('/internal/note/{id}', 'App\Http\Controllers\InternalNotesController@getAllInternalNotes'); //mengambil semua internal notes dari instruction id tertentu
+        Route::delete('/internal/note/delete/{id}','App\Http\Controllers\InternalNotesController@destroy'); //menghapus internal attachment
+
         Route::get('/test', 'App\Http\Controllers\InstructionController@test');
         Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
         Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress'); //menampilkan data instruction yang memiliki status on progress
