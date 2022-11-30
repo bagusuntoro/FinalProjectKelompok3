@@ -4,9 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
+import Vue from "vue";
+import router from "./router";
 
 // import adminLte from 'admin-lte'
 // import Vue from 'vue';
@@ -28,10 +30,12 @@ window.Vue = require('vue').default;
 
 Vue.component('parent-component',require('./components/ParentComponent.vue').default);
 
+Vue.component('detail-component', require('./components/detailberil.vue').default);
+Vue.component('table-component', require('./components/tabelberil.vue').default);
 
 // modify
-Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default)
-
+Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default);
+Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,5 +44,6 @@ Vue.component('modify-component', require('./components/modify/DetailComponent.v
  */
 
 const app = new Vue({
-    el: '#app',
+  el: "#app",
+  router,
 });
