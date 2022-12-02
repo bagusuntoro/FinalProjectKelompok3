@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::get('/export', [App\Http\Controllers\InstructionController::class, 'export']);
+Route::post('/export', [App\Http\Controllers\InstructionController::class, 'exportInstructions']);
 
 Route::get('/{any}', function(){
     return view('home');

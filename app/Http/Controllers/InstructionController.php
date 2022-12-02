@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InstructionExport;
 use App\Models\Instruction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use App\Http\Services\HistoryService;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Services\InstructionService;
 use Exception;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InstructionController extends Controller
 {
@@ -333,5 +335,35 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Search Result', $instruction, 200);
     }
 
+    public function export()
+    {
+        return view('export');
+    }
+    public function exportInstructions()
+    {
+        $instructions = $this->showInstructions();
 
+        foreach ($instructions as $key => $value) {
+            $data[$key] = $value;
+        }
+
+        $dataExport = [];
+        foreach ($data['original']['data'] as $key => $value) {
+            $array = [
+                'nomor' => $key + 1,
+                'instruction_id' => $value['instruction_id'],
+                'link_to' => $value['link_to'],
+                'instruction_type' => $value['instruction_type'],
+                'customer_contract' => $value['customer_contract'],
+                'attention_of' => $value['attention_of'],
+                'quotation_no' => $value['quotation_no'],
+                'customer_po' => $value['customer_po'],
+                'status' => $value['status'],
+            ];
+            array_push($dataExport, $array);
+        }
+
+        $export = new InstructionExport($dataExport);
+        return Excel::download($export, 'instructions.xlsx');
+    }
 }
