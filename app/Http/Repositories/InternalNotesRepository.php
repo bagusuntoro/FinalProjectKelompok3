@@ -26,12 +26,22 @@ class InternalNotesRepository
 		return $data;
   }
 
+  /*
+  *
+  * Menampilkan note berdasarkan id instruction
+  *
+  */
   public function getByInstruction(string $id)
   {
     $data = $this->internalNotes->get(['instruction_id' => $id]);
 		return $data;
   }
 
+  /*
+  *
+  * Menambah note baru
+  *
+  */
   public function addNoteInternal(array $data)
   {
     $time = Carbon::now();
@@ -47,12 +57,22 @@ class InternalNotesRepository
     return $data;
   }
 
+  /*
+  *
+  * Mengedit note
+  *
+  */
   public function editNote(array $data)
   {
     $data = $this->internalNotes->save($data);
     return $data;
   }
 
+  /*
+  *
+  * Menghapus note
+  *
+  */
   public function delete(array $data)
   {
     $this->internalNotes->deleteQuery($data);

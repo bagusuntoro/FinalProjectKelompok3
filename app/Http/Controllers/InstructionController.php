@@ -23,7 +23,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menampilkan semua instruction
+    *
     */
      public function showInstructions()
     {
@@ -32,7 +34,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menampilkan detail instruction, diambil dari id
+    *
     */
     public function detailInstruction($id)
     {
@@ -41,7 +45,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menghapus instruction berdasarkan id
+    *
     */
     public function deleteInstruction(Request $request)
     {
@@ -72,7 +78,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menghapus cost detail
+    *
     */
     public function deleteCostDetail(Request $request)
     {
@@ -103,7 +111,7 @@ class InstructionController extends Controller
 
         $formData = array_values($costDetails);
 
-        $status = 'Delete cost detail';
+        $status = 'Deleted cost detail';
         $this->instructionService->deleteCostDetail($instruction, $formData);
         $this->historyService->updateHistory($instructionId, $status);
 
@@ -112,7 +120,11 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Cost Detail deleted', $instruction, 200);
     }
 
-    // edit data instruction
+    /*
+    *
+    * edit data instruction
+    *
+    */
     public function editData(Request $request, $id)
     {
         // men-validasi data
@@ -132,7 +144,6 @@ class InstructionController extends Controller
             'attachment[]' => 'mimes:pdf,zip',
         ]);
 
-
         // pesan error jika data yang dikirim gagal di validasi
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -151,7 +162,7 @@ class InstructionController extends Controller
         $formData = $request->all();
         $formData['id'] = $instructionId;
         
-        $status = 'Edit instruction';
+        $status = 'Edited instruction';
         $this->instructionService->editData($instruction, $formData);
         $this->historyService->updateHistory($instructionId, $status);
         
@@ -163,7 +174,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Fungsi untuk menampilkan pesan berbentuk json
+    *
     */
     public function responseMessage($status, $message, $data, $statusCode)
     {
@@ -175,7 +188,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menyimpan data instruction baru
+    *
     */
     public function storeData(Request $request)
     {
@@ -199,7 +214,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Menyimpan data instruction sebagai draft
+    *
     */
     public function draftData(Request $request)
     {
@@ -223,7 +240,9 @@ class InstructionController extends Controller
     }
 
     /*
+    *
     * Mengubah status data menjadi terminated
+    *
     */
     public function setTerminated(Request $request)
     {
@@ -246,16 +265,18 @@ class InstructionController extends Controller
             return $this->responseMessage(false, 'Instruction not found', null, 201);
         }
 
-        $status = 'Set to terminated';
+        $status = 'Set instruction status to cancelled';
         $this->instructionService->setTerminated($instructionId);
         $this->historyService->updateHistory($instructionId, $status);
 
         // pesan setelah status instruction berhasil diubah
-        return $this->responseMessage(true, 'Status changed to terminated', null, 201);
+        return $this->responseMessage(true, 'Status changed to cancelled', null, 201);
     }
 
     /*
+    *
     * Mengubah status data menjadi on progress
+    *
     */
     public function setOnProgress(Request $request)
     {
@@ -278,7 +299,7 @@ class InstructionController extends Controller
             return $this->responseMessage(false, 'Instruction not found', null, 201);
         }
 
-        $status = 'Set to on progress';
+        $status = 'Set instruction status to on progress';
         $this->instructionService->setOnProgress($instructionId);
         $this->historyService->updateHistory($instructionId, $status);
 
@@ -287,48 +308,35 @@ class InstructionController extends Controller
     }
     
     /*
-    * Menampilkan daftar instruction yang memiliki status draft
+    *
+    * Menampilkan daftar open instruction (status On Progress dan Draft)
+    *
     */
-    public function getDraft()
+    public function getOpen()
     {
-        $key = "Draft";
+        $key = ["On Progress","Draft"];
         $instruction = $this->instructionService->getByStatus($key);
-        return $this->responseMessage(true, 'Instructions on Draft', $instruction, 200);
-    }
-    
-    /*
-    * Menampilkan daftar instruction yang memiliki status on progress
-    */
-    public function getOnProgress()
-    {
-        $key = "On Progress";
-        $instruction = $this->instructionService->getByStatus($key);
-        return $this->responseMessage(true, 'Instructions On Progress', $instruction, 200);
+        return $this->responseMessage(true, 'Instructions On Progress or Draft', $instruction, 200);
     }
 
     /*
-    * Menampilkan daftar instruction yang memiliki status completed. Status akan berubah complete jika invoice ditambahkan
+    *
+    * Menampilkan daftar instruction yang memiliki status completed.
+    * Status akan berubah complete jika invoice ditambahkan. Status terminated/cancelled juga masuk di sini.
+    *
     */
     public function getCompleted()
     {
-        $key = "Completed";
+        $key = ["Completed","Terminated"];
         $instruction = $this->instructionService->getByStatus($key);
-        return $this->responseMessage(true, 'Completed Instructions', $instruction, 200);
+        return $this->responseMessage(true, 'Completed or Cancelled Instructions', $instruction, 200);
     }
 
     /*
-    * Menampilkan daftar instruction yang memiliki status terminated
-    */
-    public function getTerminated()
-    {
-        $key = "Terminated";
-        $instruction = $this->instructionService->getByStatus($key);
-        return $this->responseMessage(true, 'Terminated Instructions', $instruction, 200);
-    }
-
-    /*
+    *
     * Menampilkan daftar instruction yang sesuai pencarian. Parameter pencarian akan dicocokkan dengan:
     * instruction_id, link_to, instruction_type, assigned_vendor, attention_of, quotation_no, customer_po
+    *
     */
     public function search(Request $request)
     {

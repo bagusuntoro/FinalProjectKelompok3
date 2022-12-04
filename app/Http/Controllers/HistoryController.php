@@ -14,10 +14,19 @@ class HistoryController extends Controller
     {
         $this->historyService = new HistoryService();
     }
-    //
-    public function createHistory(string $id)
+    
+    /*
+    *
+    * Menampilkan daftar history berdasarkan id
+    *
+    */
+    public function getHistoryByInstruction(string $id)
     {
-        // $req = $id;
-        // $this->historyService->create($req);
+        $result = $this->historyService->getByInstructionId($id);
+        return response()->json([
+            "statusCode" => 200,
+            "message" => "History of Instruction $id",
+            "data" => $result
+        ],200);
     }
 }

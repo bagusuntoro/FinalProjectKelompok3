@@ -22,26 +22,41 @@ class InternalFilesController extends Controller
         $this->historyService = $historyService;
     }
 
+    /*
+    *
+    * Menampilkan semua attachment di collection internal_file
+    *
+    */
     public function getAllAttachment()
     {
         $attachments = $this->internalFileService->getAll();
         return response()->json([
             "statusCode" => 200,
-            "message" => "list semua invoice",
+            "message" => "List of internals' attachments",
             "data" =>$attachments
         ],200);
     }
 
+    /*
+    *
+    * Menampilkan semua attachment berdasarkan id attachment
+    *
+    */
     public function getById(string $id)
     {
         $attachment = $this->internalFileService->getById($id);
         return response()->json([
             "statusCode" => 200,
-            "message" => "Detail invoice",
+            "message" => "Detail attachment",
             "data" =>$attachment
         ],200);
     }
 
+    /*
+    *
+    * Menambah attachment
+    *
+    */
     public function addAttachment(Request $request)
     {
         $req = (array) $request->all();
@@ -67,6 +82,11 @@ class InternalFilesController extends Controller
         ], $statusCode);
     }
 
+    /*
+    *
+    * Menampilkan attachment berdasarkan id instruction
+    *
+    */
     public function getAllInternalAttachment(string $idInstruction)
     {
         $instruction = $this->instructionService->getById($idInstruction);
@@ -78,11 +98,16 @@ class InternalFilesController extends Controller
         $attachments = $this->internalFileService->getAllInternalAttachment($idInstruction);
         return response()->json([
             "statusCode" => 200,
-            "message" => "List internal's attachments of ". $instruction[0]["instruction_id"],
+            "message" => "List internals' attachments of ". $instruction[0]["instruction_id"],
             "data" => $attachments
         ],200);
     }
 
+    /*
+    *
+    * Menghapus attachment
+    *
+    */
     public function destroy($id)
     {
         $data = $this->internalFileService->getById($id);
@@ -91,7 +116,7 @@ class InternalFilesController extends Controller
             "statusCode" => 404,
             "message" => "Attachment not found",
         ],200);
-        $status = "Delete attachment at internal only section";
+        $status = "Deleted attachment at internal only section";
         $this->historyService->updateHistory($data["instruction_id"], $status);
         $id = $this->internalFileService->deleteAttachment($data);
          return response()->json([

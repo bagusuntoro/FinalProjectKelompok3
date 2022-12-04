@@ -22,6 +22,11 @@ class InternalNotesController extends Controller
         $this->historyService = $historyService;
     }
 
+    /*
+    *
+    * Menampilkan semua notes di collection internal_notes
+    *
+    */
     public function getAllNotes()
     {
         $notes = $this->internalNoteService->getAll();
@@ -32,6 +37,11 @@ class InternalNotesController extends Controller
         ],200);
     }
 
+    /*
+    *
+    * Menampilkan note berdasarkan id
+    *
+    */
     public function getById(string $id)
     {
         $note = $this->internalNoteService->getById($id);
@@ -42,6 +52,11 @@ class InternalNotesController extends Controller
         ],200);
     }
 
+    /*
+    *
+    * Menambah note
+    *
+    */
     public function addNote(Request $request)
     {
         $req = (array) $request->all();
@@ -67,6 +82,11 @@ class InternalNotesController extends Controller
         ], $statusCode);
     }
 
+    /*
+    *
+    * Mengedit note
+    *
+    */
     public function editNote(Request $request, $id)
     {
         $note = $this->internalNoteService->getById($id);
@@ -92,6 +112,11 @@ class InternalNotesController extends Controller
         ],200);
     }
 
+    /*
+    *
+    * Menampilkan note berdasarkan id instruction
+    *
+    */
     public function getAllInternalNotes(string $idInstruction)
     {
         $instruction = $this->instructionService->getById($idInstruction);
@@ -108,6 +133,11 @@ class InternalNotesController extends Controller
         ],200);
     }
 
+    /*
+    *
+    * Menghapus note
+    *
+    */
     public function destroy($id)
     {
         $data = $this->internalNoteService->getById($id);

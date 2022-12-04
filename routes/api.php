@@ -42,6 +42,7 @@ Route::group([
     ], function(){
         Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction        
 
+        // instruction
         Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
         Route::post('/edit/{id}', 'App\Http\Controllers\InstructionController@editData'); //mengedit data instruction
         Route::post('/add_draft', 'App\Http\Controllers\InstructionController@draftData'); //menambah data instruction sebagai draft
@@ -69,12 +70,13 @@ Route::group([
         Route::get('/internal/note/{id}', 'App\Http\Controllers\InternalNotesController@getAllInternalNotes'); //mengambil semua internal notes dari instruction id tertentu
         Route::delete('/internal/note/delete/{id}','App\Http\Controllers\InternalNotesController@destroy'); //menghapus internal attachment
 
+        //History
+        Route::get('/history/{id}', 'App\Http\Controllers\HistoryController@getHistoryByInstruction'); //mengambil semua history dari instruction id tertentu
+
         Route::get('/test', 'App\Http\Controllers\InstructionController@test');
-        Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
-        Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress'); //menampilkan data instruction yang memiliki status on progress
-        Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed
-        Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
-        Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
+        Route::get('/open', 'App\Http\Controllers\InstructionController@getOpen'); //menampilkan data instruction yang memiliki status on progress dan draft
+        Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed dan terminated/cancelled
+        Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search'); //fitur pencarian
         Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
     
     }); 

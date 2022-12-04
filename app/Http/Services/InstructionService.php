@@ -224,7 +224,7 @@ class InstructionService
     /*
     * Menampilkan instruction berdasarkan status yang dimasukkan
     */
-    public function getByStatus(string $key)
+    public function getByStatus(array $key)
     {
         $instruction = $this->instructionRepository->getByStatus($key);
         return $instruction;

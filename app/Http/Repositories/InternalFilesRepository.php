@@ -16,24 +16,44 @@ class InternalFilesRepository
     $this->uploadHelper = $upload;
   }
 
+  /*
+  *
+  * Menampilkan semua attachment di tabel internal_files
+  *
+  */
   public function getAll() : array
   {
     $files = $this->internalFiles->get([]);
     return $files;
   }
 
+  /*
+  *
+  * Menampilkan attachment berdasarkan id
+  *
+  */
   public function getById(string $id)
   {
     $data = $this->internalFiles->find(['_id' => $id]);
 		return $data;
   }
 
+  /*
+  *
+  * Menampilkan attachment berdasarkan id instruction
+  *
+  */
   public function getByInstruction(string $id)
   {
     $data = $this->internalFiles->get(['instruction_id' => $id]);
 		return $data;
   }
 
+  /*
+  *
+  * Menambah attachment baru
+  *
+  */
   public function addFileInternal(array $data)
   {
     $fileInternal = [
@@ -56,6 +76,11 @@ class InternalFilesRepository
     return $data;
   }
 
+  /*
+  *
+  * Menghapus attachment
+  *
+  */
   public function delete(array $data)
   {
     $attachment = isset($data["attachment"]["file"]) ? $data["attachment"]["file"] : null;
