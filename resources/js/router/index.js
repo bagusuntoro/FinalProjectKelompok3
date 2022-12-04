@@ -2,15 +2,27 @@ import Vue from "vue";
 import router from "vue-router";
 Vue.use(router);
 
-import detail from "../components/detailberil.vue";
+import instruction from "../components/InstructionComponent.vue";
+import logistic from "../components/detailberil.vue";
 import table from "../components/tabelberil.vue";
 import vendor from "../components/VendorInvoice.vue";
+import service from "../components/DetailTrisna.vue";
 
 const routes = [
   {
     path: "/",
-    component: detail,
-    name: detail,
+    component: instruction,
+    name: instruction,
+  },
+  {
+    path: "/logistic",
+    component: logistic,
+    name: logistic,
+  },
+  {
+    path: "/service",
+    component: service,
+    name: service,
   },
   {
     path: "/table",
@@ -19,7 +31,7 @@ const routes = [
   },
   {
     path: "/vendor",
-    component:vendor,
+    component: vendor,
     name: vendor,
   }
 ];

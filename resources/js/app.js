@@ -28,14 +28,23 @@ import router from "./router";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('parent-component',require('./components/ParentComponent.vue').default);
 
-Vue.component('detail-component', require('./components/detailberil.vue').default);
-Vue.component('table-component', require('./components/tabelberil.vue').default);
+
+
+
+// for display instruction in table
+Vue.component('instruction-component', require('./components/InstructionComponent.vue').default);
+// vendor invoice
+Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').default);
+
+
+
 
 // modify
-Vue.component('modify-component', require('./components/modify/DetailComponent.vue').default);
-Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').default);
+Vue.component('logistic-instruction', require('./components/detailberil.vue').default);
+Vue.component('table-component', require('./components/tabelberil.vue').default);
+Vue.component('service-instruction', require('./components/DetailTrisna.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
