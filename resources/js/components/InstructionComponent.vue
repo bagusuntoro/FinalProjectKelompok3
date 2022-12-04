@@ -28,7 +28,28 @@
       <div class="col-md-4"></div>
       <div class="col-md-5"></div>
       <div class="col-md-3">
-        <button class="customButtonCreate">+ Create 3rd Party Instruction</button>
+        <!-- <button class="">+ Create 3rd Party Instruction</button> -->
+        <div class="accordion" id="accordionExample">
+          <!-- <div class="accordion-item"> -->
+            <!-- <h2 class="accordion-header" id="headingOne"> -->
+              <button class="accordion-button customButtonCreate p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                + Create 3rd Party Instruction
+              </button>
+            <!-- </h2> -->
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>
+                    <a href="/logistic">Logistic Instruction</a>
+                  </li>
+                  <li>
+                    <a href="/service">Service Instruction</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
       </div>
     </div>
 

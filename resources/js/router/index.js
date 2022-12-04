@@ -3,9 +3,10 @@ import router from "vue-router";
 Vue.use(router);
 
 import instruction from "../components/InstructionComponent.vue";
-import detail from "../components/detailberil.vue";
+import logistic from "../components/detailberil.vue";
 import table from "../components/tabelberil.vue";
 import vendor from "../components/VendorInvoice.vue";
+import service from "../components/DetailTrisna.vue";
 
 const routes = [
   {
@@ -14,9 +15,14 @@ const routes = [
     name: instruction,
   },
   {
-    path: "/detail",
-    component: detail,
-    name: detail,
+    path: "/logistic",
+    component: logistic,
+    name: logistic,
+  },
+  {
+    path: "/service",
+    component: service,
+    name: service,
   },
   {
     path: "/table",

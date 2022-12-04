@@ -41,8 +41,9 @@ Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').defaul
 
 
 // modify
-Vue.component('detail-component', require('./components/detailberil.vue').default);
+Vue.component('logistic-instruction', require('./components/detailberil.vue').default);
 Vue.component('table-component', require('./components/tabelberil.vue').default);
+Vue.component('service-instruction', require('./components/DetailTrisna.vue').default);
 
 
 /**
