@@ -34,6 +34,8 @@ import router from "./router";
 
 // for display instruction in table
 Vue.component('instruction-component', require('./components/InstructionComponent.vue').default);
+Vue.component('completed-instruction', require('./components/CompletedInstruction.vue').default);
+Vue.component('open-instruction', require('./components/OpenInstruction.vue').default);
 // vendor invoice
 Vue.component('vendor-invoice', require('./components/VendorInvoice.vue').default);
 

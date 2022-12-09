@@ -8,11 +8,25 @@ import table from "../components/tabelberil.vue";
 import vendor from "../components/VendorInvoice.vue";
 import service from "../components/DetailTrisna.vue";
 
+// instruction
+import openInstruction from "../components/OpenInstruction.vue";
+import completedInstruction from "../components/CompletedInstruction.vue";
+
 const routes = [
   {
     path: "/",
     component: instruction,
     name: instruction,
+    children: [
+      {
+        path: "open",
+        component: openInstruction,
+      },
+      {
+        path: "completed",
+        component: completedInstruction,
+      },
+    ],
   },
   {
     path: "/logistic",
