@@ -116,9 +116,12 @@ class InstructionRepository
     /*
     * Menampilkan data instruction sesuai status yang diterima
     */
-    public function getByStatus(string $key)
+    public function getByStatus(array $key)
     {
-        $instruction = $this->instructionModel->get(['status' => $key]);
+        $instruction = Instruction::query()
+                ->where('status','=',$key[0])
+                ->orWhere('status','=',$key[1])
+                ->get();
         return $instruction;
     }
 

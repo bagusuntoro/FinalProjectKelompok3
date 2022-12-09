@@ -17,8 +17,11 @@ class HistoryRepository
     $result = $this->historyModel->get(['instruction_id' => $id]);
     return $result;
   }
+
   /*
+  *
   * Create dijalankan setiap kali ada instruksi baru (on progress/draft)
+  *
   */
   public function create(array $data)
   {
@@ -37,7 +40,9 @@ class HistoryRepository
   }
   
   /*
+  *
   * Menambahkan history baru di pasangan _id dan instruction_id jika terdapat aktifitas di instruction
+  *
   */
   public function save(array $data)
   {

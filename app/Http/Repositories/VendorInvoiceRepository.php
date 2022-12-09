@@ -109,6 +109,8 @@ class VendorInvoiceRepository
         $createTime = Carbon::now();           
         $existInvoice["invoice_no"] = $newData["invoice_no"];       
         $isExistInvoiceAttachment = isset($newData['invoice_attachment']);
+
+        // vendor_invoice
         if ($isExistInvoiceAttachment) {
             if(isset($existInvoice["invoice_attachment"]["file"]))
             {
@@ -138,24 +140,20 @@ class VendorInvoiceRepository
             }
           
         }    
+        // supporting document
         $isExistSupport_doc = isset($newData['supporting_document']);
         if ($isExistSupport_doc) 
         {
-            // $supporting_document = [];      
             foreach($newData['supporting_document'] as $supDoc)
             {
-                $doc_Id = isset($supDoc["_id"]) ? $supDoc["_id"] : null ;
-                if($doc_Id == null)
-                {
-                    $filename = $this->uploadHelper->uploadFile($supDoc["file"]);  
-                    $data = [
-                        "_id" => (string) new \MongoDB\BSON\ObjectId(),
-                        "user" => auth()->user()->name,
-                        "created_at" => $createTime->toDateTimeString(),
-                        "file" => $filename
-                    ];
-                    array_push($existInvoice["supporting_document"], $data);
-                }
+                $filename = $this->uploadHelper->uploadFile($supDoc);  
+                $data = [
+                    "_id" => (string) new \MongoDB\BSON\ObjectId(),
+                    "user" => auth()->user()->name,
+                    "created_at" => $createTime->toDateTimeString(),
+                    "file" => $filename
+                ];
+                array_push($existInvoice["supporting_document"], $data);
             }
         }
         $id = $this->invoice->save($existInvoice);
@@ -202,16 +200,29 @@ class VendorInvoiceRepository
         $data = $this->getById($id);
         return $data;
     }
-
-    public function searchSupDoc($data, $doc_id)
+    
+    /*
+    * Untuk delete vendor invoice
+    */
+    public function deleteInvoice(array $data)
     {
-        foreach($data as $doc)
+        // hapus file attachment
+        $attachment = isset($data["invoice_attachment"]["file"]) ? $data["invoice_attachment"]["file"] : null;
+        if($attachment)
         {
-            if($doc["_id"] == $doc_id)
+            $this->uploadHelper->removeFile($attachment);
+        }
+
+        // hapus sup doc
+        $sup_docs = isset($data["supporting_document"]) ? $data["supporting_document"] : null;
+        if($sup_docs)
+        {
+            foreach($sup_docs as $doc)
             {
-                return true;
+                $this->uploadHelper->removeFile($doc["file"]);
             }
         }
-        return false;
+        $this->invoice->deleteQuery($data);
+        return $data["_id"];
     }
 }
