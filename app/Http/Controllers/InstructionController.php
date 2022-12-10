@@ -125,6 +125,7 @@ class InstructionController extends Controller
     * edit data instruction
     *
     */
+    // edit data instruction
     public function editData(Request $request, $id)
     {
         // men-validasi data
@@ -144,6 +145,7 @@ class InstructionController extends Controller
             'attachment[]' => 'mimes:pdf,zip',
         ]);
 
+
         // pesan error jika data yang dikirim gagal di validasi
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -162,9 +164,7 @@ class InstructionController extends Controller
         $formData = $request->all();
         $formData['id'] = $instructionId;
         
-        $status = 'Edited instruction';
         $this->instructionService->editData($instruction, $formData);
-        $this->historyService->updateHistory($instructionId, $status);
         
         // mencari data instruction sesuai id
         $instruction = $this->instructionService->getById($instructionId);
@@ -174,9 +174,7 @@ class InstructionController extends Controller
     }
 
     /*
-    *
     * Fungsi untuk menampilkan pesan berbentuk json
-    *
     */
     public function responseMessage($status, $message, $data, $statusCode)
     {
@@ -186,6 +184,7 @@ class InstructionController extends Controller
             'data' => $data,
         ], $statusCode);
     }
+
 
     /*
     *
@@ -345,69 +344,69 @@ class InstructionController extends Controller
         return $this->responseMessage(true, 'Search Result', $instruction, 200);
     }
 
-    public function editData(Request $request, $id)
-    {
-        $cost_detail = [
-            'description' => $request['description'],
-            'qty' => $request['qty'],
-            'uom' => $request['uom'],
-            'unit_price' => $request['unit_price'],
-            'discount' => $request['discount'],
-            'gst_vat' => $request['gst_vat'],
-            'currency' => $request['currency'],
-            'total' => $request['total'],
-            'charge_to' => $request['charge_to'],
+    // public function editData(Request $request, $id)
+    // {
+    //     $cost_detail = [
+    //         'description' => $request['description'],
+    //         'qty' => $request['qty'],
+    //         'uom' => $request['uom'],
+    //         'unit_price' => $request['unit_price'],
+    //         'discount' => $request['discount'],
+    //         'gst_vat' => $request['gst_vat'],
+    //         'currency' => $request['currency'],
+    //         'total' => $request['total'],
+    //         'charge_to' => $request['charge_to'],
 
-            $this->insertMultipleCostDetail($request),
-        ];
+    //         $this->insertMultipleCostDetail($request),
+    //     ];
         
-        $data = Instruction::findOrFail($id);
-        $instruction_id = $request->instruction_id;
+    //     $data = Instruction::findOrFail($id);
+    //     $instruction_id = $request->instruction_id;
 
-        $instruction_id = explode(' ', $instruction_id);
+    //     $instruction_id = explode(' ', $instruction_id);
         
-        if (count($instruction_id) > 1){
-            preg_match_all('/\d+/', $instruction_id[1], $matches);
+    //     if (count($instruction_id) > 1){
+    //         preg_match_all('/\d+/', $instruction_id[1], $matches);
             
-            $instruction_id = $instruction_id[0] . ' R' . ($matches[0][0] + 1);
-        } else{
-            $instruction_id = $instruction_id[0] . ' R1';
-        }
-        echo $instruction_id;   
-        // dd($instruction_id);
+    //         $instruction_id = $instruction_id[0] . ' R' . ($matches[0][0] + 1);
+    //     } else{
+    //         $instruction_id = $instruction_id[0] . ' R1';
+    //     }
+    //     echo $instruction_id;   
+    //     // dd($instruction_id);
         
-        $data -> cost_detail = $cost_detail;
-        $data -> attachment = $request->attachment;
-        $data -> note = $request->note;
-        $data -> link_to = $request->link_to;
-        $data -> save();
+    //     $data -> cost_detail = $cost_detail;
+    //     $data -> attachment = $request->attachment;
+    //     $data -> note = $request->note;
+    //     $data -> link_to = $request->link_to;
+    //     $data -> save();
             
-        return response()->json([
-            "statusCode" => 200,
-            "message" => "Berhasil Update instruksi",
-            "data" => $data,
-        ], 200);
-    }
+    //     return response()->json([
+    //         "statusCode" => 200,
+    //         "message" => "Berhasil Update instruksi",
+    //         "data" => $data,
+    //     ], 200);
+    // }
     
-    protected function insertMultipleCostDetail($request)
-    {
-        $details = [];
-        foreach($request['cost_detail'] as $detail) 
-        {
-            $data = [
-                "_id" => (string) new \MongoDB\BSON\ObjectId(),
-                "description" => $detail["description"],
-                "qty" => $detail["qty"],
-                "uom" => $detail["uom"],
-                "unit_price" => $detail["unit_price"],
-                "discount" => $detail["discount"],
-                "gst_vat" =>  $detail["gst_vat"],
-                "currency" => $detail["currency"],
-                "total" => $detail["total"],
-                "charge_to" => $detail["charge_to"]
-            ];
-            array_push($details, $data);
-        }
-        return $details;
-    }
+    // protected function insertMultipleCostDetail($request)
+    // {
+    //     $details = [];
+    //     foreach($request['cost_detail'] as $detail) 
+    //     {
+    //         $data = [
+    //             "_id" => (string) new \MongoDB\BSON\ObjectId(),
+    //             "description" => $detail["description"],
+    //             "qty" => $detail["qty"],
+    //             "uom" => $detail["uom"],
+    //             "unit_price" => $detail["unit_price"],
+    //             "discount" => $detail["discount"],
+    //             "gst_vat" =>  $detail["gst_vat"],
+    //             "currency" => $detail["currency"],
+    //             "total" => $detail["total"],
+    //             "charge_to" => $detail["charge_to"]
+    //         ];
+    //         array_push($details, $data);
+    //     }
+    //     return $details;
+    // }
 }
