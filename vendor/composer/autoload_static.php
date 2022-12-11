@@ -112,7 +112,6 @@ class ComposerStaticInitf74fd1b8cf6bb45ebdb7de487925f6b3
         'M' => 
         array (
             'Monolog\\' => 8,
-            'Mocking\\' => 8,
             'Masterminds\\' => 12,
         ),
         'L' => 
@@ -372,10 +371,6 @@ class ComposerStaticInitf74fd1b8cf6bb45ebdb7de487925f6b3
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Mocking\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Mocking',
-        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -548,7 +543,6 @@ class ComposerStaticInitf74fd1b8cf6bb45ebdb7de487925f6b3
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

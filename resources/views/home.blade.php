@@ -185,6 +185,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
           @endauth
       </ul>
+      
+       
+    
   </nav>
   <!-- /.navbar -->
 

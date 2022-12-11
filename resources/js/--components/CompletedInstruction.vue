@@ -9,21 +9,33 @@
           <th scope="col">Assigned Vendor</th>
           <th scope="col">Attention Of</th>
           <th scope="col">Quotation No</th>
+          <th scope="col">Invoice</th>
           <th scope="col">Customer PO</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
+          <th scope="row">1</th>
+          <td>Mark</td>
           <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
+          <td>@mdo</td>
           <td>Mark</td>
           <td>Otto</td>
+          <td>
+            <select
+              class="form-select form-select-sm"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </td>
           <td>@mdo</td>
           <td>
-            <div class="status">in progress</div>
+            <div class="status">completed</div>
           </td>
         </tr>
         <tr>
@@ -33,9 +45,20 @@
           <td>@fat</td>
           <td>Mark</td>
           <td>Otto</td>
+          <td>
+            <select
+              class="form-select form-select-sm"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </td>
           <td>@mdo</td>
           <td>
-            <div class="status">in progress</div>
+            <div class="status">completed</div>
           </td>
         </tr>
         <tr>
@@ -45,9 +68,20 @@
           <td>@fat</td>
           <td>Mark</td>
           <td>Otto</td>
+          <td>
+            <select
+              class="form-select form-select-sm"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </td>
           <td>@mdo</td>
           <td>
-            <div class="status">in progress</div>
+            <div class="status">completed</div>
           </td>
         </tr>
       </tbody>
@@ -56,9 +90,6 @@
 </template>
 
 <script>
-// import { response } from "express";
-// import axios from "axios";
-
 export default {};
 </script>
 
@@ -77,12 +108,16 @@ thead {
 td > i {
   color: #b9c0c7;
 }
+td > select {
+  background-color: #00bfbf;
+}
 .status {
+  /* width: 100px; */
   padding: 5px 8px 5px 8px;
   height: auto;
   border-radius: 10px;
-  background-color: #e2ebf9;
-  color: #637ca0;
+  background-color: #00c060;
+  color: #ffffff;
   text-align: center;
   font-size: 12px;
 }

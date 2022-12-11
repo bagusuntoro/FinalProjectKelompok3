@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <!-- tes -->
+    <button class="mx-1 btn btn-success" @click="getData">GET</button>
+
     <table class="table m-auto">
       <thead>
         <tr>
@@ -14,14 +17,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
+        <tr v-for="collection in collections" :key="collection.id">
+          <th scope="row">{{ instruction_id }}</th>
+          <td>{{ link_to }}</td>
           <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td>{{ instruction_type }}</td>
+          <td>{{ assigned_vendor }}</td>
+          <td>{{ attention_of }}</td>
+          <td>{{ quotation_no }}</td>
           <td>
             <div class="status">in progress</div>
           </td>
@@ -56,10 +59,25 @@
 </template>
 
 <script>
-// import { response } from "express";
-// import axios from "axios";
+import { response } from "express";
+import axios from "axios";
 
-export default {};
+export default {
+  data() {
+    return {
+      collections: [],
+    };
+  },
+  methods: {
+    getData() {
+      this.$store.dispatch("example/getAllData");
+    },
+  },
+  async mounted() {
+    axios.get("../Final_Project_Collection.json");
+    this.collections = response.data;
+  },
+};
 </script>
 
 <style scoped>

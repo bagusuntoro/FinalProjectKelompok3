@@ -20,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function(){
 //     return view('welcome');
 // });
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
-
-
 
 Route::get('/{any}', function(){
     return view('home');
