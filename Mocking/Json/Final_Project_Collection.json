@@ -1,0 +1,3020 @@
+{
+	"info": {
+		"_postman_id": "67d2b009-582b-40d7-a64d-9571b827aac6",
+		"name": "Final Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1442816"
+	},
+	"item": [
+		{
+			"name": "Vendor Invoice",
+			"item": [
+				{
+					"name": "Add Vendor Invoice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTIwNjQ4OSwiZXhwIjoxNjY5MjEwMDg5LCJuYmYiOjE2NjkyMDY0ODksImp0aSI6IjVuZFBPZDF1QkZuSTVwWEYiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LNTwq9lLhRbSTmLlz2CX2irWKCGpX7Y8Apyg2qrRu30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "637e1281c366363b00026d6d",
+									"type": "text"
+								},
+								{
+									"key": "invoice_no",
+									"value": "INV-123",
+									"type": "text"
+								},
+								{
+									"key": "invoice_attachment",
+									"type": "file",
+									"src": "/D:/Bootcamp Inosoft/Materi/BE-07-01_-_Sevice_Repository_Pattern.pdf, attachment"
+								},
+								{
+									"key": "supporting_document[0]",
+									"type": "file",
+									"src": "/D:/Bootcamp Inosoft/Materi/FE-07-01_-_Vue_Component_dan_Penerapan_pada_To_Do_Apps.pdf"
+								},
+								{
+									"key": "supporting_document[1]",
+									"type": "file",
+									"src": "/D:/Bootcamp Inosoft/Materi/FE-06-01_-_Atomic_Design.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/addVendorInvoice",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"addVendorInvoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Vendor Invoice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "invoice_no",
+											"value": "INV-123",
+											"type": "text"
+										},
+										{
+											"key": "invoice_attachment",
+											"type": "file",
+											"src": "/C:/Users/USER/Downloads/team-3-db-design-Page-2.drawio.pdf"
+										},
+										{
+											"key": "supporting_document",
+											"value": "optional",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "instruction_id",
+											"value": "636ba7e82088e00122037bd4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/instruction/addVendorInvoice",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"instruction",
+										"addVendorInvoice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Nov 2022 08:45:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Nov 2022 08:45:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Berhasil menambah vendor invoice\",\n    \"data\": [\n        {\n            \"_id\": \"6373519b750bc22bb707688a\",\n            \"instruction_id\": \"636ba7e82088e00122037bd4\",\n            \"invoice_attachment\": \"team-3-db-design-Page-2.drawio-1668501915.pdf\",\n            \"invoice_no\": \"INV-123\",\n            \"supporting_document\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Receive Vendor Invoice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTIwNjQ4OSwiZXhwIjoxNjY5MjEwMDg5LCJuYmYiOjE2NjkyMDY0ODksImp0aSI6IjVuZFBPZDF1QkZuSTVwWEYiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LNTwq9lLhRbSTmLlz2CX2irWKCGpX7Y8Apyg2qrRu30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/receiveVendorInvoice/637e1281c366363b00026d6d",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"receiveVendorInvoice",
+								"637e1281c366363b00026d6d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Receive Vendor Invoice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/instruction/receiveVendorInvoice/[ganti dengan id instruction]",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"instruction",
+										"receiveVendorInvoice",
+										"[ganti dengan id instruction]"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Nov 2022 09:12:01 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Nov 2022 09:12:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Berhasil menerima semua vendor invoice\",\n    \"data\": {\n        \"_id\": \"636ba7e82088e00122037bd4\",\n        \"assigned_vendor\": \"Jasa Tirta Inc\",\n        \"attachment\": \"atch-1667999720.pdf\",\n        \"attention_of\": \"Mr. W\",\n        \"cost_detail\": [\n            {\n                \"_id\": \"636ba7e82088e00122037bd2\",\n                \"description\": \"ini desc cost 1\",\n                \"qty\": \"2\",\n                \"uom\": \"HRS\",\n                \"unit_price\": \"50\",\n                \"gst_vat\": \"10\",\n                \"currency\": \"USD\",\n                \"total\": \"700\",\n                \"charge_to\": \"Inosoft\"\n            },\n            {\n                \"_id\": \"636ba7e82088e00122037bd3\",\n                \"description\": \"ini desc cost 2\",\n                \"qty\": \"1\",\n                \"uom\": \"HRS\",\n                \"unit_price\": \"50\",\n                \"gst_vat\": \"10\",\n                \"currency\": \"USD\",\n                \"total\": \"100\",\n                \"charge_to\": \"Customer\"\n            }\n        ],\n        \"customer_po\": \"QUEUE 02\",\n        \"instruction_id\": \"INS 03\",\n        \"instruction_type\": \"Logistic Ins\",\n        \"link_to\": \"this is link1\",\n        \"note\": \"harus tepat ye\",\n        \"quotation_no\": \"JLT 05\",\n        \"status\": \"Completed\",\n        \"vendor_invoice\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Spesific Instruction Invoices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTIwNjQ4OSwiZXhwIjoxNjY5MjEwMDg5LCJuYmYiOjE2NjkyMDY0ODksImp0aSI6IjVuZFBPZDF1QkZuSTVwWEYiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LNTwq9lLhRbSTmLlz2CX2irWKCGpX7Y8Apyg2qrRu30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/allInvoices/637e1281c366363b00026d6d",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"allInvoices",
+								"637e1281c366363b00026d6d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Spesific Instruction Invoices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/instruction/allInvoices/637d0f3e2955b33b0d07f74b",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"instruction",
+										"allInvoices",
+										"637d0f3e2955b33b0d07f74b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 06:51:37 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 06:51:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"List invoice of SI-0001\",\n    \"data\": [\n        {\n            \"_id\": \"637dc2acbf143d38de0b5885\",\n            \"instruction_id\": \"637d0f3e2955b33b0d07f74b\",\n            \"invoice_attachment\": {\n                \"user\": \"budi\",\n                \"created_at\": \"2022-11-23 06:50:19\",\n                \"file\": \"Project_Assigment_-_Backend_Intermediate-1669186219.pdf\"\n            },\n            \"invoice_no\": \"INV-123\",\n            \"supporting_document\": [\n                {\n                    \"_id\": \"637dc2acbf143d38de0b5883\",\n                    \"user\": \"budi\",\n                    \"created_at\": \"2022-11-23 06:50:19\",\n                    \"file\": \"17_-_REST_API-1669186219.pdf, attachment\"\n                },\n                {\n                    \"_id\": \"637dc2acbf143d38de0b5884\",\n                    \"user\": \"budi\",\n                    \"created_at\": \"2022-11-23 06:50:19\",\n                    \"file\": \"Project_Assigment_-_Backend_Intermediate-1669186220.pdf\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTE4NjI2OCwiZXhwIjoxNjY5MTg5ODY4LCJuYmYiOjE2NjkxODYyNjgsImp0aSI6ImZ1U0FlR01sTFlvRHB2bVkiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.tK5fgCUWkPp9ERO6Dx35auRqtSYCbUv9OzXKJpuB0hE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/deleteAttachment/637dc6babf143d38de0b5889",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"deleteAttachment",
+								"637dc6babf143d38de0b5889"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Attachment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/instruction/deleteAttachment/637dc6babf143d38de0b5889",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"instruction",
+										"deleteAttachment",
+										"637dc6babf143d38de0b5889"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 07:22:37 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 07:22:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Successfully deleted invoice attachment\",\n    \"data\": {\n        \"_id\": \"637dc6babf143d38de0b5889\",\n        \"instruction_id\": \"637d0f3e2955b33b0d07f74b\",\n        \"invoice_attachment\": null,\n        \"invoice_no\": \"INV-123\",\n        \"supporting_document\": [\n            {\n                \"_id\": \"637dc6babf143d38de0b5887\",\n                \"user\": \"budi\",\n                \"created_at\": \"2022-11-23 07:07:37\",\n                \"file\": \"17_-_REST_API-1669187257.pdf, attachment\"\n            },\n            {\n                \"_id\": \"637dc6babf143d38de0b5888\",\n                \"user\": \"budi\",\n                \"created_at\": \"2022-11-23 07:07:37\",\n                \"file\": \"Project_Assigment_-_Backend_Intermediate-1669187258.pdf\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Sup Document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTE4OTg5MywiZXhwIjoxNjY5MTkzNDkzLCJuYmYiOjE2NjkxODk4OTMsImp0aSI6IkNJMnFvZmFldjFCc2paN3YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qsRCck1iw5QZlst-MXXFFNyAkrGlCi8ViJcfgqxyuLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "invoice_id",
+									"value": "637dc6babf143d38de0b5889",
+									"type": "text"
+								},
+								{
+									"key": "sup_docId",
+									"value": "637dc6babf143d38de0b5887",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/deleteSupDocument/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"deleteSupDocument",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Sup Document",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "invoice_id",
+											"value": "637dc6babf143d38de0b5889",
+											"type": "text"
+										},
+										{
+											"key": "sup_docId",
+											"value": "637dc6babf143d38de0b5887",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/instruction/deleteSupDocument/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"instruction",
+										"deleteSupDocument",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 07:53:20 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 07:53:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Successfully deleted supporting doccument\",\n    \"data\": {\n        \"_id\": \"637dc6babf143d38de0b5889\",\n        \"instruction_id\": \"637d0f3e2955b33b0d07f74b\",\n        \"invoice_attachment\": null,\n        \"invoice_no\": \"INV-123\",\n        \"supporting_document\": [\n            {\n                \"_id\": \"637dc6babf143d38de0b5888\",\n                \"user\": \"budi\",\n                \"created_at\": \"2022-11-23 07:07:37\",\n                \"file\": \"Project_Assigment_-_Backend_Intermediate-1669187258.pdf\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Internal Only",
+			"item": [
+				{
+					"name": "List of Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTgxMDIyMywiZXhwIjoxNjY5ODEzODIzLCJuYmYiOjE2Njk4MTAyMjMsImp0aSI6IjZkSUpiR3ZJQWZZWThCUXciLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Iy7TvBKzXx6C4F6p_RVEXWuuwC0qUM0U52qW6nP1blM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/attachment/637e0fa0c366363b00026d59",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"attachment",
+								"637e0fa0c366363b00026d59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of Notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTgxMDIyMywiZXhwIjoxNjY5ODEzODIzLCJuYmYiOjE2Njk4MTAyMjMsImp0aSI6IjZkSUpiR3ZJQWZZWThCUXciLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Iy7TvBKzXx6C4F6p_RVEXWuuwC0qUM0U52qW6nP1blM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/note/637e0fa0c366363b00026d59",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"note",
+								"637e0fa0c366363b00026d59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Internal's Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTc5MTQ1MiwiZXhwIjoxNjY5Nzk1MDUyLCJuYmYiOjE2Njk3OTE0NTIsImp0aSI6IlQ2b1lobWgzU3RlSUJRWVEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.rgaUdPJ9pb7Q7V80xbSHibedwKh38UTOE8r-lgwpNRQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/attachment/delete/6387016e2cb1f6bc0409d1a4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"attachment",
+								"delete",
+								"6387016e2cb1f6bc0409d1a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Internal's Note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTgxMDIyMywiZXhwIjoxNjY5ODEzODIzLCJuYmYiOjE2Njk4MTAyMjMsImp0aSI6IjZkSUpiR3ZJQWZZWThCUXciLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Iy7TvBKzXx6C4F6p_RVEXWuuwC0qUM0U52qW6nP1blM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/note/delete/638749ffc769437b2605a1b4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"note",
+								"delete",
+								"638749ffc769437b2605a1b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Internal's Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTc5MTQ1MiwiZXhwIjoxNjY5Nzk1MDUyLCJuYmYiOjE2Njk3OTE0NTIsImp0aSI6IlQ2b1lobWgzU3RlSUJRWVEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.rgaUdPJ9pb7Q7V80xbSHibedwKh38UTOE8r-lgwpNRQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "637e0fa0c366363b00026d59",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/D:/Bootcamp Inosoft/Materi/FE-09-01_-_Vue_Router.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/attachment/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"attachment",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Internal's Note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTgxMDIyMywiZXhwIjoxNjY5ODEzODIzLCJuYmYiOjE2Njk4MTAyMjMsImp0aSI6IjZkSUpiR3ZJQWZZWThCUXciLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Iy7TvBKzXx6C4F6p_RVEXWuuwC0qUM0U52qW6nP1blM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "637e0fa0c366363b00026d59",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "Ini percobaan 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/note/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"note",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Internal's Note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTgxMDIyMywiZXhwIjoxNjY5ODEzODIzLCJuYmYiOjE2Njk4MTAyMjMsImp0aSI6IjZkSUpiR3ZJQWZZWThCUXciLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Iy7TvBKzXx6C4F6p_RVEXWuuwC0qUM0U52qW6nP1blM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "637e0fa0c366363b00026d59",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "diganti dulu deskripsi yuu",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/internal/note/edit/638749ffc769437b2605a1b4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"internal",
+								"note",
+								"edit",
+								"638749ffc769437b2605a1b4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ayu@dewe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "ayu",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "budi@doremi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "budi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ayu dewe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ayu@dewe",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ayu",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ4MzM4NywiZXhwIjoxNjY4NDg2OTg3LCJuYmYiOjE2Njg0ODMzODcsImp0aSI6IkVFUTZiakhTQ0tpNVNLcEEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.sRPCPS28hmg9c4cDfehpiXld5pWdHJg3pDH1TwlBM6o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "budi@doremi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "budi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "See Current Logged-in User's Data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ4NjEwNSwiZXhwIjoxNjY4NDg5NzA2LCJuYmYiOjE2Njg0ODYxMDYsImp0aSI6ImlKTmJCT3JWQ0V3dFJtNzIiLCJzdWIiOiI2MzczMTNiYmU2NTZhNTgyOWIwZWNjZTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AopZgvWagnMQ9ETQXtVdyDGT0w4OK2sg6-PPOG7HQM4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "budi@doremi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "budi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/data",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh User Token(?)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ4MzM4NywiZXhwIjoxNjY4NDg2OTg3LCJuYmYiOjE2Njg0ODMzODcsImp0aSI6IkVFUTZiakhTQ0tpNVNLcEEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.sRPCPS28hmg9c4cDfehpiXld5pWdHJg3pDH1TwlBM6o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "budi@doremi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "budi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Instruction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODYwOTE0MywiZXhwIjoxNjY4NjEyNzQzLCJuYmYiOjE2Njg2MDkxNDMsImp0aSI6InhFRmQ1dGNLN3o4cEI1NTgiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.arFJM6l7X1bAplAznQPc1pf7m1DEXZz_whCg6qZDDQc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detail Instruction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODUwODc0NywiZXhwIjoxNjY4NTEyMzQ3LCJuYmYiOjE2Njg1MDg3NDcsImp0aSI6IlUyVzBGS3R1dmZFM0pYNmUiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.2O4un4Cfk40gOjM0tvdCDF2jtXdhkjUX7cAyxRRoML8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/6371053d30650f07cd042d35",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"6371053d30650f07cd042d35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Instruction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2NzY2NjU2MiwiZXhwIjoxNjY3NjcwMTYyLCJuYmYiOjE2Njc2NjY1NjIsImp0aSI6IlZ6N1pPWUV3VnpKUzRrWWQiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.7zCu7lK6yh_py4QQyWOHAfrmQvA_QxAYJ-pDjy-dmSE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "INS 02",
+							"type": "text"
+						},
+						{
+							"key": "link_to",
+							"value": "GatgetIn",
+							"type": "text"
+						},
+						{
+							"key": "instruction_type",
+							"value": "Logistic Ins",
+							"type": "text"
+						},
+						{
+							"key": "assigned_vendor",
+							"value": "Jasa Tirta Inc",
+							"type": "text"
+						},
+						{
+							"key": "attention_of",
+							"value": "Mr. W",
+							"type": "text"
+						},
+						{
+							"key": "quotation_no",
+							"value": "JLT 05",
+							"type": "text"
+						},
+						{
+							"key": "customer_po",
+							"value": "QUEUE 02",
+							"type": "text"
+						},
+						{
+							"key": "attachment",
+							"value": "kalkun",
+							"type": "text"
+						},
+						{
+							"key": "note",
+							"value": "harus tepat ye",
+							"type": "text"
+						},
+						{
+							"key": "link_to",
+							"value": "this is link1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Plumbing",
+							"type": "text"
+						},
+						{
+							"key": "qty",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "uom",
+							"value": "hours",
+							"type": "text"
+						},
+						{
+							"key": "unit_price",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "gst_vat",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "total",
+							"value": "700",
+							"type": "text"
+						},
+						{
+							"key": "charge_to",
+							"value": "Mr. Omega",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Instruction 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ4MzM4NywiZXhwIjoxNjY4NDg2OTg3LCJuYmYiOjE2Njg0ODMzODcsImp0aSI6IkVFUTZiakhTQ0tpNVNLcEEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.sRPCPS28hmg9c4cDfehpiXld5pWdHJg3pDH1TwlBM6o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "INS 01",
+							"type": "text"
+						},
+						{
+							"key": "link_to",
+							"value": "Meta",
+							"type": "text"
+						},
+						{
+							"key": "instruction_type",
+							"value": "Logistic Ins",
+							"type": "text"
+						},
+						{
+							"key": "assigned_vendor",
+							"value": "Facebook",
+							"type": "text"
+						},
+						{
+							"key": "attention_of",
+							"value": "Mr. Mike",
+							"type": "text"
+						},
+						{
+							"key": "quotation_no",
+							"value": "JLT 001",
+							"type": "text"
+						},
+						{
+							"key": "customer_po",
+							"value": "QUEUE 02",
+							"type": "text"
+						},
+						{
+							"key": "attachment",
+							"type": "file",
+							"src": "/C:/Users/SILVERMIST/Downloads/Documents/git-cheat-sheet.pdf"
+						},
+						{
+							"key": "note",
+							"value": "dibanting wae pak",
+							"type": "text"
+						},
+						{
+							"key": "link_to",
+							"value": "this is link 1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][description]",
+							"value": "ini desc cost 1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][qty]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][total]",
+							"value": "700",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][charge_to]",
+							"value": "Inosoft",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][description]",
+							"value": "ini desc cost 2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][qty]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][total]",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][charge_to]",
+							"value": "Customer",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Instruction 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "INS 04",
+									"type": "text"
+								},
+								{
+									"key": "link_to",
+									"value": "GatgedIn",
+									"type": "text"
+								},
+								{
+									"key": "instruction_type",
+									"value": "Logistic Ins",
+									"type": "text"
+								},
+								{
+									"key": "assigned_vendor",
+									"value": "Jasa Tirta Inc",
+									"type": "text"
+								},
+								{
+									"key": "attention_of",
+									"value": "Mr. W",
+									"type": "text"
+								},
+								{
+									"key": "quotation_no",
+									"value": "JLT 05",
+									"type": "text"
+								},
+								{
+									"key": "customer_po",
+									"value": "QUEUE 02",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/C:/Users/USER/Downloads/team-3-db-design-Page-2.drawio.pdf"
+								},
+								{
+									"key": "note",
+									"value": "harus tepat ye",
+									"type": "text"
+								},
+								{
+									"key": "link_to",
+									"value": "this is link1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][description]",
+									"value": "ini desc cost 1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][qty]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][total]",
+									"value": "700",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][charge_to]",
+									"value": "Inosoft",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][description]",
+									"value": "ini desc cost 2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][qty]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][total]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][charge_to]",
+									"value": "Customer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"add"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Nov 2022 06:45:33 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Nov 2022 06:45:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.30"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Berhasil menambah instruksi\",\n    \"data\": [\n        {\n            \"_id\": \"6371e40d1799974c820d5b65\",\n            \"assigned_vendor\": \"Jasa Tirta Inc\",\n            \"attachment\": \"atch-1668408333.pdf\",\n            \"attention_of\": \"Mr. W\",\n            \"cost_detail\": [\n                {\n                    \"_id\": \"6371e40d1799974c820d5b63\",\n                    \"description\": \"ini desc cost 1\",\n                    \"qty\": \"2\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"700\",\n                    \"charge_to\": \"Inosoft\"\n                },\n                {\n                    \"_id\": \"6371e40d1799974c820d5b64\",\n                    \"description\": \"ini desc cost 2\",\n                    \"qty\": \"1\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"100\",\n                    \"charge_to\": \"Customer\"\n                }\n            ],\n            \"customer_po\": \"QUEUE 02\",\n            \"instruction_id\": \"INS 04\",\n            \"instruction_type\": \"Logistic Ins\",\n            \"link_to\": \"this is link1\",\n            \"note\": \"harus tepat ye\",\n            \"quotation_no\": \"JLT 05\",\n            \"status\": \"On Progress\",\n            \"vendor_invoice\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Instruction versi 3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTIwNjQ4OSwiZXhwIjoxNjY5MjEwMDg5LCJuYmYiOjE2NjkyMDY0ODksImp0aSI6IjVuZFBPZDF1QkZuSTVwWEYiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LNTwq9lLhRbSTmLlz2CX2irWKCGpX7Y8Apyg2qrRu30",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "LI-0001",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "link_to",
+							"value": "MIME 104",
+							"type": "text"
+						},
+						{
+							"key": "instruction_type",
+							"value": "Service Instruction",
+							"type": "text"
+						},
+						{
+							"key": "assigned_vendor",
+							"value": "Amazonas",
+							"type": "text"
+						},
+						{
+							"key": "vendor_address",
+							"value": "Melon street",
+							"type": "text"
+						},
+						{
+							"key": "attention_of",
+							"value": "Mr. Tindall",
+							"type": "text"
+						},
+						{
+							"key": "quotation_no",
+							"value": "JLT 001",
+							"type": "text"
+						},
+						{
+							"key": "invoice_to",
+							"value": "Marimas",
+							"type": "text"
+						},
+						{
+							"key": "customer_po",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "customer_contract",
+							"value": "OFFSHORE",
+							"type": "text"
+						},
+						{
+							"key": "attachment[0]",
+							"type": "file",
+							"src": "/C:/Users/USER/Downloads/team-3-db-design-Page-2.drawio.pdf"
+						},
+						{
+							"key": "attachment[1]",
+							"type": "file",
+							"src": "/D:/belajar/inosoft/pertemuan 11 - JWT/19_-_JWT.pdf"
+						},
+						{
+							"key": "note",
+							"value": "huhu",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][description]",
+							"value": "ini desc cost 1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][qty]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][discount]",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][total]",
+							"value": "700",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][charge_to]",
+							"value": "Inosoft",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][description]",
+							"value": "ini desc cost 2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][qty]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][discount]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][total]",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][charge_to]",
+							"value": "Customer",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Instruction versi 3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "INS 01",
+									"type": "text"
+								},
+								{
+									"key": "link_to",
+									"value": "MIME 101",
+									"type": "text"
+								},
+								{
+									"key": "instruction_type",
+									"value": "Logistic Ins",
+									"type": "text"
+								},
+								{
+									"key": "assigned_vendor",
+									"value": "John Cena Plumber",
+									"type": "text"
+								},
+								{
+									"key": "vendor_address",
+									"value": "Manggis street",
+									"type": "text"
+								},
+								{
+									"key": "attention_of",
+									"value": "Mr. Mike",
+									"type": "text"
+								},
+								{
+									"key": "quotation_no",
+									"value": "JLT 001",
+									"type": "text"
+								},
+								{
+									"key": "customer_po",
+									"value": "Markisa Inc",
+									"type": "text"
+								},
+								{
+									"key": "customer_contract",
+									"value": "OFFSHORE",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/C:/Users/SILVERMIST/Downloads/Documents/git-cheat-sheet-education.pdf"
+								},
+								{
+									"key": "note",
+									"value": "huhu",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][description]",
+									"value": "ini desc cost 1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][qty]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][discount]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][total]",
+									"value": "700",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][charge_to]",
+									"value": "Inosoft",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][description]",
+									"value": "ini desc cost 2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][qty]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][discount]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][total]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][charge_to]",
+									"value": "Customer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"add"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 10:47:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 10:47:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Berhasil menambah instruksi\",\n    \"data\": [\n        {\n            \"_id\": \"63736e320c4d94b3fd06e8e5\",\n            \"assigned_vendor\": \"John Cena Plumber\",\n            \"attachment\": \"atch-1668509234.pdf\",\n            \"attention_of\": \"Mr. Mike\",\n            \"cost_detail\": [\n                {\n                    \"_id\": \"63736e320c4d94b3fd06e8e3\",\n                    \"description\": \"ini desc cost 1\",\n                    \"qty\": \"2\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"discount\": \"20\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"700\",\n                    \"charge_to\": \"Inosoft\"\n                },\n                {\n                    \"_id\": \"63736e320c4d94b3fd06e8e4\",\n                    \"description\": \"ini desc cost 2\",\n                    \"qty\": \"1\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"discount\": \"10\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"100\",\n                    \"charge_to\": \"Customer\"\n                }\n            ],\n            \"customer_contract\": \"OFFSHORE\",\n            \"customer_po\": \"Markisa Inc\",\n            \"instruction_id\": \"INS 01\",\n            \"instruction_type\": \"Logistic Ins\",\n            \"link_to\": \"MIME 101\",\n            \"note\": \"huhu\",\n            \"quotation_no\": \"JLT 001\",\n            \"status\": \"On Progress\",\n            \"vendor_address\": \"Manggis street\",\n            \"vendor_invoice\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Instruction as Draft",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY3MDEyMjUxNiwiZXhwIjoxNjcwMTI2MTE3LCJuYmYiOjE2NzAxMjI1MTcsImp0aSI6Im80c1pNYWFIaFhENFd3T0YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g2XwWQU9UJm56fYqXcRoHA6KK81oxRWP_VE8aMpc51I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "INS 14",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "link_to",
+							"value": "MIME 102",
+							"type": "text"
+						},
+						{
+							"key": "instruction_type",
+							"value": "Service Instruction",
+							"type": "text"
+						},
+						{
+							"key": "assigned_vendor",
+							"value": "Alavama",
+							"type": "text"
+						},
+						{
+							"key": "vendor_address",
+							"value": "Manggo street",
+							"type": "text"
+						},
+						{
+							"key": "attention_of",
+							"value": "Mr. Wau",
+							"type": "text"
+						},
+						{
+							"key": "quotation_no",
+							"value": "JLT 005",
+							"type": "text"
+						},
+						{
+							"key": "invoice_to",
+							"value": "Markisa inc",
+							"type": "text"
+						},
+						{
+							"key": "customer_po",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "customer_contract",
+							"value": "OFFSHORE",
+							"type": "text"
+						},
+						{
+							"key": "attachment[0]",
+							"type": "file",
+							"src": "/D:/Bootcamp Inosoft/Materi/FE-10-01_-_Axios.pdf"
+						},
+						{
+							"key": "note",
+							"value": "huhu",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][description]",
+							"value": "ini desc cost 1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][qty]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][discount]",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][total]",
+							"value": "700",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail1][charge_to]",
+							"value": "Inosoft",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][description]",
+							"value": "ini desc cost 2",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][qty]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][uom]",
+							"value": "HRS",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][unit_price]",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][currency]",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][discount]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][gst_vat]",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][total]",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "cost_detail[detail2][charge_to]",
+							"value": "Customer",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/add_draft",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"add_draft"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Instruction versi 3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "instruction_id",
+									"value": "INS 01",
+									"type": "text"
+								},
+								{
+									"key": "link_to",
+									"value": "MIME 101",
+									"type": "text"
+								},
+								{
+									"key": "instruction_type",
+									"value": "Logistic Ins",
+									"type": "text"
+								},
+								{
+									"key": "assigned_vendor",
+									"value": "John Cena Plumber",
+									"type": "text"
+								},
+								{
+									"key": "vendor_address",
+									"value": "Manggis street",
+									"type": "text"
+								},
+								{
+									"key": "attention_of",
+									"value": "Mr. Mike",
+									"type": "text"
+								},
+								{
+									"key": "quotation_no",
+									"value": "JLT 001",
+									"type": "text"
+								},
+								{
+									"key": "customer_po",
+									"value": "Markisa Inc",
+									"type": "text"
+								},
+								{
+									"key": "customer_contract",
+									"value": "OFFSHORE",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/C:/Users/SILVERMIST/Downloads/Documents/git-cheat-sheet-education.pdf"
+								},
+								{
+									"key": "note",
+									"value": "huhu",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][description]",
+									"value": "ini desc cost 1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][qty]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][discount]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][total]",
+									"value": "700",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail1][charge_to]",
+									"value": "Inosoft",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][description]",
+									"value": "ini desc cost 2",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][qty]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][uom]",
+									"value": "HRS",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][currency]",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][discount]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][gst_vat]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][total]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "cost_detail[detail2][charge_to]",
+									"value": "Customer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/instruction/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"instruction",
+								"add"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 10:47:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 10:47:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Berhasil menambah instruksi\",\n    \"data\": [\n        {\n            \"_id\": \"63736e320c4d94b3fd06e8e5\",\n            \"assigned_vendor\": \"John Cena Plumber\",\n            \"attachment\": \"atch-1668509234.pdf\",\n            \"attention_of\": \"Mr. Mike\",\n            \"cost_detail\": [\n                {\n                    \"_id\": \"63736e320c4d94b3fd06e8e3\",\n                    \"description\": \"ini desc cost 1\",\n                    \"qty\": \"2\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"discount\": \"20\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"700\",\n                    \"charge_to\": \"Inosoft\"\n                },\n                {\n                    \"_id\": \"63736e320c4d94b3fd06e8e4\",\n                    \"description\": \"ini desc cost 2\",\n                    \"qty\": \"1\",\n                    \"uom\": \"HRS\",\n                    \"unit_price\": \"50\",\n                    \"discount\": \"10\",\n                    \"gst_vat\": \"10\",\n                    \"currency\": \"USD\",\n                    \"total\": \"100\",\n                    \"charge_to\": \"Customer\"\n                }\n            ],\n            \"customer_contract\": \"OFFSHORE\",\n            \"customer_po\": \"Markisa Inc\",\n            \"instruction_id\": \"INS 01\",\n            \"instruction_type\": \"Logistic Ins\",\n            \"link_to\": \"MIME 101\",\n            \"note\": \"huhu\",\n            \"quotation_no\": \"JLT 001\",\n            \"status\": \"On Progress\",\n            \"vendor_address\": \"Manggis street\",\n            \"vendor_invoice\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "List of On Progress Instruction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY3MDEyMjUxNiwiZXhwIjoxNjcwMTI2MTE3LCJuYmYiOjE2NzAxMjI1MTcsImp0aSI6Im80c1pNYWFIaFhENFd3T0YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g2XwWQU9UJm56fYqXcRoHA6KK81oxRWP_VE8aMpc51I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/open",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Completed Instruction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY3MDEyMjUxNiwiZXhwIjoxNjcwMTI2MTE3LCJuYmYiOjE2NzAxMjI1MTcsImp0aSI6Im80c1pNYWFIaFhENFd3T0YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g2XwWQU9UJm56fYqXcRoHA6KK81oxRWP_VE8aMpc51I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/completed",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"completed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY3MDEyMjUxNiwiZXhwIjoxNjcwMTI2MTE3LCJuYmYiOjE2NzAxMjI1MTcsImp0aSI6Im80c1pNYWFIaFhENFd3T0YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g2XwWQU9UJm56fYqXcRoHA6KK81oxRWP_VE8aMpc51I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/history/637e0fa0c366363b00026d59",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"history",
+						"637e0fa0c366363b00026d59"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODM5MTExMywiZXhwIjoxNjY4Mzk0NzEzLCJuYmYiOjE2NjgzOTExMTMsImp0aSI6IlE5RFBKOU5ETTdCUnBVNHUiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.L4OlK3C0vv0Ge9LtIiihST-J4hbPMC0EVqRG1_zIkqw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/search/?key=tirta",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "tirta"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ4MzM4NywiZXhwIjoxNjY4NDg2OTg3LCJuYmYiOjE2Njg0ODMzODcsImp0aSI6IkVFUTZiakhTQ0tpNVNLcEEiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.sRPCPS28hmg9c4cDfehpiXld5pWdHJg3pDH1TwlBM6o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "637236c57b290a2fb105bb54",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Terminate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY3MDEyMjUxNiwiZXhwIjoxNjcwMTI2MTE3LCJuYmYiOjE2NzAxMjI1MTcsImp0aSI6Im80c1pNYWFIaFhENFd3T0YiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g2XwWQU9UJm56fYqXcRoHA6KK81oxRWP_VE8aMpc51I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "638c0d03cc7e07dc9b04b8a7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/terminate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"terminate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set to On Progress",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2OTIwNjQ4OSwiZXhwIjoxNjY5MjEwMDg5LCJuYmYiOjE2NjkyMDY0ODksImp0aSI6IjVuZFBPZDF1QkZuSTVwWEYiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LNTwq9lLhRbSTmLlz2CX2irWKCGpX7Y8Apyg2qrRu30",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "instruction_id",
+							"value": "637e1281c366363b00026d6d",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/set_on_progress",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"set_on_progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODU5NjA0OCwiZXhwIjoxNjY4NTk5NjQ4LCJuYmYiOjE2Njg1OTYwNDgsImp0aSI6InNWMGtzWE1udEpZSmdGUEUiLCJzdWIiOiI2MzY1MGZmYzQxNDJmMjNmZDAwZTFiNzIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AjjV7lP_OJ9O7XKhnClU-f9OirRO6bKY6MtBAjbJyy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/instruction/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instruction",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Instruction",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "attachment",
+							"value": "kalkun",
+							"type": "text"
+						},
+						{
+							"key": "note",
+							"value": "halo aku mengedit note",
+							"type": "text"
+						},
+						{
+							"key": "link_to",
+							"value": "this is link2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Plumbing",
+							"type": "text"
+						},
+						{
+							"key": "uom",
+							"value": "hours",
+							"type": "text"
+						},
+						{
+							"key": "unit_price",
+							"value": "90",
+							"type": "text"
+						},
+						{
+							"key": "gst_vat",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "total",
+							"value": "700",
+							"type": "text"
+						},
+						{
+							"key": "charge_to",
+							"value": "Mr. Omega",
+							"type": "text"
+						},
+						{
+							"key": "qty",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "detail_cost",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/instructions/edit/6374c768743b703d9d09d7ac",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"instructions",
+						"edit",
+						"6374c768743b703d9d09d7ac"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
