@@ -3,12 +3,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+// import store from './store'
 require("./bootstrap");
 
 window.Vue = require("vue").default;
 import Vue from "vue";
 import router from "./router";
+
+
+
+
+
 
 // import adminLte from 'admin-lte'
 // import Vue from 'vue';
