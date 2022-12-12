@@ -14,10 +14,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
-  {{-- link icons --}}
+  <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
-  {{-- custom css --}}
+
+  <!-- google icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<!-- custom css -->
   <style>
     a{
       text-decoration: none;
@@ -41,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -156,12 +161,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
+      </ul>
+      <ul class= "navbar-nav">
+          @auth
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person"></i> {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/matakuliah"><i class="bi bi-grid-3x3-gap-fill"></i> My Absensi</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="{{ route('logout') }}">
+                @csrf
+                <button type="submit"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</li></button>
+              </form>
+            </li>
+          </ul>
+        </li>
+          @else
+            <li class="nav-item">
+              <a href="{{ url('/auth/login')}}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+          @endauth
+      </ul>
+      
+       
+    
   </nav>
   <!-- /.navbar -->
 
