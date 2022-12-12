@@ -58,14 +58,78 @@
     </div>
 
     <!-- call child components in instruction component -->
-    <router-view></router-view>
+    <router-view :instruction="instruction"></router-view>
+    <!-- <open-instruction /> -->
 
     <h6 class="customDisplay">10 of 60 displayed</h6>
   </div>
 </template>
 
 <script>
-export default {};
+// import { mapGetters } from "vuex";
+export default {
+  data: function () {
+    return {
+      instruction: [
+        {
+          instructionId: "001",
+          linkTo: "example link",
+          instructionType: "tes",
+          assignedVendor: "tes",
+          attentionOf: "tess",
+          quotationNo: "tess",
+          customerPo: "tess",
+          status: "in progress",
+        },
+        {
+          instructionId: "001",
+          linkTo: "example link",
+          instructionType: "tes",
+          assignedVendor: "tes",
+          attentionOf: "tess",
+          quotationNo: "tess",
+          customerPo: "tess",
+          status: "in progress",
+        },
+        {
+          instructionId: "001",
+          linkTo: "example link",
+          instructionType: "tes",
+          assignedVendor: "tes",
+          attentionOf: "tess",
+          quotationNo: "tess",
+          customerPo: "tess",
+          status: "completed",
+        },
+        {
+          instructionId: "001",
+          linkTo: "example link",
+          instructionType: "tes",
+          assignedVendor: "tes",
+          attentionOf: "tess",
+          quotationNo: "tess",
+          customerPo: "tess",
+          status: "completed",
+        },
+        {
+          instructionId: "001",
+          linkTo: "example link",
+          instructionType: "tes",
+          assignedVendor: "tes",
+          attentionOf: "tess",
+          quotationNo: "tess",
+          customerPo: "tess",
+          status: "delete",
+        },
+      ],
+    };
+  },
+  // computed: {
+  //   ...mapGetters({
+  //     instruction: "getData",
+  //   }),
+  // },
+};
 </script>
 
 <style scoped>

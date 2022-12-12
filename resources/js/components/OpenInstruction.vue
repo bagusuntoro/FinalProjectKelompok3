@@ -14,19 +14,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">in progress</div>
+        <tr v-for="(item, index) in instruction" :key="index">
+          <th scope="row" v-if="item.status == 'in progress'">
+            {{ item.instructionId }}
+          </th>
+          <td v-if="item.status == 'in progress'">{{ item.linkTo }}</td>
+          <td v-if="item.status == 'in progress'">
+            <i class="material-icons"> local_shipping </i>
+          </td>
+          <td v-if="item.status == 'in progress'">{{ item.assignedVendor }}</td>
+          <td v-if="item.status == 'in progress'">{{ item.attentionOf }}</td>
+          <td v-if="item.status == 'in progress'">{{ item.quotationNo }}</td>
+          <td v-if="item.status == 'in progress'">{{ item.customerPo }}</td>
+          <td v-if="item.status == 'in progress'">
+            <div class="status">{{ item.status }}</div>
           </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
           <td><i class="material-icons"> local_shipping </i></td>
@@ -49,17 +53,23 @@
           <td>
             <div class="status">in progress</div>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-// import { response } from "express";
-// import axios from "axios";
-
-export default {};
+export default {
+  props: {
+    instruction: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>
