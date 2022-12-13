@@ -5373,63 +5373,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-// import { mapGetters } from "vuex";
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
-      instruction: [{
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "in progress"
-      }, {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "in progress"
-      }, {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "completed"
-      }, {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "completed"
-      }, {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "delete"
-      }]
-    };
-  }
-  // computed: {
-  //   ...mapGetters({
-  //     instruction: "getData",
-  //   }),
-  // },
+    return {};
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+    instruction: "getData"
+  }))
 });
 
 /***/ }),
@@ -6089,10 +6047,21 @@ var staticRenderFns = [function () {
       href: "#"
     }
   }, [_c("div", {
-    staticClass: "text-center customSearch"
+    staticClass: "search-box"
+  }, [_c("input", {
+    attrs: {
+      type: "text",
+      placeholder: "search....",
+      id: "search"
+    }
+  }), _vm._v(" "), _c("a", {
+    staticClass: "icon",
+    attrs: {
+      href: "#"
+    }
   }, [_c("i", {
-    staticClass: "bi bi-search"
-  })])]), _vm._v(" "), _c("a", {
+    staticClass: "fas fa-search"
+  })])])]), _vm._v(" "), _c("a", {
     staticClass: "col-md-8",
     attrs: {
       href: "/report"
@@ -7274,7 +7243,8 @@ var routes = [{
   name: _components_InstructionComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   children: [{
     path: "/",
-    component: _components_OpenInstruction_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_OpenInstruction_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    name: open
   }, {
     path: "completed",
     component: _components_CompletedInstruction_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
@@ -7321,7 +7291,7 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
   state: {
-    data: [{
+    instruction: [{
       instructionId: "001",
       linkTo: "example link",
       instructionType: "tes",
@@ -7339,11 +7309,47 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_0_
       quotationNo: "tess",
       customerPo: "tess",
       status: "in progress"
+    }, {
+      instructionId: "001",
+      linkTo: "example link",
+      instructionType: "tes",
+      assignedVendor: "tes",
+      attentionOf: "tess",
+      quotationNo: "tess",
+      customerPo: "tess",
+      status: "completed"
+    }, {
+      instructionId: "001",
+      linkTo: "example link",
+      instructionType: "tes",
+      assignedVendor: "tes",
+      attentionOf: "tess",
+      quotationNo: "tess",
+      customerPo: "tess",
+      status: "completed"
+    }, {
+      instructionId: "001",
+      linkTo: "example link",
+      instructionType: "tes",
+      assignedVendor: "tes",
+      attentionOf: "tess",
+      quotationNo: "tess",
+      customerPo: "tess",
+      status: "delete"
+    }, {
+      instructionId: "001",
+      linkTo: "example link",
+      instructionType: "tes",
+      assignedVendor: "tes",
+      attentionOf: "tess",
+      quotationNo: "tess",
+      customerPo: "tess",
+      status: "in progress"
     }]
   },
   getters: {
     getData: function getData(state) {
-      return state.data;
+      return state.instruction;
     }
   },
   mutations: {},
@@ -23544,7 +23550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\r\n  padding: 0 0 100px 0;\r\n  width: 98%;\r\n  margin-bottom: 100px !important;\r\n  background-color: #ffffff;\r\n  box-shadow: 5px 5px 8px #888888;\r\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #00bfbf;\r\n  margin-right: 20px;\r\n  margin-left: 20px;\n}\n.customCompleted[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #adadad;\n}\n.customSearch[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  width: 30px;\r\n  border-radius: 5px;\r\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  border-radius: 5px;\r\n  width: 70px;\r\n  color: #00bfbf;\n}\n.customExport > span[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\r\n  margin: 20px 20px 0 0 !important;\r\n  padding: 7px 0 7px 0;\r\n  width: 220px;\r\n  border-radius: 5px;\r\n  background-color: #00bfbf;\r\n  /* background-color: #1dccb5; */\r\n  font-weight: bold;\r\n  color: white;\r\n  border: 0;\n}\n.accordion-body[data-v-a4273d0c] {\r\n  background-color: #f1f1f1;\r\n  width: 220px;\n}\n.logisticLink[data-v-a4273d0c]:hover,\r\n.serviceLink[data-v-a4273d0c]:hover {\r\n  background-color: #dfdfdf;\n}\n.logisticLink[data-v-a4273d0c],\r\n.serviceLink[data-v-a4273d0c] {\r\n  padding: 10px 0 10px 0;\n}\n.logisticLink > i[data-v-a4273d0c],\r\n.serviceLink > i[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  color: #00bfbf;\r\n  vertical-align: bottom;\r\n  font-size: 20px !important;\n}\n.logisticLink > a[data-v-a4273d0c],\r\n.serviceLink > a[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  padding-bottom: 15px;\r\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\r\n  width: 95%;\r\n  border: 1px solid;\r\n  margin: auto;\r\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\r\n  margin: 20px 0 0 20px;\r\n  color: #b9c0c7;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\r\n  padding: 0 0 100px 0;\r\n  width: 98%;\r\n  margin-bottom: 100px !important;\r\n  background-color: #fff;\r\n  box-shadow: 5px 5px 8px #888888;\r\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #00bfbf;\r\n  margin-right: 20px;\r\n  margin-left: 20px;\n}\n.customCompleted[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #adadad;\n}\n.customSearch[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  width: 30px;\r\n  border-radius: 5px;\r\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  border-radius: 5px;\r\n  width: 70px;\r\n  color: #00bfbf;\n}\n.customExport > span[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\r\n  margin: 20px 20px 0 0 !important;\r\n  padding: 7px 0 7px 0;\r\n  width: 220px;\r\n  border-radius: 5px;\r\n  background-color: #00bfbf;\r\n  /* background-color: #1dccb5; */\r\n  font-weight: bold;\r\n  color: white;\r\n  border: 0;\n}\n.accordion-body[data-v-a4273d0c] {\r\n  background-color: #f1f1f1;\r\n  width: 220px;\n}\n.logisticLink[data-v-a4273d0c]:hover,\r\n.serviceLink[data-v-a4273d0c]:hover {\r\n  background-color: #dfdfdf;\n}\n.logisticLink[data-v-a4273d0c],\r\n.serviceLink[data-v-a4273d0c] {\r\n  padding: 10px 0 10px 0;\n}\n.logisticLink > i[data-v-a4273d0c],\r\n.serviceLink > i[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  color: #00bfbf;\r\n  vertical-align: bottom;\r\n  font-size: 20px !important;\n}\n.logisticLink > a[data-v-a4273d0c],\r\n.serviceLink > a[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  padding-bottom: 15px;\r\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\r\n  width: 95%;\r\n  border: 1px solid;\r\n  margin: auto;\r\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\r\n  margin: 20px 0 0 20px;\r\n  color: #b9c0c7;\n}\r\n\r\n/* search */\n.search-box[data-v-a4273d0c] {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background: #b9c0c7;\r\n  height: 40px;\r\n  border-radius: 40px;\r\n  /* padding: 10px; */\n}\n.search-box:hover > input[data-v-a4273d0c] {\r\n  width: 200px !important;\r\n  padding: 0 10px;\n}\n.search-box:hover > .icon[data-v-a4273d0c] {\r\n  background: #ffffff;\n}\n.icon[data-v-a4273d0c]:hover {\r\n  transform: rotate(360deg) scale(0.8);\n}\ninput#search[data-v-a4273d0c] {\r\n  width: 0;\r\n  border: none;\r\n  outline: none;\r\n  padding: 0;\r\n  background: none;\r\n  font-size: 1.1rem;\r\n  transition: 0.5s ease;\r\n  line-height: 40px;\r\n  color: #fff;\n}\n.icon[data-v-a4273d0c] {\r\n  color: #21dfcd;\r\n  float: right;\r\n  width: 40px;\r\n  font-size: 1.3rem;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  background: #ffffff;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  transition: 0.4s;\r\n  cursor: pointer;\r\n  text-decoration: none;\n}\r\n/* akhir search */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    data: [
+    instruction: [
       {
         instructionId: "001",
         linkTo: "example link",
@@ -15,6 +15,46 @@ export default new Vuex.Store({
         quotationNo: "tess",
         customerPo: "tess",
         status: "in progress",
+      },
+      {
+        instructionId: "001",
+        linkTo: "example link",
+        instructionType: "tes",
+        assignedVendor: "tes",
+        attentionOf: "tess",
+        quotationNo: "tess",
+        customerPo: "tess",
+        status: "in progress",
+      },
+      {
+        instructionId: "001",
+        linkTo: "example link",
+        instructionType: "tes",
+        assignedVendor: "tes",
+        attentionOf: "tess",
+        quotationNo: "tess",
+        customerPo: "tess",
+        status: "completed",
+      },
+      {
+        instructionId: "001",
+        linkTo: "example link",
+        instructionType: "tes",
+        assignedVendor: "tes",
+        attentionOf: "tess",
+        quotationNo: "tess",
+        customerPo: "tess",
+        status: "completed",
+      },
+      {
+        instructionId: "001",
+        linkTo: "example link",
+        instructionType: "tes",
+        assignedVendor: "tes",
+        attentionOf: "tess",
+        quotationNo: "tess",
+        customerPo: "tess",
+        status: "delete",
       },
       {
         instructionId: "001",
@@ -30,7 +70,7 @@ export default new Vuex.Store({
   },
   getters: {
     getData(state) {
-      return state.data
+      return state.instruction
     }
   },
   mutations: {

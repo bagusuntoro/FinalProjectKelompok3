@@ -21,6 +21,7 @@ const routes = [
       {
         path: "/",
         component: openInstruction,
+        name: open,
       },
       {
         path: "completed",
