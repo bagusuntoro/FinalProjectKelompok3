@@ -15,14 +15,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>
+        <tr v-for="(item, index) in instruction" :key="index">
+          <th scope="row" v-if="item.status != 'in progress'">
+            {{ item.instructionId }}
+          </th>
+          <td v-if="item.status != 'in progress'">
+            {{ item.linkTo }}
+          </td>
+          <td v-if="item.status != 'in progress'">
+            <i class="material-icons"> local_shipping </i>
+          </td>
+          <td v-if="item.status != 'in progress'">
+            {{ item.assignedVendor }}
+          </td>
+          <td v-if="item.status != 'in progress'">
+            {{ item.attentionOf }}
+          </td>
+          <td v-if="item.status != 'in progress'">
+            {{ item.quotationNo }}
+          </td>
+          <td v-if="item.status != 'in progress'">
             <select
               class="form-select form-select-sm"
               aria-label=".form-select-sm example"
@@ -33,12 +45,14 @@
               <option value="3">3</option>
             </select>
           </td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">completed</div>
+          <td v-if="item.status != 'in progress'">
+            {{ item.customerPo }}
+          </td>
+          <td v-if="item.status != 'in progress'">
+            <div class="status">{{ item.status }}</div>
           </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
           <td><i class="material-icons"> local_shipping </i></td>
@@ -83,14 +97,23 @@
           <td>
             <div class="status">completed</div>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    instruction: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>
