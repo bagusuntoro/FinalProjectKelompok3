@@ -6313,13 +6313,13 @@ var render = function render() {
       height: "16",
       fill: "currentColor",
       viewBox: "0 0 16 16",
-      color: "green"
+      color: "  #0dc7a9"
     }
   }, [_c("path", {
     attrs: {
       d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
     }
-  })]), _vm._v("\n        Dropdown link\n      ")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("button", {
+  })]), _vm._v("\n        Logistic Intruction\n      ")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("button", {
     staticClass: "button",
     staticStyle: {
       "float": "right",
@@ -6402,7 +6402,9 @@ var render = function render() {
     staticClass: "btn btn-success",
     staticStyle: {
       "max-inline-size": "max-content",
-      margin: "5px 29px"
+      margin: "35px 29px",
+      "background-color": "#0dc7a9",
+      "border-color": "#0dc7a9"
     },
     attrs: {
       href: "#",
@@ -6410,25 +6412,37 @@ var render = function render() {
       role: "button",
       "aria-disabled": "true"
     }
-  }, [_vm._v("+ Add Attachment")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("+ Add Attachment")]), _vm._v(" "), _c("form", [_c("div", {
+    staticClass: "form-group",
     staticStyle: {
-      margin: "-91px 554px"
+      margin: "-150px 300px",
+      width: "785px"
     }
-  }, [_c("B", [_vm._v("Notes")])], 1)]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
+  }, [_c("h4", {
     attrs: {
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#exampleModal"
+      label: "",
+      "for": "comment"
     }
-  }, [_vm._v("\n        Launch demo modal\n      ")]), _vm._v(" "), _vm._m(16)])])]);
+  }, [_c("B", [_vm._v("Notes")])], 1), _vm._v(" "), _c("textarea", {
+    staticClass: "form-control",
+    attrs: {
+      rows: "3",
+      id: "comment"
+    }
+  })])])])])]), _vm._v(" "), _vm._m(16), _vm._v(" "), _vm._m(17)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("ul", {
     staticClass: "dropdown-menu"
-  }, [_c("li", [_c("a", {
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      id: "exampleDropdownFormEmail2"
+    }
+  }), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "dropdown-item",
     attrs: {
       href: "#"
@@ -6829,6 +6843,10 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" "), _c("td", [_c("a", {
     staticClass: "btn btn-success",
+    staticStyle: {
+      "background-color": "#0dc7a9",
+      "border-color": "#0dc7a9"
+    },
     attrs: {
       href: "#",
       tabindex: "-1",
@@ -6840,47 +6858,97 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "modal fade",
-    attrs: {
-      id: "exampleModal",
-      tabindex: "-1",
-      "aria-labelledby": "exampleModalLabel",
-      "aria-hidden": "true"
+    staticClass: "container",
+    staticStyle: {
+      "background-color": "white",
+      display: "block",
+      "flex-direction": "row",
+      "flex-wrap": "wrap",
+      "margin-top": "30px"
     }
   }, [_c("div", {
-    staticClass: "modal-dialog"
-  }, [_c("div", {
-    staticClass: "modal-content"
-  }, [_c("div", {
-    staticClass: "modal-header"
-  }, [_c("h1", {
-    staticClass: "modal-title fs-5",
+    staticClass: "dropdown"
+  }, [_c("label", {
+    staticClass: "form-label",
     attrs: {
-      id: "exampleModalLabel"
+      "for": "exampleInputEmail1"
     }
-  }, [_vm._v("\n                Modal title\n              ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn-close",
+  }, [_vm._v("Link To")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-light dropdown-toggle",
+    staticStyle: {
+      margin: "64px 50px"
+    },
     attrs: {
       type: "button",
-      "data-bs-dismiss": "modal",
-      "aria-label": "Close"
+      "data-bs-toggle": "dropdown",
+      "aria-expanded": "false"
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "modal-body"
-  }, [_vm._v("...")]), _vm._v(" "), _c("div", {
-    staticClass: "modal-footer"
+  }, [_vm._v("\n        Dropdown button\n      ")]), _vm._v(" "), _c("ul", {
+    staticClass: "dropdown-menu"
+  }, [_c("li", [_c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Action")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Another action")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Something else here")])])])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container",
+    staticStyle: {
+      "background-color": "white",
+      display: "block",
+      "flex-direction": "row",
+      "flex-wrap": "wrap",
+      "margin-top": "30px"
+    }
+  }, [_c("div", {
+    staticStyle: {
+      "margin-left": "775px"
+    }
+  }, [_c("a", {
+    attrs: {
+      href: "/"
+    }
   }, [_c("button", {
-    staticClass: "btn btn-secondary",
-    attrs: {
-      type: "button",
-      "data-bs-dismiss": "modal"
-    }
-  }, [_vm._v("\n                Close\n              ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-light",
+    staticStyle: {
+      margin: "20px 0px"
+    },
     attrs: {
       type: "button"
     }
-  }, [_vm._v("\n                Save changes\n              ")])])])])]);
+  }, [_vm._v("\n          Cancel\n        ")])]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-light",
+    staticStyle: {
+      "margin-left": "10px",
+      border: "solid 1px"
+    },
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("\n        Save A Draft\n      ")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-success",
+    staticStyle: {
+      "margin-left": "10px",
+      "background-color": "#0dc7a9",
+      "border-color": "#0dc7a9"
+    },
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("\n        Submit\n      ")])])]);
 }];
 render._withStripped = true;
 
@@ -23526,7 +23594,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-3d2d2ea4] {\r\n  /* position: relative; */\r\n  margin-top: 30px !important;\r\n  width: 90%;\r\n  /* padding-top: 100px !important; */\n}\nthead[data-v-3d2d2ea4] {\r\n  background-color: #b9c0c7;\r\n  /* background-color: #bbbbbb; */\r\n  color: white;\n}\ntd > i[data-v-3d2d2ea4] {\r\n  color: #b9c0c7;\n}\ntd > select[data-v-3d2d2ea4] {\r\n  background-color: #00bfbf;\n}\n.status[data-v-3d2d2ea4] {\r\n  /* width: 100px; */\r\n  padding: 5px 8px 5px 8px;\r\n  height: auto;\r\n  border-radius: 10px;\r\n  background-color: #00c060;\r\n  color: #ffffff;\r\n  text-align: center;\r\n  font-size: 12px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-3d2d2ea4] {\n  /* position: relative; */\n  margin-top: 30px !important;\n  width: 90%;\n  /* padding-top: 100px !important; */\n}\nthead[data-v-3d2d2ea4] {\n  background-color: #b9c0c7;\n  /* background-color: #bbbbbb; */\n  color: white;\n}\ntd > i[data-v-3d2d2ea4] {\n  color: #b9c0c7;\n}\ntd > select[data-v-3d2d2ea4] {\n  background-color: #00bfbf;\n}\n.status[data-v-3d2d2ea4] {\n  /* width: 100px; */\n  padding: 5px 8px 5px 8px;\n  height: auto;\n  border-radius: 10px;\n  background-color: #00c060;\n  color: #ffffff;\n  text-align: center;\n  font-size: 12px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23550,7 +23618,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\r\n  padding: 0 0 100px 0;\r\n  width: 98%;\r\n  margin-bottom: 100px !important;\r\n  background-color: #fff;\r\n  box-shadow: 5px 5px 8px #888888;\r\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #00bfbf;\r\n  margin-right: 20px;\r\n  margin-left: 20px;\n}\n.customCompleted[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #adadad;\n}\n.customSearch[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  width: 30px;\r\n  border-radius: 5px;\r\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  border-radius: 5px;\r\n  width: 70px;\r\n  color: #00bfbf;\n}\n.customExport > span[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\r\n  margin: 20px 20px 0 0 !important;\r\n  padding: 7px 0 7px 0;\r\n  width: 220px;\r\n  border-radius: 5px;\r\n  background-color: #00bfbf;\r\n  /* background-color: #1dccb5; */\r\n  font-weight: bold;\r\n  color: white;\r\n  border: 0;\n}\n.accordion-body[data-v-a4273d0c] {\r\n  background-color: #f1f1f1;\r\n  width: 220px;\n}\n.logisticLink[data-v-a4273d0c]:hover,\r\n.serviceLink[data-v-a4273d0c]:hover {\r\n  background-color: #dfdfdf;\n}\n.logisticLink[data-v-a4273d0c],\r\n.serviceLink[data-v-a4273d0c] {\r\n  padding: 10px 0 10px 0;\n}\n.logisticLink > i[data-v-a4273d0c],\r\n.serviceLink > i[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  color: #00bfbf;\r\n  vertical-align: bottom;\r\n  font-size: 20px !important;\n}\n.logisticLink > a[data-v-a4273d0c],\r\n.serviceLink > a[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  padding-bottom: 15px;\r\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\r\n  width: 95%;\r\n  border: 1px solid;\r\n  margin: auto;\r\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\r\n  margin: 20px 0 0 20px;\r\n  color: #b9c0c7;\n}\r\n\r\n/* search */\n.search-box[data-v-a4273d0c] {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background: #b9c0c7;\r\n  height: 40px;\r\n  border-radius: 40px;\r\n  /* padding: 10px; */\n}\n.search-box:hover > input[data-v-a4273d0c] {\r\n  width: 200px !important;\r\n  padding: 0 10px;\n}\n.search-box:hover > .icon[data-v-a4273d0c] {\r\n  background: #ffffff;\n}\n.icon[data-v-a4273d0c]:hover {\r\n  transform: rotate(360deg) scale(0.8);\n}\ninput#search[data-v-a4273d0c] {\r\n  width: 0;\r\n  border: none;\r\n  outline: none;\r\n  padding: 0;\r\n  background: none;\r\n  font-size: 1.1rem;\r\n  transition: 0.5s ease;\r\n  line-height: 40px;\r\n  color: #fff;\n}\n.icon[data-v-a4273d0c] {\r\n  color: #21dfcd;\r\n  float: right;\r\n  width: 40px;\r\n  font-size: 1.3rem;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  background: #ffffff;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  transition: 0.4s;\r\n  cursor: pointer;\r\n  text-decoration: none;\n}\r\n/* akhir search */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\n  padding: 0 0 100px 0;\n  width: 98%;\n  margin-bottom: 100px !important;\n  background-color: #fff;\n  box-shadow: 5px 5px 8px #888888;\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #00bfbf;\n  margin-right: 20px;\n  margin-left: 20px;\n}\n.customCompleted[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #adadad;\n}\n.customSearch[data-v-a4273d0c] {\n  border: 1px solid #b9c0c7;\n  width: 30px;\n  border-radius: 5px;\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\n  border: 1px solid #b9c0c7;\n  border-radius: 5px;\n  width: 70px;\n  color: #00bfbf;\n}\n.customExport > span[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\n  margin: 20px 20px 0 0 !important;\n  padding: 7px 0 7px 0;\n  width: 220px;\n  border-radius: 5px;\n  background-color: #00bfbf;\n  /* background-color: #1dccb5; */\n  font-weight: bold;\n  color: white;\n  border: 0;\n}\n.accordion-body[data-v-a4273d0c] {\n  background-color: #f1f1f1;\n  width: 220px;\n}\n.logisticLink[data-v-a4273d0c]:hover,\n.serviceLink[data-v-a4273d0c]:hover {\n  background-color: #dfdfdf;\n}\n.logisticLink[data-v-a4273d0c],\n.serviceLink[data-v-a4273d0c] {\n  padding: 10px 0 10px 0;\n}\n.logisticLink > i[data-v-a4273d0c],\n.serviceLink > i[data-v-a4273d0c] {\n  padding-left: 20px;\n  color: #00bfbf;\n  vertical-align: bottom;\n  font-size: 20px !important;\n}\n.logisticLink > a[data-v-a4273d0c],\n.serviceLink > a[data-v-a4273d0c] {\n  padding-left: 20px;\n  padding-bottom: 15px;\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\n  width: 95%;\n  border: 1px solid;\n  margin: auto;\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\n  margin: 20px 0 0 20px;\n  color: #b9c0c7;\n}\n\n/* search */\n.search-box[data-v-a4273d0c] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background: #b9c0c7;\n  height: 40px;\n  border-radius: 40px;\n  /* padding: 10px; */\n}\n.search-box:hover > input[data-v-a4273d0c] {\n  width: 200px !important;\n  padding: 0 10px;\n}\n.search-box:hover > .icon[data-v-a4273d0c] {\n  background: #ffffff;\n}\n.icon[data-v-a4273d0c]:hover {\n  transform: rotate(360deg) scale(0.8);\n}\ninput#search[data-v-a4273d0c] {\n  width: 0;\n  border: none;\n  outline: none;\n  padding: 0;\n  background: none;\n  font-size: 1.1rem;\n  transition: 0.5s ease;\n  line-height: 40px;\n  color: #fff;\n}\n.icon[data-v-a4273d0c] {\n  color: #21dfcd;\n  float: right;\n  width: 40px;\n  font-size: 1.3rem;\n  height: 40px;\n  border-radius: 50%;\n  background: #ffffff;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transition: 0.4s;\n  cursor: pointer;\n  text-decoration: none;\n}\n/* akhir search */\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23574,7 +23642,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-87f0136e] {\r\n  /* position: relative; */\r\n  margin-top: 30px !important;\r\n  width: 90%;\r\n  /* padding-top: 100px !important; */\n}\nthead[data-v-87f0136e] {\r\n  background-color: #b9c0c7;\r\n  /* background-color: #bbbbbb; */\r\n  color: white;\n}\ntd > i[data-v-87f0136e] {\r\n  color: #b9c0c7;\n}\n.status[data-v-87f0136e] {\r\n  padding: 5px 8px 5px 8px;\r\n  height: auto;\r\n  border-radius: 10px;\r\n  background-color: #e2ebf9;\r\n  color: #637ca0;\r\n  text-align: center;\r\n  font-size: 12px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-87f0136e] {\n  /* position: relative; */\n  margin-top: 30px !important;\n  width: 90%;\n  /* padding-top: 100px !important; */\n}\nthead[data-v-87f0136e] {\n  background-color: #b9c0c7;\n  /* background-color: #bbbbbb; */\n  color: white;\n}\ntd > i[data-v-87f0136e] {\n  color: #b9c0c7;\n}\n.status[data-v-87f0136e] {\n  padding: 5px 8px 5px 8px;\n  height: auto;\n  border-radius: 10px;\n  background-color: #e2ebf9;\n  color: #637ca0;\n  text-align: center;\n  font-size: 12px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
