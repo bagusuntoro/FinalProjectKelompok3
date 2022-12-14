@@ -18,47 +18,48 @@
           v-for="(item, index) in instruction"
           :key="index"
           class="clickable-row"
-          data-href="url://"
+          data-href="/service"
+          id="rowColor"
         >
-          <th scope="row" v-if="item.status == 'in progress'">
-            <a href="/service">
+          <td scope="row" v-if="item.status == 'in progress'">
+          
               {{ item.instructionId }}
-            </a>
-          </th>
+            
+          </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               {{ item.linkTo }}
-            </a>
+            
           </td>
           <td v-if="item.status == 'in progress'">
             <i class="material-icons"> local_shipping </i>
           </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               {{ item.assignedVendor }}
-            </a>
+            
           </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               {{ item.attentionOf }}
-            </a>
+            
           </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               {{ item.quotationNo }}
-            </a>
+            
           </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               {{ item.customerPo }}
-            </a>
+            
           </td>
           <td v-if="item.status == 'in progress'">
-            <a href="/service">
+  
               <div class="status">
                 {{ item.status }}
               </div>
-            </a>
+            
           </td>
         </tr>
       </tbody>
@@ -77,9 +78,26 @@ export default {
     },
   },
   mounted() {
+    
+    let tr = document.getElementsByClassName('clickable-row');
+
+    for (var i = 0; i < tr.length; i++) {
+      tr[i].addEventListener("mousemove", function() {
+        // Mengganti warna elemen ketika cursor mendekat
+        this.style.cursor="pointer";
+        this.style.color="#00bfbf";
+      });
+      tr[i].addEventListener("mouseout", function() {
+        // Mengganti warna elemen ketika kursor menjauh;
+        this.style.color="black";
+      });
+    }
+
+    // link with jquery
     jQuery(document).ready(function ($) {
       $(".clickable-row").click(function () {
         window.location = $(this).data("href");
+
       });
     });
   },

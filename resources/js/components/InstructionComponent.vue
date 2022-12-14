@@ -7,22 +7,25 @@
           >Completed</router-link
         >
       </div>
-      <div class="col-md-6">
-        <div class="row float-end" style="width: 200px">
-          <a href="#" class="col-md-2">
-            <div class="search-box">
-              <input type="text" placeholder="search...." id="search" />
+
+      <div class="col-md-2"></div>
+      
+      <div class="col-md-4">
+        <div class="row" style="width: 200px">
+          <a href="#" class="col-md-10">
+
+            <!-- search -->
+            <div class="search-box ms-4">
+              <input type="text" placeholder="  search...." id="search" />
               <a href="#" class="icon">
                 <i class="fas fa-search"></i>
               </a>
             </div>
 
-            <!-- <div class="text-center customSearch">
-              <i class="bi bi-search"></i>
-            </div> -->
+            <!-- export -->
           </a>
-          <a href="/report" class="col-md-8">
-            <div class="text-center customExport">
+          <a href="/report" class="col-md-2">
+            <div class="text-center customExport ms-5">
               <i class="bi bi-file-earmark-zip"></i><span> Export</span>
             </div>
           </a>
@@ -90,6 +93,9 @@ export default {
       completed.classList.toggle("teal");
       open.classList.toggle("teal");
     });
+
+
+    // $('button').text('Hello World!');
   },
 };
 </script>
@@ -185,16 +191,23 @@ hr {
   background: #b9c0c7;
   height: 40px;
   border-radius: 40px;
-  /* padding: 10px; */
+  color:white;
 }
 
 .search-box:hover > input {
   width: 200px !important;
-  padding: 0 10px;
+  padding: 0 200px;
 }
 
 .search-box:hover > .icon {
-  transform: rotate(360deg) scale(0.8);
+  transform: rotate(360deg) scale(0.7);
+  margin-top:-40px;
+}
+input::placeholder{
+  color:white;
+}
+input{
+  text-indent: 20px;
 }
 
 input#search {

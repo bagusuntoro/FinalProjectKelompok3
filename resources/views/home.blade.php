@@ -195,8 +195,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('admin-lte/dist/img/admin.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">tubeStream</span>
+      <img src="{{asset('admin-lte/dist/img/inosof.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Inosoft Bootcamp</span>
     </a>
 
     <!-- Sidebar -->
@@ -248,20 +248,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="bi bi-bullseye"></i>
-                  <p> Data 1</p>
+                <i class="bi bi-bar-chart-line"></i>
+                  <p> Statistik</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="bi bi-bullseye"></i>
-                  <p> Data 2</p>
+                <i class="bi bi-clipboard2-data"></i>
+                  <p> Report</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="bi bi-bullseye"></i>
-                  <p> Data 3</p>
+                <i class="bi bi-database-add"></i>
+                  <p> Database</p>
                 </a>
               </li>
             </ul>

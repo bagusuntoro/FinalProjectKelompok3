@@ -12,7 +12,7 @@
 
         <!-- back button -->
         <a 
-        class="w3-left ws-btn" href="#"
+        class="w3-left ws-btn" href="/"
         style="
             margin: 16px 16px;
             color: #0dc7a9;
