@@ -2,10 +2,8 @@
   <div id="template" class="m-auto">
     <div class="row pt-4">
       <div class="col-md-6">
-        <router-link to="/" class="customOpen">Open</router-link>
-        <router-link to="/completed" class="customCompleted"
-          >Completed</router-link
-        >
+        <router-link to="/" class="customOpen teal" id="open">Open</router-link>
+        <router-link to="/completed" class="customCompleted" id="completed">Completed</router-link>
       </div>
       <div class="col-md-6">
         <div class="row float-end" style="width: 200px">
@@ -36,26 +34,18 @@
       <div class="col-md-4"></div>
       <div class="col-md-5"></div>
       <div class="col-md-3">
-        <button
-          class="accordion-button customButtonCreate p-1"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
-        >
-          + Create 3rd Party Instruction
-        </button>
-        <!-- </h2> -->
-        <div id="collapseOne" class="accordion-collapse collapse">
-          <div class="accordion-body">
+        <div class="dropdown float-end me-5">
+          <button class="btn customButtonCreate" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            + Create 3rd Party Instruction
+          </button>
+          <div class="dropdown-menu customMenu">
             <div class="logisticLink">
-              <i class="material-icons"> local_shipping </i>
-              <a href="/logistic">Logistic Instruction</a>
+              <a href="/logistic" class="dropdown-item"><i class="material-icons"> local_shipping </i>Logistic
+                Instruction</a>
             </div>
             <div class="serviceLink">
-              <i class="material-icons"> manage_accounts </i>
-              <a href="/service">Service Instruction</a>
+              <a href="/service" class="dropdown-item"><i class="material-icons"> manage_accounts </i> Service
+                Instruction</a>
             </div>
           </div>
         </div>
@@ -81,6 +71,15 @@ export default {
       instruction: "getData",
     }),
   },
+  mounted() {
+    let completed = document.getElementById('completed')
+    let open = document.getElementById('open')
+
+    completed.addEventListener('click', function () {
+      completed.classList.toggle("teal");
+      open.classList.toggle("teal");
+    })
+  }
 };
 </script>
 
@@ -93,32 +92,35 @@ export default {
   box-shadow: 5px 5px 8px #888888;
   border-radius: 10px;
 }
+
 .customOpen {
   font-weight: bold;
-  color: #00bfbf;
   margin-right: 20px;
   margin-left: 20px;
+  color: #adadad;
 }
+
 .customCompleted {
   font-weight: bold;
   color: #adadad;
 }
-.customSearch {
-  border: 1px solid #b9c0c7;
-  width: 30px;
-  border-radius: 5px;
+
+.teal {
   color: #00bfbf;
 }
+
 .customExport {
   border: 1px solid #b9c0c7;
   border-radius: 5px;
   width: 70px;
   color: #00bfbf;
 }
-.customExport > span {
+
+.customExport>span {
   font-weight: bold;
   color: #494949;
 }
+
 .customButtonCreate {
   margin: 20px 20px 0 0 !important;
   padding: 7px 0 7px 0;
@@ -130,27 +132,23 @@ export default {
   color: white;
   border: 0;
 }
-.accordion-body {
-  background-color: #f1f1f1;
+
+.customMenu {
+  border: none;
   width: 220px;
 }
-.logisticLink:hover,
-.serviceLink:hover {
-  background-color: #dfdfdf;
-}
-.logisticLink,
-.serviceLink {
-  padding: 10px 0 10px 0;
-}
-.logisticLink > i,
-.serviceLink > i {
-  padding-left: 20px;
-  color: #00bfbf;
-  vertical-align: bottom;
+
+
+.logisticLink>a>i,
+.serviceLink>a>i {
+  padding-right: 20px !important;
+  color: #00bfbf !important;
+  vertical-align: bottom !important;
   font-size: 20px !important;
 }
-.logisticLink > a,
-.serviceLink > a {
+
+.logisticLink>a,
+.serviceLink>a {
   padding-left: 20px;
   padding-bottom: 15px;
   color: black !important;
@@ -180,12 +178,12 @@ hr {
   /* padding: 10px; */
 }
 
-.search-box:hover > input {
+.search-box:hover>input {
   width: 200px !important;
   padding: 0 10px;
 }
 
-.search-box:hover > .icon {
+.search-box:hover>.icon {
   background: #ffffff;
 }
 
@@ -220,6 +218,7 @@ input#search {
   cursor: pointer;
   text-decoration: none;
 }
+
 /* akhir search */
 </style>
 

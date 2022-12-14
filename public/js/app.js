@@ -5387,7 +5387,15 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     instruction: "getData"
-  }))
+  })),
+  mounted: function mounted() {
+    var completed = document.getElementById('completed');
+    var open = document.getElementById('open');
+    completed.addEventListener('click', function () {
+      completed.classList.toggle("teal");
+      open.classList.toggle("teal");
+    });
+  }
 });
 
 /***/ }),
@@ -5411,6 +5419,13 @@ __webpack_require__.r(__webpack_exports__);
         return [];
       }
     }
+  },
+  mounted: function mounted() {
+    jQuery(document).ready(function ($) {
+      $(".clickable-row").click(function () {
+        window.location = $(this).data("href");
+      });
+    });
   }
 });
 
@@ -6014,14 +6029,16 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-md-6"
   }, [_c("router-link", {
-    staticClass: "customOpen",
+    staticClass: "customOpen teal",
     attrs: {
-      to: "/"
+      to: "/",
+      id: "open"
     }
   }, [_vm._v("Open")]), _vm._v(" "), _c("router-link", {
     staticClass: "customCompleted",
     attrs: {
-      to: "/completed"
+      to: "/completed",
+      id: "completed"
     }
   }, [_vm._v("Completed")])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("router-view", {
     attrs: {
@@ -6082,39 +6099,36 @@ var staticRenderFns = [function () {
     staticClass: "col-md-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
+  }, [_c("div", {
+    staticClass: "dropdown float-end me-5"
   }, [_c("button", {
-    staticClass: "accordion-button customButtonCreate p-1",
+    staticClass: "btn customButtonCreate",
     attrs: {
       type: "button",
-      "data-bs-toggle": "collapse",
-      "data-bs-target": "#collapseOne",
-      "aria-expanded": "true",
-      "aria-controls": "collapseOne"
+      "data-bs-toggle": "dropdown",
+      "aria-expanded": "false"
     }
-  }, [_vm._v("\n        + Create 3rd Party Instruction\n      ")]), _vm._v(" "), _c("div", {
-    staticClass: "accordion-collapse collapse",
-    attrs: {
-      id: "collapseOne"
-    }
-  }, [_c("div", {
-    staticClass: "accordion-body"
+  }, [_vm._v("\n          + Create 3rd Party Instruction\n        ")]), _vm._v(" "), _c("div", {
+    staticClass: "dropdown-menu customMenu"
   }, [_c("div", {
     staticClass: "logisticLink"
-  }, [_c("i", {
-    staticClass: "material-icons"
-  }, [_vm._v(" local_shipping ")]), _vm._v(" "), _c("a", {
+  }, [_c("a", {
+    staticClass: "dropdown-item",
     attrs: {
       href: "/logistic"
     }
-  }, [_vm._v("Logistic Instruction")])]), _vm._v(" "), _c("div", {
-    staticClass: "serviceLink"
   }, [_c("i", {
     staticClass: "material-icons"
-  }, [_vm._v(" manage_accounts ")]), _vm._v(" "), _c("a", {
+  }, [_vm._v(" local_shipping ")]), _vm._v("Logistic\n              Instruction")])]), _vm._v(" "), _c("div", {
+    staticClass: "serviceLink"
+  }, [_c("a", {
+    staticClass: "dropdown-item",
     attrs: {
       href: "/service"
     }
-  }, [_vm._v("Service Instruction")])])])])])]);
+  }, [_c("i", {
+    staticClass: "material-icons"
+  }, [_vm._v(" manage_accounts ")]), _vm._v(" Service\n              Instruction")])])])])])]);
 }];
 render._withStripped = true;
 
@@ -6142,16 +6156,48 @@ var render = function render() {
     staticClass: "table m-auto"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.instruction, function (item, index) {
     return _c("tr", {
-      key: index
+      key: index,
+      staticClass: "clickable-row",
+      attrs: {
+        "data-href": "url://"
+      }
     }, [item.status == "in progress" ? _c("th", {
       attrs: {
         scope: "row"
       }
-    }, [_vm._v("\n          " + _vm._s(item.instructionId) + "\n        ")]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_vm._v(_vm._s(item.linkTo))]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("i", {
+    }, [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.instructionId) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.linkTo) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("i", {
       staticClass: "material-icons"
-    }, [_vm._v(" local_shipping ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_vm._v(_vm._s(item.assignedVendor))]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_vm._v(_vm._s(item.attentionOf))]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_vm._v(_vm._s(item.quotationNo))]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_vm._v(_vm._s(item.customerPo))]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("div", {
+    }, [_vm._v(" local_shipping ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.assignedVendor) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.attentionOf) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.quotationNo) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_vm._v("\n\n              " + _vm._s(item.customerPo) + "\n            ")])]) : _vm._e(), _vm._v(" "), item.status == "in progress" ? _c("td", [_c("a", {
+      attrs: {
+        href: "/service"
+      }
+    }, [_c("div", {
       staticClass: "status"
-    }, [_vm._v(_vm._s(item.status))])]) : _vm._e()]);
+    }, [_vm._v("\n                " + _vm._s(item.status) + "\n              ")])])]) : _vm._e()]);
   }), 0)])]);
 };
 var staticRenderFns = [function () {
@@ -12664,7 +12710,7 @@ defineJQueryPlugin(Toast);
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.6.1
+ * jQuery JavaScript Library v3.6.2
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -12674,7 +12720,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2022-08-26T17:52Z
+ * Date: 2022-12-13T14:56Z
  */
 ( function( global, factory ) {
 
@@ -12816,7 +12862,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.6.1",
+	version = "3.6.2",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -13187,14 +13233,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.6
+ * Sizzle CSS Selector Engine v2.3.8
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2021-02-16
+ * Date: 2022-11-16
  */
 ( function( window ) {
 var i,
@@ -13544,6 +13590,27 @@ function Sizzle( selector, context, results, seed ) {
 				}
 
 				try {
+
+					// `qSA` may not throw for unrecognized parts using forgiving parsing:
+					// https://drafts.csswg.org/selectors/#forgiving-selector
+					// like the `:has()` pseudo-class:
+					// https://drafts.csswg.org/selectors/#relational
+					// `CSS.supports` is still expected to return `false` then:
+					// https://drafts.csswg.org/css-conditional-4/#typedef-supports-selector-fn
+					// https://drafts.csswg.org/css-conditional-4/#dfn-support-selector
+					if ( support.cssSupportsSelector &&
+
+						// eslint-disable-next-line no-undef
+						!CSS.supports( "selector(" + newSelector + ")" ) ) {
+
+						// Support: IE 11+
+						// Throw to get to the same code path as an error directly in qSA.
+						// Note: once we only support browser supporting
+						// `CSS.supports('selector(...)')`, we can most likely drop
+						// the `try-catch`. IE doesn't implement the API.
+						throw new Error();
+					}
+
 					push.apply( results,
 						newContext.querySelectorAll( newSelector )
 					);
@@ -13839,6 +13906,31 @@ setDocument = Sizzle.setDocument = function( node ) {
 			!el.querySelectorAll( ":scope fieldset div" ).length;
 	} );
 
+	// Support: Chrome 105+, Firefox 104+, Safari 15.4+
+	// Make sure forgiving mode is not used in `CSS.supports( "selector(...)" )`.
+	//
+	// `:is()` uses a forgiving selector list as an argument and is widely
+	// implemented, so it's a good one to test against.
+	support.cssSupportsSelector = assert( function() {
+		/* eslint-disable no-undef */
+
+		return CSS.supports( "selector(*)" ) &&
+
+			// Support: Firefox 78-81 only
+			// In old Firefox, `:is()` didn't use forgiving parsing. In that case,
+			// fail this test as there's no selector to test against that.
+			// `CSS.supports` uses unforgiving parsing
+			document.querySelectorAll( ":is(:jqfake)" ) &&
+
+			// `*` is needed as Safari & newer Chrome implemented something in between
+			// for `:has()` - it throws in `qSA` if it only contains an unsupported
+			// argument but multiple ones, one of which is supported, are fine.
+			// We want to play safe in case `:is()` gets the same treatment.
+			!CSS.supports( "selector(:is(*,:jqfake))" );
+
+		/* eslint-enable */
+	} );
+
 	/* Attributes
 	---------------------------------------------------------------------- */
 
@@ -14105,6 +14197,18 @@ setDocument = Sizzle.setDocument = function( node ) {
 		} );
 	}
 
+	if ( !support.cssSupportsSelector ) {
+
+		// Support: Chrome 105+, Safari 15.4+
+		// `:has()` uses a forgiving selector list as an argument so our regular
+		// `try-catch` mechanism fails to catch `:has()` with arguments not supported
+		// natively like `:has(:contains("Foo"))`. Where supported & spec-compliant,
+		// we now use `CSS.supports("selector(SELECTOR_TO_BE_TESTED)")` but outside
+		// that, let's mark `:has` as buggy to always use jQuery traversal for
+		// `:has()`.
+		rbuggyQSA.push( ":has" );
+	}
+
 	rbuggyQSA = rbuggyQSA.length && new RegExp( rbuggyQSA.join( "|" ) );
 	rbuggyMatches = rbuggyMatches.length && new RegExp( rbuggyMatches.join( "|" ) );
 
@@ -14117,7 +14221,14 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// As in, an element does not contain itself
 	contains = hasCompare || rnative.test( docElem.contains ) ?
 		function( a, b ) {
-			var adown = a.nodeType === 9 ? a.documentElement : a,
+
+			// Support: IE <9 only
+			// IE doesn't have `contains` on `document` so we need to check for
+			// `documentElement` presence.
+			// We need to fall back to `a` when `documentElement` is missing
+			// as `ownerDocument` of elements within `<template/>` may have
+			// a null one - a default behavior of all modern browsers.
+			var adown = a.nodeType === 9 && a.documentElement || a,
 				bup = b && b.parentNode;
 			return a === bup || !!( bup && bup.nodeType === 1 && (
 				adown.contains ?
@@ -14907,7 +15018,7 @@ Expr = Sizzle.selectors = {
 			return elem.nodeName.toLowerCase() === "input" &&
 				elem.type === "text" &&
 
-				// Support: IE<8
+				// Support: IE <10 only
 				// New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
 				( ( attr = elem.getAttribute( "type" ) ) == null ||
 					attr.toLowerCase() === "text" );
@@ -19273,17 +19384,37 @@ function curCSS( elem, name, computed ) {
 	//   .css('filter') (IE 9 only, trac-12537)
 	//   .css('--customProperty) (gh-3144)
 	if ( computed ) {
+
+		// Support: IE <=9 - 11+
+		// IE only supports `"float"` in `getPropertyValue`; in computed styles
+		// it's only available as `"cssFloat"`. We no longer modify properties
+		// sent to `.css()` apart from camelCasing, so we need to check both.
+		// Normally, this would create difference in behavior: if
+		// `getPropertyValue` returns an empty string, the value returned
+		// by `.css()` would be `undefined`. This is usually the case for
+		// disconnected elements. However, in IE even disconnected elements
+		// with no styles return `"none"` for `getPropertyValue( "float" )`
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 
-		// trim whitespace for custom property (issue gh-4926)
-		if ( isCustomProp ) {
+		if ( isCustomProp && ret ) {
 
-			// rtrim treats U+000D CARRIAGE RETURN and U+000C FORM FEED
+			// Support: Firefox 105+, Chrome <=105+
+			// Spec requires trimming whitespace for custom properties (gh-4926).
+			// Firefox only trims leading whitespace. Chrome just collapses
+			// both leading & trailing whitespace to a single space.
+			//
+			// Fall back to `undefined` if empty string returned.
+			// This collapses a missing definition with property defined
+			// and set to an empty string but there's no standard API
+			// allowing us to differentiate them without a performance penalty
+			// and returning `undefined` aligns with older jQuery.
+			//
+			// rtrimCSS treats U+000D CARRIAGE RETURN and U+000C FORM FEED
 			// as whitespace while CSS does not, but this is not a problem
 			// because CSS preprocessing replaces them with U+000A LINE FEED
 			// (which *is* CSS whitespace)
 			// https://www.w3.org/TR/css-syntax-3/#input-preprocessing
-			ret = ret.replace( rtrimCSS, "$1" );
+			ret = ret.replace( rtrimCSS, "$1" ) || undefined;
 		}
 
 		if ( ret === "" && !isAttached( elem ) ) {
@@ -23594,7 +23725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-3d2d2ea4] {\n  /* position: relative; */\n  margin-top: 30px !important;\n  width: 90%;\n  /* padding-top: 100px !important; */\n}\nthead[data-v-3d2d2ea4] {\n  background-color: #b9c0c7;\n  /* background-color: #bbbbbb; */\n  color: white;\n}\ntd > i[data-v-3d2d2ea4] {\n  color: #b9c0c7;\n}\ntd > select[data-v-3d2d2ea4] {\n  background-color: #00bfbf;\n}\n.status[data-v-3d2d2ea4] {\n  /* width: 100px; */\n  padding: 5px 8px 5px 8px;\n  height: auto;\n  border-radius: 10px;\n  background-color: #00c060;\n  color: #ffffff;\n  text-align: center;\n  font-size: 12px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-3d2d2ea4] {\r\n  /* position: relative; */\r\n  margin-top: 30px !important;\r\n  width: 90%;\r\n  /* padding-top: 100px !important; */\n}\nthead[data-v-3d2d2ea4] {\r\n  background-color: #b9c0c7;\r\n  /* background-color: #bbbbbb; */\r\n  color: white;\n}\ntd > i[data-v-3d2d2ea4] {\r\n  color: #b9c0c7;\n}\ntd > select[data-v-3d2d2ea4] {\r\n  background-color: #00bfbf;\n}\n.status[data-v-3d2d2ea4] {\r\n  /* width: 100px; */\r\n  padding: 5px 8px 5px 8px;\r\n  height: auto;\r\n  border-radius: 10px;\r\n  background-color: #00c060;\r\n  color: #ffffff;\r\n  text-align: center;\r\n  font-size: 12px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23618,7 +23749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\n  padding: 0 0 100px 0;\n  width: 98%;\n  margin-bottom: 100px !important;\n  background-color: #fff;\n  box-shadow: 5px 5px 8px #888888;\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #00bfbf;\n  margin-right: 20px;\n  margin-left: 20px;\n}\n.customCompleted[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #adadad;\n}\n.customSearch[data-v-a4273d0c] {\n  border: 1px solid #b9c0c7;\n  width: 30px;\n  border-radius: 5px;\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\n  border: 1px solid #b9c0c7;\n  border-radius: 5px;\n  width: 70px;\n  color: #00bfbf;\n}\n.customExport > span[data-v-a4273d0c] {\n  font-weight: bold;\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\n  margin: 20px 20px 0 0 !important;\n  padding: 7px 0 7px 0;\n  width: 220px;\n  border-radius: 5px;\n  background-color: #00bfbf;\n  /* background-color: #1dccb5; */\n  font-weight: bold;\n  color: white;\n  border: 0;\n}\n.accordion-body[data-v-a4273d0c] {\n  background-color: #f1f1f1;\n  width: 220px;\n}\n.logisticLink[data-v-a4273d0c]:hover,\n.serviceLink[data-v-a4273d0c]:hover {\n  background-color: #dfdfdf;\n}\n.logisticLink[data-v-a4273d0c],\n.serviceLink[data-v-a4273d0c] {\n  padding: 10px 0 10px 0;\n}\n.logisticLink > i[data-v-a4273d0c],\n.serviceLink > i[data-v-a4273d0c] {\n  padding-left: 20px;\n  color: #00bfbf;\n  vertical-align: bottom;\n  font-size: 20px !important;\n}\n.logisticLink > a[data-v-a4273d0c],\n.serviceLink > a[data-v-a4273d0c] {\n  padding-left: 20px;\n  padding-bottom: 15px;\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\n  width: 95%;\n  border: 1px solid;\n  margin: auto;\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\n  margin: 20px 0 0 20px;\n  color: #b9c0c7;\n}\n\n/* search */\n.search-box[data-v-a4273d0c] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background: #b9c0c7;\n  height: 40px;\n  border-radius: 40px;\n  /* padding: 10px; */\n}\n.search-box:hover > input[data-v-a4273d0c] {\n  width: 200px !important;\n  padding: 0 10px;\n}\n.search-box:hover > .icon[data-v-a4273d0c] {\n  background: #ffffff;\n}\n.icon[data-v-a4273d0c]:hover {\n  transform: rotate(360deg) scale(0.8);\n}\ninput#search[data-v-a4273d0c] {\n  width: 0;\n  border: none;\n  outline: none;\n  padding: 0;\n  background: none;\n  font-size: 1.1rem;\n  transition: 0.5s ease;\n  line-height: 40px;\n  color: #fff;\n}\n.icon[data-v-a4273d0c] {\n  color: #21dfcd;\n  float: right;\n  width: 40px;\n  font-size: 1.3rem;\n  height: 40px;\n  border-radius: 50%;\n  background: #ffffff;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transition: 0.4s;\n  cursor: pointer;\n  text-decoration: none;\n}\n/* akhir search */\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#template[data-v-a4273d0c] {\r\n  padding: 0 0 100px 0;\r\n  width: 98%;\r\n  margin-bottom: 100px !important;\r\n  background-color: #fff;\r\n  box-shadow: 5px 5px 8px #888888;\r\n  border-radius: 10px;\n}\n.customOpen[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  margin-right: 20px;\r\n  margin-left: 20px;\r\n  color: #adadad;\n}\n.customCompleted[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #adadad;\n}\n.teal[data-v-a4273d0c] {\r\n  color: #00bfbf;\n}\n.customExport[data-v-a4273d0c] {\r\n  border: 1px solid #b9c0c7;\r\n  border-radius: 5px;\r\n  width: 70px;\r\n  color: #00bfbf;\n}\n.customExport>span[data-v-a4273d0c] {\r\n  font-weight: bold;\r\n  color: #494949;\n}\n.customButtonCreate[data-v-a4273d0c] {\r\n  margin: 20px 20px 0 0 !important;\r\n  padding: 7px 0 7px 0;\r\n  width: 220px;\r\n  border-radius: 5px;\r\n  background-color: #00bfbf;\r\n  /* background-color: #1dccb5; */\r\n  font-weight: bold;\r\n  color: white;\r\n  border: 0;\n}\n.customMenu[data-v-a4273d0c] {\r\n  border: none;\r\n  width: 220px;\n}\n.logisticLink>a>i[data-v-a4273d0c],\r\n.serviceLink>a>i[data-v-a4273d0c] {\r\n  padding-right: 20px !important;\r\n  color: #00bfbf !important;\r\n  vertical-align: bottom !important;\r\n  font-size: 20px !important;\n}\n.logisticLink>a[data-v-a4273d0c],\r\n.serviceLink>a[data-v-a4273d0c] {\r\n  padding-left: 20px;\r\n  padding-bottom: 15px;\r\n  color: black !important;\n}\nhr[data-v-a4273d0c] {\r\n  width: 95%;\r\n  border: 1px solid;\r\n  margin: auto;\r\n  margin-top: 15px;\n}\n.customDisplay[data-v-a4273d0c] {\r\n  margin: 20px 0 0 20px;\r\n  color: #b9c0c7;\n}\r\n\r\n/* search */\n.search-box[data-v-a4273d0c] {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background: #b9c0c7;\r\n  height: 40px;\r\n  border-radius: 40px;\r\n  /* padding: 10px; */\n}\n.search-box:hover>input[data-v-a4273d0c] {\r\n  width: 200px !important;\r\n  padding: 0 10px;\n}\n.search-box:hover>.icon[data-v-a4273d0c] {\r\n  background: #ffffff;\n}\n.icon[data-v-a4273d0c]:hover {\r\n  transform: rotate(360deg) scale(0.8);\n}\ninput#search[data-v-a4273d0c] {\r\n  width: 0;\r\n  border: none;\r\n  outline: none;\r\n  padding: 0;\r\n  background: none;\r\n  font-size: 1.1rem;\r\n  transition: 0.5s ease;\r\n  line-height: 40px;\r\n  color: #fff;\n}\n.icon[data-v-a4273d0c] {\r\n  color: #21dfcd;\r\n  float: right;\r\n  width: 40px;\r\n  font-size: 1.3rem;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  background: #ffffff;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  transition: 0.4s;\r\n  cursor: pointer;\r\n  text-decoration: none;\n}\r\n\r\n/* akhir search */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23642,7 +23773,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-87f0136e] {\n  /* position: relative; */\n  margin-top: 30px !important;\n  width: 90%;\n  /* padding-top: 100px !important; */\n}\nthead[data-v-87f0136e] {\n  background-color: #b9c0c7;\n  /* background-color: #bbbbbb; */\n  color: white;\n}\ntd > i[data-v-87f0136e] {\n  color: #b9c0c7;\n}\n.status[data-v-87f0136e] {\n  padding: 5px 8px 5px 8px;\n  height: auto;\n  border-radius: 10px;\n  background-color: #e2ebf9;\n  color: #637ca0;\n  text-align: center;\n  font-size: 12px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-87f0136e] {\r\n  /* position: relative; */\r\n  margin-top: 30px !important;\r\n  width: 90%;\r\n  /* padding-top: 100px !important; */\n}\nthead[data-v-87f0136e] {\r\n  background-color: #b9c0c7;\r\n  /* background-color: #bbbbbb; */\r\n  color: white;\n}\ntd > i[data-v-87f0136e] {\r\n  color: #b9c0c7;\n}\n.status[data-v-87f0136e] {\r\n  padding: 5px 8px 5px 8px;\r\n  height: auto;\r\n  border-radius: 10px;\r\n  background-color: #e2ebf9;\r\n  color: #637ca0;\r\n  text-align: center;\r\n  font-size: 12px;\n}\na[data-v-87f0136e]{\r\n  color: black;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
