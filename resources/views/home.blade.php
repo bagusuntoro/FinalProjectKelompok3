@@ -294,12 +294,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0">3rd Party Instruction</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Vendor Management</a></li>
-              <li class="breadcrumb-item active">3rd Party Instruction</li>
-            </ol>
+           
           </div><!-- /.col -->
         </div><!-- /.row -->
+        <div class="row">
+          <div class="colsm-6">
+            <ol class="breadcrumb">
+                <li class="">Vendor Management </li>
+                <li class="ps-3 pe-3" style="color:#00bfbf;">></li>
+                <li class="active" style="color:#00bfbf;">3rd Party Instruction</li>
+            </ol>
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
@@ -338,6 +344,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 <script src="{{mix('js/app.js')}}"></script>
 </body>
 </html>

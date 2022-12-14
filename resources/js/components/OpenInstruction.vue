@@ -14,46 +14,53 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in instruction" :key="index">
+        <tr
+          v-for="(item, index) in instruction"
+          :key="index"
+          class="clickable-row"
+          data-href="url://"
+        >
           <th scope="row" v-if="item.status == 'in progress'">
-            {{ item.instructionId }}
+            <a href="/service">
+              {{ item.instructionId }}
+            </a>
           </th>
-          <td v-if="item.status == 'in progress'">{{ item.linkTo }}</td>
+          <td v-if="item.status == 'in progress'">
+            <a href="/service">
+              {{ item.linkTo }}
+            </a>
+          </td>
           <td v-if="item.status == 'in progress'">
             <i class="material-icons"> local_shipping </i>
           </td>
-          <td v-if="item.status == 'in progress'">{{ item.assignedVendor }}</td>
-          <td v-if="item.status == 'in progress'">{{ item.attentionOf }}</td>
-          <td v-if="item.status == 'in progress'">{{ item.quotationNo }}</td>
-          <td v-if="item.status == 'in progress'">{{ item.customerPo }}</td>
           <td v-if="item.status == 'in progress'">
-            <div class="status">{{ item.status }}</div>
+            <a href="/service">
+              {{ item.assignedVendor }}
+            </a>
+          </td>
+          <td v-if="item.status == 'in progress'">
+            <a href="/service">
+              {{ item.attentionOf }}
+            </a>
+          </td>
+          <td v-if="item.status == 'in progress'">
+            <a href="/service">
+              {{ item.quotationNo }}
+            </a>
+          </td>
+          <td v-if="item.status == 'in progress'">
+            <a href="/service">
+              {{ item.customerPo }}
+            </a>
+          </td>
+          <td v-if="item.status == 'in progress'">
+            <a href="/service">
+              <div class="status">
+                {{ item.status }}
+              </div>
+            </a>
           </td>
         </tr>
-        <!-- <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">in progress</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">in progress</div>
-          </td>
-        </tr> -->
       </tbody>
     </table>
   </div>
@@ -68,6 +75,13 @@ export default {
         return [];
       },
     },
+  },
+  mounted() {
+    jQuery(document).ready(function ($) {
+      $(".clickable-row").click(function () {
+        window.location = $(this).data("href");
+      });
+    });
   },
 };
 </script>
@@ -95,5 +109,8 @@ td > i {
   color: #637ca0;
   text-align: center;
   font-size: 12px;
+}
+a {
+  color: black;
 }
 </style>
