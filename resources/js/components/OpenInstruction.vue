@@ -14,40 +14,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
+        <tr v-for="(item, index) in instructions" :key="index">
+          <th scope="row">{{ item.instruction_id }}</th>
+          <td>{{ item.link_to }}</td>
           <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td>{{ item.assigned_vendor }}</td>
+          <td>{{ item.attention_of }}</td>
+          <td>{{ item.quotation_no }}</td>
+          <td>{{ item.customer_po }}</td>
           <td>
-            <div class="status">in progress</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">in progress</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">in progress</div>
+            <div class="status">{{ item.status }}</div>
           </td>
         </tr>
       </tbody>
@@ -59,7 +35,16 @@
 // import { response } from "express";
 // import axios from "axios";
 
-export default {};
+export default {
+  props: {
+    instructions: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>

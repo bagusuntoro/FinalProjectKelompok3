@@ -16,7 +16,6 @@ const routes = [
   {
     path: "/",
     component: instruction,
-    name: instruction,
     children: [
       {
         path: "/",

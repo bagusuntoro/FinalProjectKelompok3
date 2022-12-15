@@ -58,14 +58,26 @@
     </div>
 
     <!-- call child components in instruction component -->
-    <router-view></router-view>
+    <router-view :instructions="instructions" />
 
     <h6 class="customDisplay">10 of 60 displayed</h6>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      instructions: [],
+    };
+  },
+  mounted() {
+    axios.get("/api/instruction/").then((response) => {
+      this.instructions = response.data.data;
+      console.log(this.instructions);
+    });
+  },
+};
 </script>
 
 <style scoped>

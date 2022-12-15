@@ -5364,7 +5364,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      instructions: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+    axios.get("/api/instruction/").then(function (response) {
+      _this.instructions = response.data.data;
+      console.log(_this.instructions);
+    });
+  }
+});
 
 /***/ }),
 
@@ -5382,7 +5395,16 @@ __webpack_require__.r(__webpack_exports__);
 // import { response } from "express";
 // import axios from "axios";
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    instructions: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -6043,7 +6065,11 @@ var render = function render() {
     attrs: {
       to: "/completed"
     }
-  }, [_vm._v("Completed")])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("router-view"), _vm._v(" "), _c("h6", {
+  }, [_vm._v("Completed")])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("router-view", {
+    attrs: {
+      instructions: _vm.instructions
+    }
+  }), _vm._v(" "), _c("h6", {
     staticClass: "customDisplay"
   }, [_vm._v("10 of 60 displayed")])], 1);
 };
@@ -6141,16 +6167,26 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "row"
   }, [_c("table", {
     staticClass: "table m-auto"
-  }, [_c("thead", [_c("tr", [_c("th", {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.instructions, function (item, index) {
+    return _c("tr", {
+      key: index
+    }, [_c("th", {
+      attrs: {
+        scope: "row"
+      }
+    }, [_vm._v(_vm._s(item.instruction_id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.link_to))]), _vm._v(" "), _vm._m(1, true), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.assigned_vendor))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.attention_of))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.quotation_no))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.customer_po))]), _vm._v(" "), _c("td", [_c("div", {
+      staticClass: "status"
+    }, [_vm._v(_vm._s(item.status))])])]);
+  }), 0)])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("th", {
     attrs: {
       scope: "col"
     }
@@ -6182,31 +6218,13 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("Status")])])]), _vm._v(" "), _c("tbody", [_c("tr", [_c("th", {
-    attrs: {
-      scope: "row"
-    }
-  }, [_vm._v("2")]), _vm._v(" "), _c("td", [_vm._v("Jacob")]), _vm._v(" "), _c("td", [_c("i", {
+  }, [_vm._v("Status")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_c("i", {
     staticClass: "material-icons"
-  }, [_vm._v(" local_shipping ")])]), _vm._v(" "), _c("td", [_vm._v("@fat")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Otto")]), _vm._v(" "), _c("td", [_vm._v("@mdo")]), _vm._v(" "), _c("td", [_c("div", {
-    staticClass: "status"
-  }, [_vm._v("in progress")])])]), _vm._v(" "), _c("tr", [_c("th", {
-    attrs: {
-      scope: "row"
-    }
-  }, [_vm._v("2")]), _vm._v(" "), _c("td", [_vm._v("Jacob")]), _vm._v(" "), _c("td", [_c("i", {
-    staticClass: "material-icons"
-  }, [_vm._v(" local_shipping ")])]), _vm._v(" "), _c("td", [_vm._v("@fat")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Otto")]), _vm._v(" "), _c("td", [_vm._v("@mdo")]), _vm._v(" "), _c("td", [_c("div", {
-    staticClass: "status"
-  }, [_vm._v("in progress")])])]), _vm._v(" "), _c("tr", [_c("th", {
-    attrs: {
-      scope: "row"
-    }
-  }, [_vm._v("3")]), _vm._v(" "), _c("td", [_vm._v("Larry the Bird")]), _vm._v(" "), _c("td", [_c("i", {
-    staticClass: "material-icons"
-  }, [_vm._v(" local_shipping ")])]), _vm._v(" "), _c("td", [_vm._v("@fat")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Otto")]), _vm._v(" "), _c("td", [_vm._v("@mdo")]), _vm._v(" "), _c("td", [_c("div", {
-    staticClass: "status"
-  }, [_vm._v("in progress")])])])])])]);
+  }, [_vm._v(" local_shipping ")])]);
 }];
 render._withStripped = true;
 
@@ -7280,7 +7298,6 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 var routes = [{
   path: "/",
   component: _components_InstructionComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-  name: _components_InstructionComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   children: [{
     path: "/",
     component: _components_OpenInstruction_vue__WEBPACK_IMPORTED_MODULE_7__["default"]

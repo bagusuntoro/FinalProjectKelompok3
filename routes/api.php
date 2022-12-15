@@ -38,7 +38,7 @@ Route::group([
 ], function(){
     Route::group([
         // Harap login dulu
-        'middleware' => 'auth:api'
+        // 'middleware' => 'auth:api'
     ], function(){
         Route::get('/', 'App\Http\Controllers\InstructionController@showInstructions'); // menampilkan semua data instruction        
 
