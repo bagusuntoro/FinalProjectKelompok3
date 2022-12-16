@@ -3,18 +3,18 @@
 
 Contribution TIM:
 
-Frontend:
-1. Bagus Untoro
-2. Beril Cholif
-3. Trisna
-
-
 Backend:
 1. Umi Farida
 2. Novi
 3. Dea
 4. Shofi
 5. Calvin
+
+Frontend:
+1. Bagus Untoro
+2. Beril Cholif
+3. Trisna
+
 
 
 ini merupakan kolaborasi dari kelas Frontend dan kelas Backend dimana peserta yang berhasil lolos hingga tahap akhir diberikan study kasus dan harus diselesaikan secara tim
