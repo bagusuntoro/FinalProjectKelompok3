@@ -14,16 +14,38 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in instructions" :key="index">
-          <th scope="row">{{ item.instruction_id }}</th>
-          <td>{{ item.link_to }}</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>{{ item.assigned_vendor }}</td>
-          <td>{{ item.attention_of }}</td>
-          <td>{{ item.quotation_no }}</td>
-          <td>{{ item.customer_po }}</td>
-          <td>
-            <div class="status">{{ item.status }}</div>
+        <tr
+          v-for="(item, index) in instructions"
+          :key="index"
+          class="clickable-row"
+          data-href="/service"
+          id="rowColor"
+        >
+          <td scope="row" v-if="item.status == 'On Progress'">
+            {{ item.instruction_id }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.link_to }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            <i class="material-icons"> local_shipping </i>
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.assigned_vendor }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.attention_of }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.quotation_no }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.customer_po }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            <div class="status">
+              {{ item.status }}
+            </div>
           </td>
         </tr>
       </tbody>
@@ -32,9 +54,6 @@
 </template>
 
 <script>
-// import { response } from "express";
-// import axios from "axios";
-
 export default {
   props: {
     instructions: {
@@ -43,6 +62,28 @@ export default {
         return [];
       },
     },
+  },
+  mounted() {
+    let tr = document.getElementsByClassName("clickable-row");
+
+    for (var i = 0; i < tr.length; i++) {
+      tr[i].addEventListener("mousemove", function () {
+        // Mengganti warna elemen ketika cursor mendekat
+        this.style.cursor = "pointer";
+        this.style.color = "#00bfbf";
+      });
+      tr[i].addEventListener("mouseout", function () {
+        // Mengganti warna elemen ketika kursor menjauh;
+        this.style.color = "black";
+      });
+    }
+
+    // link with jquery
+    jQuery(document).ready(function ($) {
+      $(".clickable-row").click(function () {
+        window.location = $(this).data("href");
+      });
+    });
   },
 };
 </script>
@@ -70,5 +111,8 @@ td > i {
   color: #637ca0;
   text-align: center;
   font-size: 12px;
+}
+a {
+  color: black;
 }
 </style>

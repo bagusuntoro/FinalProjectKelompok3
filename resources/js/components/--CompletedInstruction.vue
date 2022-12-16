@@ -15,26 +15,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in instructions" :key="index">
-          <th scope="row" v-if="item.status != 'On Progress'">
-            {{ item.instruction_id }}
-          </th>
-          <td v-if="item.status != 'On Progress'">
-            {{ item.link_to }}
-          </td>
-          <td v-if="item.status != 'On Progress'">
-            <i class="material-icons"> local_shipping </i>
-          </td>
-          <td v-if="item.status != 'On Progress'">
-            {{ item.assigned_vendor }}
-          </td>
-          <td v-if="item.status != 'On Progress'">
-            {{ item.attention_of }}
-          </td>
-          <td v-if="item.status != 'On Progress'">
-            {{ item.quotation_no }}
-          </td>
-          <td v-if="item.status != 'On Progress'">
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td><i class="material-icons"> local_shipping </i></td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>
             <select
               class="form-select form-select-sm"
               aria-label=".form-select-sm example"
@@ -45,14 +33,12 @@
               <option value="3">3</option>
             </select>
           </td>
-          <td v-if="item.status != 'On Progress'">
-            {{ item.customer_po }}
-          </td>
-          <td v-if="item.status != 'On Progress'">
-            <div class="status">{{ item.status }}</div>
+          <td>@mdo</td>
+          <td>
+            <div class="status">completed</div>
           </td>
         </tr>
-        <!-- <tr>
+        <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
           <td><i class="material-icons"> local_shipping </i></td>
@@ -97,23 +83,14 @@
           <td>
             <div class="status">completed</div>
           </td>
-        </tr> -->
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    instructions: {
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>

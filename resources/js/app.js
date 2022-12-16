@@ -9,6 +9,7 @@ require("./bootstrap");
 window.Vue = require("vue").default;
 import Vue from "vue";
 import router from "./router";
+import vuex from "vuex";
 
 // import adminLte from 'admin-lte'
 // import Vue from 'vue';
@@ -57,4 +58,5 @@ Vue.component('service-instruction', require('./components/DetailTrisna.vue').de
 const app = new Vue({
   el: "#app",
   router,
+  vuex
 });
