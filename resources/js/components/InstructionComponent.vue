@@ -2,7 +2,9 @@
   <div id="template" class="m-auto">
     <div class="row pt-4">
       <div class="col-md-6">
-        <router-link to="/" class="customOpen teal" id="open">Open</router-link>
+        <router-link to="/open" class="customOpen teal" id="open"
+          >Open</router-link
+        >
         <router-link to="/completed" class="customCompleted" id="completed"
           >Completed</router-link
         >
@@ -74,18 +76,11 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      instructions: [],
-    };
+  data: function () {
+    return {};
   },
-  // computed: {
-  //   ...mapGetters({
-  //     instruction: "getData",
-  //   }),
-  // },
   mounted() {
     let completed = document.getElementById("completed");
     let open = document.getElementById("open");
@@ -95,12 +90,18 @@ export default {
       open.classList.toggle("teal");
     });
 
-    axios.get("/api/instruction/").then((response) => {
-      this.instructions = response.data.data;
-      console.log(this.instructions);
-    });
+    // axios.get("/api/instruction/").then((response) => {
+    // this.instructions = response.data.data;
+    // console.log(this.instructions);
+    // });
 
-    // $('button').text('Hello World!');
+    this.$store.dispatch("showData");
+  },
+  computed: {
+    ...mapGetters({
+      instructions: "getInstruction",
+    }),
+    // console.log(instructions)
   },
 };
 </script>

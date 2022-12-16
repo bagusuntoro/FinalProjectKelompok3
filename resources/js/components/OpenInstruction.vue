@@ -17,9 +17,10 @@
         <tr
           v-for="(item, index) in instructions"
           :key="index"
-          class="clickable-row"
-          data-href="/service"
-          id="rowColor"
+          v-bind:class="{ highlight: isHighlighted(index) }"
+          @mouseover="highlightRow(index)"
+          @mouseout="unhighlightRow(index)"
+          @click="goToLink('/service')"
         >
           <td scope="row" v-if="item.status == 'On Progress'">
             {{ item.instruction_id }}
@@ -63,32 +64,35 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      highlightedRow: -1,
+    };
+  },
   mounted() {
-    let tr = document.getElementsByClassName("clickable-row");
-
-    for (var i = 0; i < tr.length; i++) {
-      tr[i].addEventListener("mousemove", function () {
-        // Mengganti warna elemen ketika cursor mendekat
-        this.style.cursor = "pointer";
-        this.style.color = "#00bfbf";
-      });
-      tr[i].addEventListener("mouseout", function () {
-        // Mengganti warna elemen ketika kursor menjauh;
-        this.style.color = "black";
-      });
-    }
-
-    // link with jquery
-    jQuery(document).ready(function ($) {
-      $(".clickable-row").click(function () {
-        window.location = $(this).data("href");
-      });
-    });
+    // console.log(this.instructions);
+  },
+  methods: {
+    highlightRow(index) {
+      this.highlightedRow = index;
+    },
+    unhighlightRow(index) {
+      this.highlightedRow = -1;
+    },
+    isHighlighted(index) {
+      return index === this.highlightedRow;
+    },
+    goToLink(link) {
+      window.location.href = link;
+    },
   },
 };
 </script>
 
 <style scoped>
+.highlight {
+  background-color: #f0f0f0;
+}
 table {
   /* position: relative; */
   margin-top: 30px !important;

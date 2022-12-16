@@ -9,7 +9,7 @@ require("./bootstrap");
 window.Vue = require("vue").default;
 import Vue from "vue";
 import router from "./router";
-import vuex from "vuex";
+import store from './store'
 
 // import adminLte from 'admin-lte'
 // import Vue from 'vue';
@@ -29,6 +29,10 @@ import vuex from "vuex";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
+
+// login
+Vue.component('login-component', require('./components/LoginComponent.vue').default);
 
 
 
@@ -58,5 +62,5 @@ Vue.component('service-instruction', require('./components/DetailTrisna.vue').de
 const app = new Vue({
   el: "#app",
   router,
-  vuex
+  store
 });

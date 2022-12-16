@@ -29,17 +29,22 @@
             fill="currentColor"
             class="bi bi-truck"
             viewBox="0 0 16 16"
-            color="green"
+            color="  #0dc7a9"
             style="display: inline-flex"
           >
             <path
               d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
             />
           </svg>
-          Dropdown link
+          Logistic Intruction
         </a>
 
         <ul class="dropdown-menu">
+          <input
+            type="email"
+            class="form-control"
+            id="exampleDropdownFormEmail2"
+          />
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -297,6 +302,7 @@
                     tabindex="-1"
                     role="button"
                     aria-disabled="true"
+                    style="background-color: #0dc7a9; border-color: #0dc7a9"
                     >+</a
                   >
                 </td>
@@ -310,65 +316,139 @@
             tabindex="-1"
             role="button"
             aria-disabled="true"
-            style="max-inline-size: max-content; margin: 5px 29px"
+            style="
+              max-inline-size: max-content;
+              margin: 35px 29px;
+              background-color: #0dc7a9;
+              border-color: #0dc7a9;
+            "
             >+ Add Attachment</a
           >
-          <h4 style="margin: -91px 554px"><B>Notes</B></h4>
+
+          <form>
+            <div class="form-group" style="margin: -150px 300px; width: 785px">
+              <h4 label for="comment"><B>Notes</B></h4>
+              <textarea class="form-control" rows="3" id="comment"></textarea>
+            </div>
+          </form>
         </div>
-        <!-- Button trigger modal -->
+      </div>
+    </div>
+    <div
+      class="container"
+      style="
+        background-color: white;
+        display: block;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      "
+    >
+      <div class="dropdown">
+        <label for="exampleInputEmail1" class="form-label">Link To</label>
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="margin: 64px 50px"
+        >
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="
+        background-color: white;
+        display: block;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      "
+    >
+      <div style="margin-left: 775px">
+        <a href="/open">
+          <button type="button" class="btn btn-light" style="margin: 20px 0px">
+            Cancel
+          </button>
+        </a>
         <button
           type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          class="btn btn-light"
+          style="margin-left: 10px; border: solid 1px"
         >
-          Launch demo modal
+          Save A Draft
         </button>
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
+        <button
+          type="button"
+          class="btn btn-success"
+          style="
+            margin-left: 10px;
+            background-color: #0dc7a9;
+            border-color: #0dc7a9;
+          "
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Modal title
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">...</div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+          Submit
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: function () {
+    return {
+      dataInput: [
+        {
+          assigment_vendor: "",
+          attention_off: "",
+          quotation_no: "",
+          invoice_to: "",
+          customer_contact: "",
+          vendor_address: "",
+          customer_po_no: "",
+        },
+      ],
+      assigmentVendor: "",
+      attentionOff: "",
+      quotationNo: "",
+      invoiceTo: "",
+      customerContact: "",
+      vendorAddress: "",
+      customerPONo: "",
+    };
+  },
+  mounted() {},
+  methods: {
+    addData() {
+      let newData = {
+        assigment_vendor: this.assigmentVendor,
+        attention_off: this.attentionOff,
+        quotation_no: this.quotationNo,
+        invoice_to: this.invoiceTo,
+        customer_contact: this.customerContact,
+        vendor_address: this.vendorAddress,
+        customer_po_no: this.customerPONo,
+      };
+      this.dataInput.push(newData);
+      (this.assigmentVendor = ""),
+        (this.attentionOff = ""),
+        (this.quotationNo = ""),
+        (this.invoiceTo = ""),
+        (this.customerContact = ""),
+        (this.vendorAddress = ""),
+        (this.customerPONo = "");
+    },
+  },
+};
 </script>
 
-<style></style>
+<style>
+</style>

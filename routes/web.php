@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 // Route::get('/', function(){
 //     return view('welcome');
@@ -28,5 +31,5 @@ Route::post('/export', [App\Http\Controllers\InstructionController::class, 'expo
 Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
 
 Route::get('/{any}', function(){
-    return view('home');
+    return view('dashboard');
 })->where('any', '.*');

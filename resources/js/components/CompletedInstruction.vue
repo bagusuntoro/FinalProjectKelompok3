@@ -52,52 +52,6 @@
             <div class="status">{{ item.status }}</div>
           </td>
         </tr>
-        <!-- <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>
-            <select
-              class="form-select form-select-sm"
-              aria-label=".form-select-sm example"
-            >
-              <option selected>0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">completed</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>
-            <select
-              class="form-select form-select-sm"
-              aria-label=".form-select-sm example"
-            >
-              <option selected>0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">completed</div>
-          </td>
-        </tr> -->
       </tbody>
     </table>
   </div>
