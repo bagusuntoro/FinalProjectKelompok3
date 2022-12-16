@@ -3,17 +3,17 @@
 
 Contribution TIM:
 
-Backend:
-1. Umi Farida
-2. Novi
-3. Dea
-4. Shofi
-5. Calvin
+**Backend:**
+- Umi Farida
+- Novi
+- Dea
+- Shofi
+- Calvin
 
-Frontend:
-1. Bagus Untoro
-2. Beril Cholif
-3. Trisna
+**Frontend:**
+- Bagus Untoro
+- Beril Cholif
+- Trisna
 
 
 
