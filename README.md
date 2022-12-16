@@ -1,3 +1,34 @@
+
+# Project Akhir Inosoft Bootcamp
+
+Contribution TIM:
+
+Frontend:
+1. Bagus Untoro
+2. Beril Cholif
+3. Trisna
+
+
+Backend:
+1. Umi Farida
+2. Novi
+3. Dea
+4. Shofi
+5. Calvin
+
+
+ini merupakan kolaborasi dari kelas Frontend dan kelas Backend dimana peserta yang berhasil lolos hingga tahap akhir diberikan study kasus dan harus diselesaikan secara tim
+
+disini kami benar-benar merasakan simulasi dunia kerja dimana kami belajar bagaimana alur komunikasi antara Backend dan Frontend, serta kami juga belajar saling membantu, yang paling berkesan adalah pengalaman menggunakan git, dimana kami belajar banyak hal tentang git mulai dari add, commit push hingga bagian yang paling seru yakni merging apalagi saat codenya mengalami conflicts
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
