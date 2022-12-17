@@ -17,7 +17,13 @@
           <a href="#" class="col-md-10">
             <!-- search -->
             <div class="search-box ms-4">
-              <input type="text" placeholder="  search...." id="search" />
+              <input
+                type="text"
+                placeholder="  search...."
+                id="search"
+                v-model="search"
+                @input="fetchData"
+              />
               <a href="#" class="icon">
                 <i class="fas fa-search"></i>
               </a>
@@ -68,7 +74,7 @@
     </div>
 
     <!-- call child components in instruction component -->
-    <router-view :instructions="instructions" />
+    <router-view :instructions="items" />
     <!-- <open-instruction /> -->
 
     <h6 class="customDisplay">10 of 60 displayed</h6>
@@ -76,10 +82,13 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
-  data: function () {
-    return {};
+  data() {
+    return {
+      search: "",
+      items: [],
+    };
   },
   mounted() {
     let completed = document.getElementById("completed");
@@ -95,13 +104,39 @@ export default {
     // console.log(this.instructions);
     // });
 
-    this.$store.dispatch("showData");
+    // this.$store.dispatch("showData");
   },
   computed: {
-    ...mapGetters({
-      instructions: "getInstruction",
-    }),
+    // ...mapGetters({
+    //   instructions: "getInstruction",
+    // }),
     // console.log(instructions)
+  },
+  methods: {
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("/api/instruction/");
+        this.items = response.data.data;
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        this.items = response.data.data;
+      }
+    },
+
+    // addSearch(search) {
+    //   console.log(search);
+    //   this.$store.dispatch("addSearch", this.search);
+    // },
+  },
+  created() {
+    // Panggil method fetchData saat pertama kali dijalankan
+    this.fetchData();
   },
 };
 </script>

@@ -6,21 +6,48 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    instructions: []
+    instructions: [],
+    search: ""
   },
   getters: {
     getInstruction: state => state.instructions
   },
   actions: {
     // show data instruction
-    async showData({ commit }) {
-      try {
-        let response = await axios.get("/api/instruction/")
+    // async showData({ commit }) {
+    //   try {
+    //     let response = await axios.get("/api/instruction/")
+    //     commit('setData', response.data.data)
+    //     // console.log(response)
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("/api/instruction/");
+        // this.items = response.data.data;
         commit('setData', response.data.data)
-        // console.log(response)
-      } catch (error) {
-        console.error(error)
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        // this.items = response.data.data;
+        commit('setData', response.data.data)
       }
+    },
+
+
+
+
+
+    addSearch(context, payload) {
+      context.commit('ADD_SEARCH', payload)
     },
 
     // add data
@@ -37,6 +64,9 @@ export default new Vuex.Store({
   mutations: {
     setData: (state, data) => {
       state.instructions = data
+    },
+    ADD_SEARCH(state, payload) {
+      state.search.push(payload)
     }
   },
 })

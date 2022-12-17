@@ -16,9 +16,9 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in instructions" :key="index">
-          <th scope="row" v-if="item.status != 'On Progress'">
+          <td scope="row" v-if="item.status != 'On Progress'">
             {{ item.instruction_id }}
-          </th>
+          </td>
           <td v-if="item.status != 'On Progress'">
             {{ item.link_to }}
           </td>

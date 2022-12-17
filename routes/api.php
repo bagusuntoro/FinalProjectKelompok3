@@ -64,7 +64,7 @@ Route::group([
         Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress'); //menampilkan data instruction yang memiliki status on progress
         Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed
         Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
-        Route::get('/search/', 'App\Http\Controllers\InstructionController@search')->name('search');   
+        Route::get('/search', 'App\Http\Controllers\InstructionController@search')->name('search');   
         Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
     
     }); 
