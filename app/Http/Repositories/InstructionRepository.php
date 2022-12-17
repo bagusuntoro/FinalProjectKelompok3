@@ -89,7 +89,7 @@ class InstructionRepository
         
             $newData["attachment"] = $attachments;            
         }
-
+        // dd($newData);
 		$id = $this->instructionModel->save($newData);
 
         return $id;

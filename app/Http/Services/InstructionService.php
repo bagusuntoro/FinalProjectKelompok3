@@ -156,7 +156,7 @@ class InstructionService
         }
         // //jika validasi berhasil 
         $detail_cost = $this->insertMultipleCostDetail($request);
-
+        
         if ($request['instruction_type'] == 'Logistic Instruction') {
             $key = 'LI';
         } else if ($request['instruction_type'] == 'Service Instruction') {
@@ -165,16 +165,15 @@ class InstructionService
 
         $code = $this->getInstructionNo($key);
 
-
         $user = auth()->user()->name;
-
+        
         $request['detail_cost'] = $detail_cost;
         $request['user'] = $user;
         $request['status'] = $stat;
         $request['instruction_id'] = $code;
 
+        // dd($request);
         $instruction = $this->instructionRepository->create($request);
-
         $data = $this->instructionRepository->getById($instruction);
 
         return $data;
