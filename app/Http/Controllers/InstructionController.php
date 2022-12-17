@@ -225,6 +225,26 @@ class InstructionController extends Controller
     */
     public function setTerminated(Request $request)
     {
+        
+        $req = (array) $request->all();
+        $setStatus = 'Temrinated';
+        
+        try {
+            $kondisi = true;
+            $statusCode = 200;
+            $message = "Berhasil menambah data";
+            $data = $this->terminateService->create($req, $setStatus);
+            $history = array_column($data,'_id');
+            $this->historyService->create($history, $setStatus);
+        } catch (Exception $e) {
+            $kondisi = false;
+            $statusCode = 400;
+            $message = "Gagal menambah data";
+            $data = json_decode($e->getMessage());
+        }
+        return $this->responseMessage($kondisi, $message, $data, $statusCode);  
+        //--------------------------------------------
+        
         // men-validasi data
         $validator = Validator::make($request->all(), [
             'instruction_id' => 'required'
@@ -247,6 +267,7 @@ class InstructionController extends Controller
         $status = 'Set to terminated';
         $this->instructionService->setTerminated($instructionId);
         $this->historyService->updateHistory($instructionId, $status);
+        $this->terminateService->createTerminate($instructionId, $status);
 
         // pesan setelah status instruction berhasil diubah
         return $this->responseMessage(true, 'Status changed to terminated', null, 201);
