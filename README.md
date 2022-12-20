@@ -1,4 +1,4 @@
-# About bagus_style
+# bagus_style
 
 di branch ini saya melakukan persiapan untuk final project ini diantaranya:
 
