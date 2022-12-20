@@ -8,6 +8,7 @@
         flex-direction: row;
         flex-wrap: wrap;
       "
+      @submit.prevent="save"
     >
       <div class="dropdown">
         <a
@@ -83,6 +84,7 @@
           class="form-select"
           aria-label="Default select example"
           style="inline-size: min-content"
+          v-model="instructions.vendor"
         >
           <option selected>Enter Vendor</option>
           <option value="1">One</option>
@@ -93,12 +95,20 @@
       <div class="mb-1" style="margin-left: 20px; font-size: smaller">
         <label for="exampleInputEmail1" class="form-label">Attention Off</label>
 
-        <input class="form-control" placeholder="Enter Attention Off" />
+        <input
+          class="form-control"
+          placeholder="Enter Attention Off"
+          v-model="instructions.attention"
+        />
       </div>
 
       <div class="mb-1" style="margin-left: 20px; font-size: smaller">
         <label for="exampleInputEmail1" class="form-label">Quotation No.</label>
-        <input class="form-control" placeholder="Enter Quotation" />
+        <input
+          class="form-control"
+          placeholder="Enter Quotation"
+          v-model="instructions.quotation"
+        />
       </div>
       <div class="mb-1" style="margin-left: 20px; font-size: smaller">
         <label for="exampleInputEmail1" class="form-label">Invoice To</label>
@@ -106,6 +116,7 @@
           class="form-select"
           aria-label="Default select example"
           style="inline-size: min-content"
+          v-model="instructions.invoice"
         >
           <option selected>Select an Option</option>
           <option value="1">One</option>
@@ -121,6 +132,7 @@
           class="form-select"
           aria-label="Default select example"
           style="inline-size: min-content"
+          v-model="instructions.custommerContact"
         >
           <option selected>Select Customer</option>
           <option value="1">One</option>
@@ -150,6 +162,7 @@
           class="form-select"
           aria-label="Default select example"
           style="width: 80%"
+          v-model="instructions.vendorAddress"
         >
           <option selected>Open this select menu</option>
           <option value="1">One</option>
@@ -169,6 +182,7 @@
         placeholder="Default input"
         aria-label="default input example"
         style="width: 165px; margin: -49px 925px"
+        v-model="instructions.customerPoNo"
       />
       <!-- ctable cost detail -->
       <div
@@ -386,7 +400,7 @@
           Save A Draft
         </button>
         <button
-          type="button"
+          type="submit"
           class="btn btn-success"
           style="
             margin-left: 10px;
@@ -405,46 +419,38 @@
 export default {
   data: function () {
     return {
-      dataInput: [
+      instructions: [
         {
-          assigment_vendor: "",
-          attention_off: "",
-          quotation_no: "",
-          invoice_to: "",
-          customer_contact: "",
-          vendor_address: "",
-          customer_po_no: "",
+          vendor: "",
+          attention: "",
+          quotation: "",
+          invoice: "",
+          custommerContact: "",
+          vendorAddress: "",
+          customerPoNo: "",
         },
       ],
-      assigmentVendor: "",
-      attentionOff: "",
-      quotationNo: "",
-      invoiceTo: "",
-      customerContact: "",
-      vendorAddress: "",
-      customerPONo: "",
     };
   },
   mounted() {},
   methods: {
-    addData() {
-      let newData = {
-        assigment_vendor: this.assigmentVendor,
-        attention_off: this.attentionOff,
-        quotation_no: this.quotationNo,
-        invoice_to: this.invoiceTo,
-        customer_contact: this.customerContact,
-        vendor_address: this.vendorAddress,
-        customer_po_no: this.customerPONo,
-      };
-      this.dataInput.push(newData);
-      (this.assigmentVendor = ""),
-        (this.attentionOff = ""),
-        (this.quotationNo = ""),
-        (this.invoiceTo = ""),
-        (this.customerContact = ""),
-        (this.vendorAddress = ""),
-        (this.customerPONo = "");
+    async save() {
+      try {
+        const response = await axios.post(
+          "/api/instruction/add/",
+          instructions
+        );
+        this.items = response.data.data;
+        this.vendor = "";
+        this.attention = "";
+        this.quotation = "";
+        this.invoice = "";
+        this.custommerContact = "";
+        this.vendorAddress = "";
+        this.customerPoNo = "";
+      } catch (e) {
+        console.log("err");
+      }
     },
   },
 };

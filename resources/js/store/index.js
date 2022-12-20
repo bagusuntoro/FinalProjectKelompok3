@@ -7,66 +7,44 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     instructions: [],
-    search: ""
+    detail: [],
+    index: '637e0fa0c366363b00026d59'
   },
   getters: {
-    getInstruction: state => state.instructions
+    // get all instruction
+    getInstruction: state => state.instructions,
+
+    // index for show detail instruction
+    getDetail: state => state.detail
   },
+
+  mutations: {
+    SET_DATA(state, index) {
+      state.index = index;
+    },
+
+    // for detail instruction
+    setDetail: (state, data) => {
+      state.detail = data
+    },
+  },
+
   actions: {
-    // show data instruction
-    // async showData({ commit }) {
-    //   try {
-    //     let response = await axios.get("/api/instruction/")
-    //     commit('setData', response.data.data)
-    //     // console.log(response)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
+    // saveData(context, index) {
+    //   context.commit('SET_DATA', index)
     // },
 
-    async fetchData() {
-      if (this.search.length === 0) {
-        // Jika input kosong, ambil data dari API show
-        const response = await axios.get("/api/instruction/");
-        // this.items = response.data.data;
-        commit('setData', response.data.data)
-      } else {
-        // Jika input tidak kosong, ambil data dari API search
-        const response = await axios.get("/api/instruction/search/", {
-          params: {
-            key: this.search,
-          },
-        });
-        // this.items = response.data.data;
-        commit('setData', response.data.data)
+    // api for detail
+    async showDetail({ commit }) {
+      try {
+        let response = await axios.get(`/api/instruction/${this.state.index}`)
+        commit('setDetail', response.data.data)
+        // console.log(response.data.data)
+      } catch (error) {
+        console.error(error)
       }
     },
 
-
-
-
-
-    addSearch(context, payload) {
-      context.commit('ADD_SEARCH', payload)
-    },
-
-    // add data
-    // async showData({ commit }) {
-    //   try {
-    //     let response = await axios.post("/api/instruction/add/")
-    //     commit('setData', response.data.data)
-    //     console.log(response)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // }
   },
-  mutations: {
-    setData: (state, data) => {
-      state.instructions = data
-    },
-    ADD_SEARCH(state, payload) {
-      state.search.push(payload)
-    }
-  },
+
 })

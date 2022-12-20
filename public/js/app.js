@@ -5353,11 +5353,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 // import AddvendorinvoiceComponent from './AddvendorinvoiceComponent.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    // AddvendorinvoiceComponent
-  }
+  data: function data() {
+    return {
+      // detail: [],
+    };
+  },
+  mounted: function mounted() {
+    this.$store.dispatch("showDetail");
+    // this.$store.dispatch("showData");
+    console.log(this.detail);
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+    detail: "getDetail"
+  }))
 });
 
 /***/ }),
@@ -5478,6 +5496,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     instructions: {
@@ -5493,9 +5519,28 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    // console.log(this.instructions);
+    // this.$store.dispatch("setIndex");
+    // console.log(`local${this.index}`);
   },
-  methods: {
+  computed: {
+    // ...mapGetters({
+    //   index: "getIndex",
+    // }),
+  },
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)(["SET_DATA"])), {}, {
+    sendIndex: function sendIndex(index) {
+      this.SET_DATA(index);
+      console.log(index);
+    },
+    // sendIndex(index) {
+    //   console.log(index);
+    // },
+    //set data index
+    // setIndex(index) {
+    //   this.index = index;
+    //   console.log(this.index);
+    // },
+    // ketika row di sorot
     highlightRow: function highlightRow(index) {
       this.highlightedRow = index;
     },
@@ -5508,7 +5553,7 @@ __webpack_require__.r(__webpack_exports__);
     goToLink: function goToLink(link) {
       window.location.href = link;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -5539,41 +5584,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dataInput: [{
-        assigment_vendor: "",
-        attention_off: "",
-        quotation_no: "",
-        invoice_to: "",
-        customer_contact: "",
-        vendor_address: "",
-        customer_po_no: ""
-      }],
-      assigmentVendor: "",
-      attentionOff: "",
-      quotationNo: "",
-      invoiceTo: "",
-      customerContact: "",
-      vendorAddress: "",
-      customerPONo: ""
+      instructions: [{
+        vendor: "",
+        attention: "",
+        quotation: "",
+        invoice: "",
+        custommerContact: "",
+        vendorAddress: "",
+        customerPoNo: ""
+      }]
     };
   },
   mounted: function mounted() {},
   methods: {
-    addData: function addData() {
-      var newData = {
-        assigment_vendor: this.assigmentVendor,
-        attention_off: this.attentionOff,
-        quotation_no: this.quotationNo,
-        invoice_to: this.invoiceTo,
-        customer_contact: this.customerContact,
-        vendor_address: this.vendorAddress,
-        customer_po_no: this.customerPONo
-      };
-      this.dataInput.push(newData);
-      this.assigmentVendor = "", this.attentionOff = "", this.quotationNo = "", this.invoiceTo = "", this.customerContact = "", this.vendorAddress = "", this.customerPONo = "";
+    save: function save() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post("/api/instruction/add/", instructions);
+              case 3:
+                response = _context.sent;
+                _this.items = response.data.data;
+                _this.vendor = "";
+                _this.attention = "";
+                _this.quotation = "";
+                _this.invoice = "";
+                _this.custommerContact = "";
+                _this.vendorAddress = "";
+                _this.customerPoNo = "";
+                _context.next = 17;
+                break;
+              case 14:
+                _context.prev = 14;
+                _context.t0 = _context["catch"](0);
+                console.log("err");
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 14]]);
+      }))();
     }
   }
 });
@@ -5756,7 +5820,7 @@ var render = function render() {
     attrs: {
       d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
     }
-  })]), _vm._v(" Terminate ")]), _vm._v(" "), _c("button", {
+  })]), _vm._v("\n      Terminate\n    ")]), _vm._v(" "), _c("button", {
     staticClass: "btn",
     staticStyle: {
       color: "#0dc7a9",
@@ -5775,7 +5839,7 @@ var render = function render() {
     attrs: {
       d: "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
     }
-  })]), _vm._v(" Modify ")]), _vm._v(" "), _c("div", {
+  })]), _vm._v("\n      Modify\n    ")]), _vm._v(" "), _c("div", {
     staticClass: "container",
     staticStyle: {
       "background-color": "white",
@@ -5783,7 +5847,268 @@ var render = function render() {
       "flex-direction": "row",
       "flex-wrap": "wrap"
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.instruction_type,
+      expression: "detail.instruction_type"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "instruction"
+    },
+    domProps: {
+      value: _vm.detail.instruction_type
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "instruction_type", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Type")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.instruction_id,
+      expression: "detail.instruction_id"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.instruction_id
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "instruction_id", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Si No.")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.customer_contract,
+      expression: "detail.customer_contract"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.customer_contract
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "customer_contract", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Customer")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.customer_po,
+      expression: "detail.customer_po"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.customer_po
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "customer_po", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Customer PO")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.status,
+      expression: "detail.status"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.status
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "status", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Status")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.attention_of,
+      expression: "detail.attention_of"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.attention_of
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "attention_of", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Atention of")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.assigned_vendor,
+      expression: "detail.assigned_vendor"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.assigned_vendor
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "assigned_vendor", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Assigned vendor")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.vendor_quotation,
+      expression: "detail.vendor_quotation"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.vendor_quotation
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "vendor_quotation", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Vendor Quotation")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.detail.vendor_address,
+      expression: "detail.vendor_address"
+    }],
+    staticClass: "form-control-plaintext",
+    attrs: {
+      type: "text",
+      readonly: "",
+      id: "floatingPlaintextInput",
+      placeholder: "name@example.com"
+    },
+    domProps: {
+      value: _vm.detail.vendor_address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.detail, "vendor_address", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "floatingPlaintextInput"
+    }
+  }, [_vm._v("Vendor Address")])]), _vm._v(" "), _c("div", {
     staticClass: "container",
     staticStyle: {
       "background-color": "white",
@@ -5802,7 +6127,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("table", {
     staticClass: "table m-auto"
-  }, [_vm._m(10), _vm._v(" "), _c("tbody", [_c("tr", [_c("td", [_vm._v("Transportation from trip")]), _vm._v(" "), _c("td", [_vm._v("1")]), _vm._v(" "), _c("td", [_vm._v("TRIP")]), _vm._v(" "), _c("td", [_vm._v("1,400.00")]), _vm._v(" "), _c("td", [_vm._v("0")]), _vm._v(" "), _c("td", [_vm._v("5")]), _vm._v(" "), _c("td", [_c("svg", {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", [_c("tr", [_c("td", [_vm._v("Transportation from trip")]), _vm._v(" "), _c("td", [_vm._v("1")]), _vm._v(" "), _c("td", [_vm._v("TRIP")]), _vm._v(" "), _c("td", [_vm._v("1,400.00")]), _vm._v(" "), _c("td", [_vm._v("0")]), _vm._v(" "), _c("td", [_vm._v("5")]), _vm._v(" "), _c("td", [_c("svg", {
     staticClass: "bi bi-arrow-right",
     staticStyle: {
       "margin-top": "9px"
@@ -5826,7 +6151,7 @@ var render = function render() {
     staticStyle: {
       "border-top": "1px solid rgb(0 0 0)"
     }
-  }), _vm._v(" "), _c("h4", [_c("B", [_vm._v("Vendor Invoice")])], 1), _vm._v(" "), _vm._m(11)]), _vm._v(" "), _c("h4", {
+  }), _vm._v(" "), _c("h4", [_c("B", [_vm._v("Vendor Invoice")])], 1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("h4", {
     staticStyle: {
       margin: "12px 29px"
     }
@@ -5856,45 +6181,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control-plaintext",
     attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "instruction",
-      value: "Service Instruction"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Type")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "SI-2022-00001"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Si No.")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
+      type: "text",
       readonly: "",
       id: "floatingPlaintextInput",
       placeholder: "name@example.com",
@@ -5905,139 +6192,6 @@ var staticRenderFns = [function () {
       "for": "floatingPlaintextInput"
     }
   }, [_vm._v("Transfer No.")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "ADNOC - Haill & Ghasha"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Customer")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "PO01"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Customer PO")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "-"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Status")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "Rigrep Transportation"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Atention of")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "Amarit & Assosiates Logisitics Co Ltd"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Assigned vendor")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "MITME-ADL-001"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Vendor Quotation")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "form-floating mb-3"
-  }, [_c("input", {
-    staticClass: "form-control-plaintext",
-    attrs: {
-      type: "email",
-      readonly: "",
-      id: "floatingPlaintextInput",
-      placeholder: "name@example.com",
-      value: "Jalan Tunjungan Surabayasdasda asda asdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "floatingPlaintextInput"
-    }
-  }, [_vm._v("Vendor Address")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6111,12 +6265,12 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("Support Document")])])]), _vm._v(" "), _c("tbody", [_c("td", [_vm._v("AAL-008")]), _vm._v(" "), _c("td", [_c("i", [_vm._v("\n                        {icon}\n                    ")])]), _vm._v(" "), _c("td")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Support Document")])])]), _vm._v(" "), _c("tbody", [_c("td", [_vm._v("AAL-008")]), _vm._v(" "), _c("td", [_c("i", [_vm._v(" {icon} ")])]), _vm._v(" "), _c("td")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-success",
     attrs: {
       type: "button"
     }
-  }, [_vm._v("All Received")])]);
+  }, [_vm._v("\n              All Received\n            ")])]);
 }];
 render._withStripped = true;
 
@@ -6393,7 +6547,8 @@ var render = function render() {
           return _vm.unhighlightRow(index);
         },
         click: function click($event) {
-          return _vm.goToLink("/service");
+          _vm.goToLink("/service");
+          _vm.sendIndex(item._id);
         }
       }
     }, [item.status == "On Progress" ? _c("td", {
@@ -6539,6 +6694,12 @@ var render = function render() {
       display: "flex",
       "flex-direction": "row",
       "flex-wrap": "wrap"
+    },
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.save.apply(null, arguments);
+      }
     }
   }, [_c("div", {
     staticClass: "dropdown"
@@ -6591,7 +6752,285 @@ var render = function render() {
       "flex-direction": "row",
       "flex-wrap": "wrap"
     }
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("label", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "mb-1",
+    staticStyle: {
+      "margin-left": "130px",
+      "font-size": "smaller"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Assigment Vendor")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.vendor,
+      expression: "instructions.vendor"
+    }],
+    staticClass: "form-select",
+    staticStyle: {
+      "inline-size": "min-content"
+    },
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.instructions, "vendor", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Enter Vendor")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("Three")])])]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1",
+    staticStyle: {
+      "margin-left": "20px",
+      "font-size": "smaller"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Attention Off")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.attention,
+      expression: "instructions.attention"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      placeholder: "Enter Attention Off"
+    },
+    domProps: {
+      value: _vm.instructions.attention
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.instructions, "attention", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1",
+    staticStyle: {
+      "margin-left": "20px",
+      "font-size": "smaller"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Quotation No.")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.quotation,
+      expression: "instructions.quotation"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      placeholder: "Enter Quotation"
+    },
+    domProps: {
+      value: _vm.instructions.quotation
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.instructions, "quotation", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1",
+    staticStyle: {
+      "margin-left": "20px",
+      "font-size": "smaller"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Invoice To")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.invoice,
+      expression: "instructions.invoice"
+    }],
+    staticClass: "form-select",
+    staticStyle: {
+      "inline-size": "min-content"
+    },
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.instructions, "invoice", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Select an Option")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("Three")])])]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1",
+    staticStyle: {
+      "margin-left": "20px",
+      "font-size": "smaller"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Customer Contract")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.custommerContact,
+      expression: "instructions.custommerContact"
+    }],
+    staticClass: "form-select",
+    staticStyle: {
+      "inline-size": "min-content"
+    },
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.instructions, "custommerContact", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Select Customer")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("Three")])])]), _vm._v(" "), _c("div", {
+    staticClass: "container",
+    staticStyle: {
+      "background-color": "white",
+      "/* display": "flex",
+      "flex-direction": "row",
+      "flex-wrap": "wrap",
+      "*/\n        margin-top": "30px",
+      margin: "12px -8px",
+      "margin-left": "118px"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    staticStyle: {
+      "font-size": "smaller"
+    },
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Vendor Address")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.vendorAddress,
+      expression: "instructions.vendorAddress"
+    }],
+    staticClass: "form-select",
+    staticStyle: {
+      width: "80%"
+    },
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.instructions, "vendorAddress", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Open this select menu")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("Three")])])]), _vm._v(" "), _c("label", {
     staticClass: "form-label",
     staticStyle: {
       "font-size": "smaller",
@@ -6601,6 +7040,12 @@ var render = function render() {
       "for": "exampleInputEmail1"
     }
   }, [_vm._v("CustomerPONo.")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.instructions.customerPoNo,
+      expression: "instructions.customerPoNo"
+    }],
     staticClass: "form-control",
     staticStyle: {
       width: "165px",
@@ -6610,6 +7055,15 @@ var render = function render() {
       type: "text",
       placeholder: "Default input",
       "aria-label": "default input example"
+    },
+    domProps: {
+      value: _vm.instructions.customerPoNo
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.instructions, "customerPoNo", $event.target.value);
+      }
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "container",
@@ -6630,7 +7084,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("table", {
     staticClass: "table m-auto"
-  }, [_vm._m(7), _vm._v(" "), _c("tbody", [_c("tr", [_vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12), _vm._v(" "), _c("td", [_c("svg", {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", [_c("tr", [_vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("td", [_c("svg", {
     staticClass: "bi bi-arrow-right",
     staticStyle: {
       "margin-top": "9px"
@@ -6647,7 +7101,7 @@ var render = function render() {
       "fill-rule": "evenodd",
       d: "M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
     }
-  })])]), _vm._v(" "), _vm._m(13), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _vm._m(14)]), _vm._v(" "), _vm._m(15)])]), _vm._v(" "), _c("h4", {
+  })])]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _c("td", [_vm._v("00.00")]), _vm._v(" "), _vm._m(8)]), _vm._v(" "), _vm._m(9)])]), _vm._v(" "), _c("h4", {
     staticStyle: {
       margin: "12px 29px"
     }
@@ -6682,7 +7136,7 @@ var render = function render() {
       rows: "3",
       id: "comment"
     }
-  })])])])])]), _vm._v(" "), _vm._m(16), _vm._v(" "), _vm._m(17)]);
+  })])])])])]), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6711,210 +7165,6 @@ var staticRenderFns = [function () {
       href: "#"
     }
   }, [_vm._v("Something else here")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mb-1",
-    staticStyle: {
-      "margin-left": "130px",
-      "font-size": "smaller"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Assigment Vendor")]), _vm._v(" "), _c("select", {
-    staticClass: "form-select",
-    staticStyle: {
-      "inline-size": "min-content"
-    },
-    attrs: {
-      "aria-label": "Default select example"
-    }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Enter Vendor")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "1"
-    }
-  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "2"
-    }
-  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "3"
-    }
-  }, [_vm._v("Three")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mb-1",
-    staticStyle: {
-      "margin-left": "20px",
-      "font-size": "smaller"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Attention Off")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      placeholder: "Enter Attention Off"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mb-1",
-    staticStyle: {
-      "margin-left": "20px",
-      "font-size": "smaller"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Quotation No.")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      placeholder: "Enter Quotation"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mb-1",
-    staticStyle: {
-      "margin-left": "20px",
-      "font-size": "smaller"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Invoice To")]), _vm._v(" "), _c("select", {
-    staticClass: "form-select",
-    staticStyle: {
-      "inline-size": "min-content"
-    },
-    attrs: {
-      "aria-label": "Default select example"
-    }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Select an Option")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "1"
-    }
-  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "2"
-    }
-  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "3"
-    }
-  }, [_vm._v("Three")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mb-1",
-    staticStyle: {
-      "margin-left": "20px",
-      "font-size": "smaller"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Customer Contract")]), _vm._v(" "), _c("select", {
-    staticClass: "form-select",
-    staticStyle: {
-      "inline-size": "min-content"
-    },
-    attrs: {
-      "aria-label": "Default select example"
-    }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Select Customer")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "1"
-    }
-  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "2"
-    }
-  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "3"
-    }
-  }, [_vm._v("Three")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "container",
-    staticStyle: {
-      "background-color": "white",
-      "/* display": "flex",
-      "flex-direction": "row",
-      "flex-wrap": "wrap",
-      "*/\n        margin-top": "30px",
-      margin: "12px -8px",
-      "margin-left": "118px"
-    }
-  }, [_c("label", {
-    staticClass: "form-label",
-    staticStyle: {
-      "font-size": "smaller"
-    },
-    attrs: {
-      "for": "exampleInputEmail1"
-    }
-  }, [_vm._v("Vendor Address")]), _vm._v(" "), _c("select", {
-    staticClass: "form-select",
-    staticStyle: {
-      width: "80%"
-    },
-    attrs: {
-      "aria-label": "Default select example"
-    }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Open this select menu")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "1"
-    }
-  }, [_vm._v("One")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "2"
-    }
-  }, [_vm._v("Two")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "3"
-    }
-  }, [_vm._v("Three")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7199,7 +7449,7 @@ var staticRenderFns = [function () {
       "border-color": "#0dc7a9"
     },
     attrs: {
-      type: "button"
+      type: "submit"
     }
   }, [_vm._v("\n        Submit\n      ")])])]);
 }];
@@ -7656,82 +7906,62 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_0_
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
   state: {
     instructions: [],
-    search: ""
+    detail: [],
+    index: '637e0fa0c366363b00026d59'
   },
   getters: {
+    // get all instruction
     getInstruction: function getInstruction(state) {
       return state.instructions;
+    },
+    // index for show detail instruction
+    getDetail: function getDetail(state) {
+      return state.detail;
+    }
+  },
+  mutations: {
+    SET_DATA: function SET_DATA(state, index) {
+      state.index = index;
+    },
+    // for detail instruction
+    setDetail: function setDetail(state, data) {
+      state.detail = data;
     }
   },
   actions: {
-    // show data instruction
-    // async showData({ commit }) {
-    //   try {
-    //     let response = await axios.get("/api/instruction/")
-    //     commit('setData', response.data.data)
-    //     // console.log(response)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
+    // saveData(context, index) {
+    //   context.commit('SET_DATA', index)
     // },
-    fetchData: function fetchData() {
+    // api for detail
+    showDetail: function showDetail(_ref) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response, _response;
+        var commit, response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this.search.length === 0)) {
-                  _context.next = 7;
-                  break;
-                }
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/instruction/");
-              case 3:
+                commit = _ref.commit;
+                _context.prev = 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/instruction/".concat(_this.state.index));
+              case 4:
                 response = _context.sent;
-                // this.items = response.data.data;
-                commit('setData', response.data.data);
+                commit('setDetail', response.data.data);
+                // console.log(response.data.data)
                 _context.next = 11;
                 break;
-              case 7:
-                _context.next = 9;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/instruction/search/", {
-                  params: {
-                    key: _this.search
-                  }
-                });
-              case 9:
-                _response = _context.sent;
-                // this.items = response.data.data;
-                commit('setData', _response.data.data);
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
+                console.error(_context.t0);
               case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[1, 8]]);
       }))();
-    },
-    addSearch: function addSearch(context, payload) {
-      context.commit('ADD_SEARCH', payload);
-    } // add data
-    // async showData({ commit }) {
-    //   try {
-    //     let response = await axios.post("/api/instruction/add/")
-    //     commit('setData', response.data.data)
-    //     console.log(response)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // }
-  },
-  mutations: {
-    setData: function setData(state, data) {
-      state.instructions = data;
-    },
-    ADD_SEARCH: function ADD_SEARCH(state, payload) {
-      state.search.push(payload);
     }
   }
 }));

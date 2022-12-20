@@ -28,6 +28,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       text-decoration: none;
     }
   </style>
+
+  <!-- incon title -->
+  <link rel="icon" href="{{asset('admin-lte/dist/img/inosof.png')}}">
 </head>
 <body class="hold-transition sidebar-mini" class="antialiased">
 <div class="wrapper">

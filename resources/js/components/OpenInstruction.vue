@@ -20,7 +20,10 @@
           v-bind:class="{ highlight: isHighlighted(index) }"
           @mouseover="highlightRow(index)"
           @mouseout="unhighlightRow(index)"
-          @click="goToLink('/service')"
+          @click="
+            goToLink('/service');
+            sendIndex(item._id);
+          "
         >
           <td scope="row" v-if="item.status == 'On Progress'">
             {{ item.instruction_id }}
@@ -55,6 +58,7 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from "vuex";
 export default {
   props: {
     instructions: {
@@ -70,9 +74,37 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.instructions);
+    // this.$store.dispatch("setIndex");
+    // console.log(`local${this.index}`);
+  },
+  computed: {
+    // ...mapGetters({
+    //   index: "getIndex",
+    // }),
   },
   methods: {
+    // vuex
+    // ...mapActions(["saveData"]),
+    // sendIndex(index) {
+    //   // this.$store.commit('setCurrentIndex', index)
+    //   this.$store.dispatch("SET_DATA", index);
+    // },
+    ...mapMutations(["SET_DATA"]),
+    sendIndex(index) {
+      this.SET_DATA(index);
+      console.log(index);
+    },
+    // sendIndex(index) {
+    //   console.log(index);
+    // },
+
+    //set data index
+    // setIndex(index) {
+    //   this.index = index;
+    //   console.log(this.index);
+    // },
+
+    // ketika row di sorot
     highlightRow(index) {
       this.highlightedRow = index;
     },
