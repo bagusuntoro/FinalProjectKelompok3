@@ -14,81 +14,118 @@
         </tr>
       </thead>
       <tbody>
-          <tr v-for="(item, index) in instruction" :key="index" class='clickable-row' data-href='url://'>
-            <th scope="row" v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.instructionId }}
-              </a>
-            </th>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.linkTo }}
-              </a>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <i class="material-icons"> local_shipping </i>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.assignedVendor }}
-              </a>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.attentionOf }}
-              </a>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.quotationNo }}
-              </a>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-
-                {{ item.customerPo }}
-              </a>
-            </td>
-            <td v-if="item.status == 'in progress'">
-              <a href="/service">
-                <div class="status">
-                  {{ item.status }}
-                </div>
-              </a>
-            </td>
-          </tr>
+        <tr
+          v-for="(item, index) in instructions"
+          :key="index"
+          v-bind:class="{ highlight: isHighlighted(index) }"
+          @mouseover="highlightRow(index)"
+          @mouseout="unhighlightRow(index)"
+          @click="
+            goToLink('/service');
+            sendIndex(item._id);
+          "
+        >
+          <td scope="row" v-if="item.status == 'On Progress'">
+            {{ item.instruction_id }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.link_to }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            <i class="material-icons customIcon"> local_shipping </i>
+            {{ item.instruction_type }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.assigned_vendor }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.attention_of }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.quotation_no }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            {{ item.customer_po }}
+          </td>
+          <td v-if="item.status == 'On Progress'">
+            <div class="status">
+              {{ item.status }}
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapGetters } from "vuex";
 export default {
   props: {
-    instruction: {
+    instructions: {
       type: Array,
       default: () => {
         return [];
       },
     },
   },
-  mounted(){
-    jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
-});
-  }
+  data() {
+    return {
+      highlightedRow: -1,
+    };
+  },
+  mounted() {
+    // this.$store.dispatch("setIndex");
+    // console.log(`local${this.index}`);
+  },
+  computed: {
+    // ...mapGetters({
+    //   index: "getIndex",
+    // }),
+  },
+  methods: {
+    // vuex
+    // ...mapActions(["saveData"]),
+    // sendIndex(index) {
+    //   // this.$store.commit('setCurrentIndex', index)
+    //   this.$store.dispatch("SET_DATA", index);
+    // },
+    ...mapMutations(["SET_DATA"]),
+    sendIndex(index) {
+      this.SET_DATA(index);
+      console.log(index);
+    },
+    // sendIndex(index) {
+    //   console.log(index);
+    // },
 
+    //set data index
+    // setIndex(index) {
+    //   this.index = index;
+    //   console.log(this.index);
+    // },
+
+    // ketika row di sorot
+    highlightRow(index) {
+      this.highlightedRow = index;
+    },
+    unhighlightRow(index) {
+      this.highlightedRow = -1;
+    },
+    isHighlighted(index) {
+      return index === this.highlightedRow;
+    },
+    goToLink(link) {
+      window.location.href = link;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.highlight {
+  background-color: #f0f0f0;
+}
 table {
   /* position: relative; */
   margin-top: 30px !important;
@@ -112,7 +149,14 @@ td > i {
   text-align: center;
   font-size: 12px;
 }
-a{
+a {
   color: black;
+}
+
+.customIcon {
+  padding-right: 5px !important;
+  /* color: #00bfbf !important; */
+  vertical-align: bottom !important;
+  font-size: 20px !important;
 }
 </style>

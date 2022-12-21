@@ -1,85 +1,50 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    instruction: [
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "in progress",
-      },
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "in progress",
-      },
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "completed",
-      },
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "completed",
-      },
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "delete",
-      },
-      {
-        instructionId: "001",
-        linkTo: "example link",
-        instructionType: "tes",
-        assignedVendor: "tes",
-        attentionOf: "tess",
-        quotationNo: "tess",
-        customerPo: "tess",
-        status: "in progress",
-      },
-    ],
+    instructions: [],
+    detail: [],
+    index: '637e0fa0c366363b00026d59'
   },
   getters: {
-    getData(state) {
-      return state.instruction
-    }
+    // get all instruction
+    getInstruction: state => state.instructions,
+
+    // index for show detail instruction
+    getDetail: state => state.detail
   },
+
   mutations: {
+    SET_DATA(state, index) {
+      state.index = index;
+    },
 
+    // for detail instruction
+    setDetail: (state, data) => {
+      state.detail = data
+    },
   },
+
   actions: {
+    // saveData(context, index) {
+    //   context.commit('SET_DATA', index)
+    // },
+
+    // api for detail
+    async showDetail({ commit }) {
+      try {
+        let response = await axios.get(`/api/instruction/${this.state.index}`)
+        commit('setDetail', response.data.data)
+        // console.log(response.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
 
   },
-  modules: {
 
-  }
 })

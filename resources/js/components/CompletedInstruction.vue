@@ -15,26 +15,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in instruction" :key="index">
-          <th scope="row" v-if="item.status != 'in progress'">
-            {{ item.instructionId }}
-          </th>
-          <td v-if="item.status != 'in progress'">
-            {{ item.linkTo }}
+        <tr v-for="(item, index) in instructions" :key="index">
+          <td scope="row" v-if="item.status != 'On Progress'">
+            {{ item.instruction_id }}
           </td>
-          <td v-if="item.status != 'in progress'">
-            <i class="material-icons"> local_shipping </i>
+          <td v-if="item.status != 'On Progress'">
+            {{ item.link_to }}
           </td>
-          <td v-if="item.status != 'in progress'">
-            {{ item.assignedVendor }}
+          <td v-if="item.status != 'On Progress'">
+            <i class="material-icons customIcon"> local_shipping </i>
+            {{ item.instruction_type }}
           </td>
-          <td v-if="item.status != 'in progress'">
-            {{ item.attentionOf }}
+          <td v-if="item.status != 'On Progress'">
+            {{ item.assigned_vendor }}
           </td>
-          <td v-if="item.status != 'in progress'">
-            {{ item.quotationNo }}
+          <td v-if="item.status != 'On Progress'">
+            {{ item.attention_of }}
           </td>
-          <td v-if="item.status != 'in progress'">
+          <td v-if="item.status != 'On Progress'">
+            {{ item.quotation_no }}
+          </td>
+          <td v-if="item.status != 'On Progress'">
             <select
               class="form-select form-select-sm"
               aria-label=".form-select-sm example"
@@ -45,59 +46,13 @@
               <option value="3">3</option>
             </select>
           </td>
-          <td v-if="item.status != 'in progress'">
-            {{ item.customerPo }}
+          <td v-if="item.status != 'On Progress'">
+            {{ item.customer_po }}
           </td>
-          <td v-if="item.status != 'in progress'">
+          <td v-if="item.status != 'On Progress'">
             <div class="status">{{ item.status }}</div>
           </td>
         </tr>
-        <!-- <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>
-            <select
-              class="form-select form-select-sm"
-              aria-label=".form-select-sm example"
-            >
-              <option selected>0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">completed</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td><i class="material-icons"> local_shipping </i></td>
-          <td>@fat</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>
-            <select
-              class="form-select form-select-sm"
-              aria-label=".form-select-sm example"
-            >
-              <option selected>0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </td>
-          <td>@mdo</td>
-          <td>
-            <div class="status">completed</div>
-          </td>
-        </tr> -->
       </tbody>
     </table>
   </div>
@@ -106,7 +61,7 @@
 <script>
 export default {
   props: {
-    instruction: {
+    instructions: {
       type: Array,
       default: () => {
         return [];
@@ -143,5 +98,12 @@ td > select {
   color: #ffffff;
   text-align: center;
   font-size: 12px;
+}
+
+.customIcon {
+  padding-right: 5px !important;
+  /* color: #00bfbf !important; */
+  vertical-align: bottom !important;
+  font-size: 20px !important;
 }
 </style>

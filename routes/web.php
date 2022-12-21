@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 // Route::get('/', function(){
 //     return view('welcome');
@@ -23,8 +26,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
+// asli dari backend
+// Route::get('/export', [App\Http\Controllers\InstructionController::class, 'export']);
+// Route::post('/export', [App\Http\Controllers\InstructionController::class, 'exportInstructions']);
+
+
+
+Route::get('/report', [App\Http\Controllers\InstructionController::class, 'export']);
+Route::post('/export', [App\Http\Controllers\InstructionController::class, 'exportInstructions']);
+// Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
 
 Route::get('/{any}', function(){
-    return view('home');
+    return view('dashboard');
 })->where('any', '.*');

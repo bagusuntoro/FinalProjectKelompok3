@@ -2,25 +2,37 @@
   <div id="template" class="m-auto">
     <div class="row pt-4">
       <div class="col-md-6">
-        <router-link to="/" class="customOpen teal" id="open">Open</router-link>
-        <router-link to="/completed" class="customCompleted" id="completed">Completed</router-link>
+        <router-link to="/open" class="customOpen teal" id="open"
+          >Open</router-link
+        >
+        <router-link to="/completed" class="customCompleted" id="completed"
+          >Completed</router-link
+        >
       </div>
-      <div class="col-md-6">
-        <div class="row float-end" style="width: 200px">
-          <a href="#" class="col-md-2">
-            <div class="search-box">
-              <input type="text" placeholder="search...." id="search" />
+
+      <div class="col-md-2"></div>
+
+      <div class="col-md-4">
+        <div class="row" style="width: 200px">
+          <a href="#" class="col-md-10">
+            <!-- search -->
+            <div class="search-box ms-4">
+              <input
+                type="text"
+                placeholder="  search...."
+                id="search"
+                v-model="search"
+                @input="fetchData"
+              />
               <a href="#" class="icon">
                 <i class="fas fa-search"></i>
               </a>
             </div>
 
-            <!-- <div class="text-center customSearch">
-              <i class="bi bi-search"></i>
-            </div> -->
+            <!-- export -->
           </a>
-          <a href="/report" class="col-md-8">
-            <div class="text-center customExport">
+          <a href="/report" class="col-md-2">
+            <div class="text-center customExport ms-5">
               <i class="bi bi-file-earmark-zip"></i><span> Export</span>
             </div>
           </a>
@@ -35,17 +47,26 @@
       <div class="col-md-5"></div>
       <div class="col-md-3">
         <div class="dropdown float-end me-5">
-          <button class="btn customButtonCreate" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            class="btn customButtonCreate"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             + Create 3rd Party Instruction
           </button>
           <div class="dropdown-menu customMenu">
             <div class="logisticLink">
-              <a href="/logistic" class="dropdown-item"><i class="material-icons"> local_shipping </i>Logistic
-                Instruction</a>
+              <a href="/logistic" class="dropdown-item"
+                ><i class="material-icons"> local_shipping </i>Logistic
+                Instruction</a
+              >
             </div>
             <div class="serviceLink">
-              <a href="/service" class="dropdown-item"><i class="material-icons"> manage_accounts </i> Service
-                Instruction</a>
+              <a href="/service" class="dropdown-item"
+                ><i class="material-icons"> manage_accounts </i> Service
+                Instruction</a
+              >
             </div>
           </div>
         </div>
@@ -53,7 +74,7 @@
     </div>
 
     <!-- call child components in instruction component -->
-    <router-view :instruction="instruction"></router-view>
+    <router-view :instructions="items" />
     <!-- <open-instruction /> -->
 
     <h6 class="customDisplay">10 of 60 displayed</h6>
@@ -61,25 +82,62 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
-  data: function () {
-    return {};
-  },
-  computed: {
-    ...mapGetters({
-      instruction: "getData",
-    }),
+  data() {
+    return {
+      search: "",
+      items: [],
+    };
   },
   mounted() {
-    let completed = document.getElementById('completed')
-    let open = document.getElementById('open')
+    let completed = document.getElementById("completed");
+    let open = document.getElementById("open");
 
-    completed.addEventListener('click', function () {
+    completed.addEventListener("click", function () {
       completed.classList.toggle("teal");
       open.classList.toggle("teal");
-    })
-  }
+    });
+
+    // axios.get("/api/instruction/").then((response) => {
+    // this.instructions = response.data.data;
+    // console.log(this.instructions);
+    // });
+
+    // this.$store.dispatch("showData");
+  },
+  computed: {
+    // ...mapGetters({
+    //   instructions: "getInstruction",
+    // }),
+    // console.log(instructions)
+  },
+  methods: {
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("/api/instruction/");
+        this.items = response.data.data;
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        this.items = response.data.data;
+      }
+    },
+
+    // addSearch(search) {
+    //   console.log(search);
+    //   this.$store.dispatch("addSearch", this.search);
+    // },
+  },
+  created() {
+    // Panggil method fetchData saat pertama kali dijalankan
+    this.fetchData();
+  },
 };
 </script>
 
@@ -116,7 +174,7 @@ export default {
   color: #00bfbf;
 }
 
-.customExport>span {
+.customExport > span {
   font-weight: bold;
   color: #494949;
 }
@@ -138,17 +196,16 @@ export default {
   width: 220px;
 }
 
-
-.logisticLink>a>i,
-.serviceLink>a>i {
+.logisticLink > a > i,
+.serviceLink > a > i {
   padding-right: 20px !important;
   color: #00bfbf !important;
   vertical-align: bottom !important;
   font-size: 20px !important;
 }
 
-.logisticLink>a,
-.serviceLink>a {
+.logisticLink > a,
+.serviceLink > a {
   padding-left: 20px;
   padding-bottom: 15px;
   color: black !important;
@@ -175,20 +232,23 @@ hr {
   background: #b9c0c7;
   height: 40px;
   border-radius: 40px;
-  /* padding: 10px; */
+  color: white;
 }
 
-.search-box:hover>input {
+.search-box:hover > input {
   width: 200px !important;
-  padding: 0 10px;
+  padding: 0 200px;
 }
 
-.search-box:hover>.icon {
-  background: #ffffff;
+.search-box:hover > .icon {
+  transform: rotate(360deg) scale(0.7);
+  margin-top: -40px;
 }
-
-.icon:hover {
-  transform: rotate(360deg) scale(0.8);
+input::placeholder {
+  color: white;
+}
+input {
+  text-indent: 20px;
 }
 
 input#search {
@@ -218,7 +278,5 @@ input#search {
   cursor: pointer;
   text-decoration: none;
 }
-
-/* akhir search */
 </style>
 

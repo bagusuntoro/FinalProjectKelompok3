@@ -2,6 +2,9 @@ import Vue from "vue";
 import router from "vue-router";
 Vue.use(router);
 
+
+// components
+// import login from "../components/LoginComponent.vue";
 import instruction from "../components/InstructionComponent.vue";
 import logistic from "../components/detailberil.vue";
 import table from "../components/tabelberil.vue";
@@ -13,18 +16,21 @@ import openInstruction from "../components/OpenInstruction.vue";
 import completedInstruction from "../components/CompletedInstruction.vue";
 
 const routes = [
+  // {
+  //   path: "/",
+  //   component: login,
+  //   name: login,
+  // },
   {
-    path: "/",
+    path: "/open",
     component: instruction,
-    name: instruction,
     children: [
       {
-        path: "/",
+        path: "/open",
         component: openInstruction,
-        name: open,
       },
       {
-        path: "completed",
+        path: "/completed",
         component: completedInstruction,
       },
     ],
